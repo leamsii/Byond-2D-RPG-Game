@@ -1,0 +1,89 @@
+macro "macro"
+	elem 
+		name = "Center+REP"
+		command = ".center"
+	elem 
+		name = "Northeast+REP"
+		command = ".northeast"
+	elem 
+		name = "Southeast+REP"
+		command = ".southeast"
+	elem 
+		name = "Southwest+REP"
+		command = ".southwest"
+	elem 
+		name = "Northwest+REP"
+		command = ".northwest"
+	elem 
+		name = "West+REP"
+		command = ".west"
+	elem 
+		name = "North+REP"
+		command = ".north"
+	elem 
+		name = "East+REP"
+		command = ".east"
+	elem 
+		name = "South+REP"
+		command = ".south"
+	elem 
+		name = "A"
+		command = "Attack"
+
+macro "macro1"
+	elem 
+		name = "ALT+A+REP"
+		command = "Attack()"
+
+
+menu "menu"
+	elem 
+		name = "&Quit"
+		command = ".quit"
+		category = "&File"
+		saved-params = "is-checked"
+
+
+window "default"
+	elem "default"
+		type = MAIN
+		pos = 95,0
+		size = 1255x669
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "IT RPG"
+		statusbar = false
+		can-resize = false
+		macro = "macro"
+		menu = "menu"
+	elem "output1"
+		type = OUTPUT
+		pos = 0,208
+		size = 224x664
+		anchor1 = none
+		anchor2 = none
+		is-default = true
+		saved-params = "max-lines"
+	elem "map1"
+		type = MAP
+		pos = 224,0
+		size = 1144x872
+		anchor1 = none
+		anchor2 = none
+		is-default = true
+		border = line
+		saved-params = "zoom;letterbox;zoom-mode"
+		icon-size = 64
+		zoom = 2.666667
+	elem "info1"
+		type = INFO
+		pos = 0,0
+		size = 224x208
+		anchor1 = none
+		anchor2 = none
+		saved-params = ""
+		tab-background-color = none
+
