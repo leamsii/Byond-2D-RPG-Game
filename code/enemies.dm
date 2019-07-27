@@ -42,7 +42,7 @@ mob/enemies
 			if(is_dead) return
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
-			P << "You hit [src] for [damage] damage"
+			s_damage(src,damage, "yellow")
 			health -= damage
 			// Update the health bar
 			add_health_bar()

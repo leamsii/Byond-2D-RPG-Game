@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1564235508
+LAST_COMPILE_TIME: 1564236955
 DIR: code icons 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1472
-WINDOW: code\enemies.dm;code\player.dm;code\turfs.dm;icons\slime_sprites.dmi
-FILE: code\enemies.dm
+WINDOW: code\enemies.dm;code\player.dm;code\turfs.dm;icons\slime_sprites.dmi;icons\s_blacknums.dmi;code\s_damage2.dm;code\colour2html.dm
+FILE: code\s_damage2.dm
 */
 // END_INTERNALS
