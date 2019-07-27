@@ -84,4 +84,4 @@ mob/enemies
 			die_animation_delay = 16
 		slime_acid
 			icon_state = "slime_acid"
-			die_animation_delay = 16
+			die_animation_delay = 8
