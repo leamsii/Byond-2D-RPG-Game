@@ -8,27 +8,29 @@
 "h" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
 "i" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
 "j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
-"k" = (/mob/enemies/slime,/turf/grass{icon_state = "base"},/area)
+"k" = (/mob/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
+"l" = (/mob/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
+"m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 abcabcdddddddddddabc
 efgefgdddddddddkdefg
 hijhijdddddddddddhij
 ddabcabcdddddddddddd
-ddefgefgdddddddddddd
+dlefgefgddddddddddkd
 ddhijhijdddddddddddd
 dddddabcdddddddddddd
 dddddefgdddddddddddd
-dddddhijdddddddddddd
-dddddddddddddddddddd
-dddkdddddddddddddddd
+dldddhijdddddddddddd
 dddddddddddddddddddd
 dddddddddddddddddddd
 dddddddddddddddddddd
-ddddddddabcabcddkddd
-ddddddddefgefgdddddd
-abcdddddhijhijdddddd
+dddddddmdddddddddddd
+dddddddddddddddddddd
+ddddddddabcabcdddddd
+ddddddddefgefgdddddl
+abcdmdddhijhijdddddd
 efgddabcabcabcdddabc
-hijdkefgefgefgdddefg
+hijddefgefgefgdddefg
 dddddhijhijhijdddhij
 "}

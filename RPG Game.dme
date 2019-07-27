@@ -13,7 +13,6 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "effects.dm"
 #include "enemies.dm"
 #include "player.dm"
 #include "RPG Game.dm"

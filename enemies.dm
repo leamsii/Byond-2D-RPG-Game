@@ -1,5 +1,4 @@
 mob/enemies
-	icon = 'enemies.dmi'
 	// Define the stats for the enemies
 	var
 		health = 100
@@ -10,13 +9,18 @@ mob/enemies
 		exp = 20
 		health_bar = null
 		level = 2
+		is_wandering = TRUE
+		is_dead = FALSE
+		die_animation_delay = 0
 
 	// Define the enemies bahaviors
 	proc
 		wander() // Wanders around aimlessly
-			walk(src, rand(1, 4), 0, speed)
-			spawn(10)
-			walk(src, FALSE) // Pause
+			walk(src, null)
+			if(is_wandering)
+				walk(src, rand(1, 4), 0, speed)
+				spawn(10)
+				walk(src, FALSE) // Pause
 			spawn(20)
 			wander()
 
@@ -35,6 +39,7 @@ mob/enemies
 			overlays += O
 
 		take_damage(mob/player/P)
+			if(is_dead) return
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
 			P << "You hit [src] for [damage] damage"
@@ -49,13 +54,18 @@ mob/enemies
 			flick("hurt", src)
 
 		die(mob/player/P)
+			is_dead = TRUE
+			is_wandering=FALSE
 			P << "You earned [exp] EXP!"
+			flick(icon_state+"_die", src)
+			sleep(die_animation_delay)
 			loc=locate(1, 1, -1) // Vanish it
-			spawn(20)
 			del src
 
+
 		knock_back(mob/player/P)
-			walk(src, P.dir, speed)
+			is_wandering=FALSE
+			step_away(src, P, 10, speed * 2)
 
 	New()
 		..() // Call parent New
@@ -63,10 +73,15 @@ mob/enemies
 		wander()
 
 	slime
+		icon = 'slime_sprites.dmi'
 		icon_state = "slime1"
-		New()
-			..()
-			if(prob(50)) // 50% change of it being fire
-				icon_state = "slime2"
-			if(prob(10)) // 10% change of it being poison
-				icon_state = "slime3"
+
+		slime_fire
+			icon_state = "slime_fire"
+			die_animation_delay = 14
+		slime_poison
+			icon_state = "slime_poison"
+			die_animation_delay = 16
+		slime_acid
+			icon_state = "slime_acid"
+			die_animation_delay = 16
