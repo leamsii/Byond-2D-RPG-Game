@@ -55,8 +55,9 @@ mob/enemies
 
 		die(mob/player/P)
 			is_dead = TRUE
+			density=0
 			is_wandering=FALSE
-			P << "You earned [exp] EXP!"
+			P.give_exp(rand(exp-5, exp+5))
 			flick(icon_state+"_die", src)
 			sleep(die_animation_delay)
 			loc=locate(1, 1, -1) // Vanish it

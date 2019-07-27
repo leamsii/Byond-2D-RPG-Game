@@ -13,12 +13,27 @@ mob/player
 		max_defense = 3
 		speed = 2
 		max_speed = 2
+		level = 3
+		exp = 0
+		max_exp = 100
+	proc
+		give_exp(amount)
+			exp += amount
+			if(exp >= max_exp)
+				exp = 0
+				max_exp *= 2
+				src << "You leveled up!"
+				max_power += 100
+				power = max_power
+
+			src << "You gained [amount] exp!"
 
 	// Actions or commands
 	verb
 		Speak()
 			var/msg = input("", "Type Something")
-			if(msg) world << "<font color = red> [client]: [msg]</font>"
+			if(msg) world << "<font color = green> [client]: [msg]</font>"
+
 		Attack()
-			for(var/mob/enemies/E in oview(1))
+			for(var/mob/enemies/E in get_step(src, usr.dir))
 				E.take_damage(src)
