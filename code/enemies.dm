@@ -40,6 +40,9 @@ mob/enemies
 
 		take_damage(mob/player/P)
 			if(is_dead) return
+			var/sound/hit_sound = sound('sounds/slime/hit.wav')
+			P << hit_sound
+
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
 			s_damage(src,damage, "yellow")
