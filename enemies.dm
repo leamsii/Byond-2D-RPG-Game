@@ -46,7 +46,7 @@ mob/enemies
 				die(P)
 
 			// Flash animation
-			flick("[name]_hurt", src)
+			flick("hurt", src)
 
 		die(mob/player/P)
 			P << "You earned [exp] EXP!"
@@ -63,4 +63,10 @@ mob/enemies
 		wander()
 
 	slime
-		icon_state = "slime"
+		icon_state = "slime1"
+		New()
+			..()
+			if(prob(50)) // 50% change of it being fire
+				icon_state = "slime2"
+			if(prob(10)) // 10% change of it being poison
+				icon_state = "slime3"
