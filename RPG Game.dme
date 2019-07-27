@@ -13,11 +13,11 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "enemies.dm"
-#include "player.dm"
-#include "RPG Game.dm"
-#include "turfs.dm"
 #include "skin.dmf"
-#include "world.dmm"
+#include "code\enemies.dm"
+#include "code\player.dm"
+#include "code\RPG Game.dm"
+#include "code\turfs.dm"
+#include "icons\world.dmm"
 // END_INCLUDE
 

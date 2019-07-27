@@ -1,0 +1,36 @@
+"a" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
+"b" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
+"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
+"d" = (/turf/grass{icon_state = "base"},/area)
+"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
+"f" = (/turf/grass,/turf/b,/area)
+"g" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
+"h" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
+"i" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
+"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
+"k" = (/mob/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
+"l" = (/mob/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
+"m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
+
+(1,1,1) = {"
+abcabcdddddddddddabc
+efgefgdddddddddkdefg
+hijhijdddddddddddhij
+ddabcabcdddddddddddd
+dlefgefgddddddddddkd
+ddhijhijdddddddddddd
+dddddabcdddddddddddd
+dddddefgdddddddddddd
+dldddhijdddddddddddd
+dddddddddddddddddddd
+dddddddddddddddddddd
+dddddddddddddddddddd
+dddddddmdddddddddddd
+dddddddddddddddddddd
+ddddddddabcabcdddddd
+ddddddddefgefgdddddl
+abcdmdddhijhijdddddd
+efgddabcabcabcdddabc
+hijddefgefgefgdddefg
+dddddhijhijhijdddhij
+"}
