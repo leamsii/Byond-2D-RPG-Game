@@ -1,5 +1,5 @@
 mob/player
-	icon = 'temp_player.dmi'
+	icon = 'icons/temp_player.dmi'
 	icon_state = "player"
 
 	// Variables

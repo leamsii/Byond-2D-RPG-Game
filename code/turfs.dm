@@ -1,5 +1,5 @@
 turf
-	icon = 'turfs.dmi'
+	icon = 'icons/turfs.dmi'
 	grass
 		icon_state = "grass_1"
 
