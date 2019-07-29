@@ -16,7 +16,6 @@ mob/enemies
 		defense = 4
 		speed = 1
 		exp = 20
-		health_bar = null
 		level = 2
 		die_animation_delay = 0
 		current_state = 0
@@ -102,7 +101,7 @@ mob/enemies
 			P.take_damage(power)
 			attack_delay = 50
 		attack_delay -= 1
-		sleep(20)
+		sleep(rand(10, 20))
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
