@@ -98,7 +98,7 @@ mob/enemies
 
 	Bump(mob/player/P)
 		if(current_state==ATTACKING && attack_delay == 0)
-			step_away(P, src, 2,P.speed * 20)
+			step_away(P, src, 2,P.speed * 2)
 			attack_delay = 50
 		attack_delay -= 1
 		sleep(20)
