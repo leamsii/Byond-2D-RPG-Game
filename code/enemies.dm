@@ -1,6 +1,15 @@
 mob/enemies
 	// Define the stats for the enemies
 	var
+		//States
+		const
+			WANDERING = 0
+			ATTACKING = 1
+			FOLLOWING = 2
+			DYING = 3
+			IDLE = 4
+
+
 		health = 100
 		max_health = 100
 		attack = 10
@@ -9,20 +18,18 @@ mob/enemies
 		exp = 20
 		health_bar = null
 		level = 2
-		is_wandering = TRUE
-		is_dead = FALSE
 		die_animation_delay = 0
+		current_state = 0
+		attack_delay = 10
 
 	// Define the enemies bahaviors
 	proc
 		wander() // Wanders around aimlessly
-			walk(src, null)
-			if(is_wandering)
+			if(current_state == WANDERING)
+				walk(src, null)
 				walk(src, rand(1, 4), 0, speed)
 				spawn(10)
 				walk(src, FALSE) // Pause
-			spawn(20)
-			wander()
 
 		add_health_bar() // This will add the health bars to the enemies when they spawn
 			overlays=null
@@ -39,27 +46,23 @@ mob/enemies
 			overlays += O
 
 		take_damage(mob/player/P)
-			if(is_dead) return
-			var/sound/hit_sound = sound('sounds/slime/hit.wav')
-			P << hit_sound
+			if(current_state == DYING) return
+			current_state = ATTACKING
 
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
 			s_damage(src,damage, "yellow")
 			health -= damage
+
 			// Update the health bar
 			add_health_bar()
 
 			if(health <= 0)
 				die(P)
 
-			// Flash animation
-			flick("hurt", src)
-
 		die(mob/player/P)
-			is_dead = TRUE
+			current_state = DYING
 			density=0
-			is_wandering=FALSE
 			P.give_exp(rand(exp-5, exp+5))
 			flick(icon_state+"_die", src)
 			sleep(die_animation_delay)
@@ -68,13 +71,37 @@ mob/enemies
 
 
 		knock_back(mob/player/P)
-			is_wandering=FALSE
 			step_away(src, P, 10, speed * 2)
+
+		update()
+			if(current_state == WANDERING)
+				wander()
+			if(current_state == IDLE)
+				walk(src, null)
+
+			if(current_state == ATTACKING)
+				attack()
+
+			spawn(20)
+			update()
+
+		attack()
+			if(current_state == ATTACKING)
+				for(var/mob/player/P in view(5))
+					walk_to(src, P, -1, 0, speed)
 
 	New()
 		..() // Call parent New
+		current_state = WANDERING
 		add_health_bar()
-		wander()
+		update()
+
+	Bump(mob/player/P)
+		if(current_state==ATTACKING && attack_delay == 0)
+			step_away(P, src, 2,P.speed * 20)
+			attack_delay = 50
+		attack_delay -= 1
+		sleep(20)
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
