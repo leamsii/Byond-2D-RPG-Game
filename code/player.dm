@@ -28,6 +28,12 @@ mob/player
 
 			src << "You gained [amount] exp!"
 
+		take_damage(damage)
+			var/sound/S = new('sound/slime/hit.wav')
+			src << S
+			damage = rand(damage-3, damage+3)
+			src << "You've been hit [damage] damage!"
+
 	// Actions or commands
 	verb
 		Speak()
@@ -35,5 +41,7 @@ mob/player
 			if(msg) world << "<font color = green> [client]: [msg]</font>"
 
 		Attack()
+			var/sound/S = new('sound/slime/hit.wav')
 			for(var/mob/enemies/E in get_step(src, usr.dir))
+				src << S
 				E.take_damage(src)

@@ -12,7 +12,7 @@ mob/enemies
 
 		health = 100
 		max_health = 100
-		attack = 10
+		power = 10
 		defense = 4
 		speed = 1
 		exp = 20
@@ -26,7 +26,7 @@ mob/enemies
 	proc
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
-				walk(src, null)
+				walk(src, FALSE)
 				walk(src, rand(1, 4), 0, speed)
 				spawn(10)
 				walk(src, FALSE) // Pause
@@ -99,6 +99,7 @@ mob/enemies
 	Bump(mob/player/P)
 		if(current_state==ATTACKING && attack_delay == 0)
 			step_away(P, src, 2,P.speed * 2)
+			P.take_damage(power)
 			attack_delay = 50
 		attack_delay -= 1
 		sleep(20)
