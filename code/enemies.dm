@@ -46,7 +46,10 @@ mob/enemies
 
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
-			s_damage(src,damage, "yellow")
+			if(prob(20))
+				s_damage(src,damage, "red")
+			else
+				s_damage(src,damage, "yellow")
 			health -= damage
 
 			// Update the health bar
@@ -56,6 +59,17 @@ mob/enemies
 				die(P)
 
 		die(mob/player/P)
+			if(prob(20))
+				var/obj/O = new/obj/items/chest(loc)
+				O.step_x = step_x
+				O.step_y = step_y
+			if(prob(70))
+				var/obj/C = new/obj/items/gold(loc)
+				C.step_x = step_x
+				C.step_y = step_y
+
+
+
 			walk(src, null)
 			current_state = DYING
 			density=0
@@ -123,4 +137,4 @@ mob/enemies
 			die_animation_delay = 16
 		slime_acid
 			icon_state = "slime_acid"
-			die_animation_delay = 7
+			die_animation_delay = 8

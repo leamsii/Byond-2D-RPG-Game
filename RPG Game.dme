@@ -16,6 +16,7 @@
 #include "skin.dmf"
 #include "code\colour2html.dm"
 #include "code\enemies.dm"
+#include "code\items.dm"
 #include "code\player.dm"
 #include "code\RPG Game.dm"
 #include "code\s_damage2.dm"

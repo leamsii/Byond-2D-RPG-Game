@@ -21,13 +21,16 @@ mob/player
 		give_exp(amount)
 			exp += amount
 			if(exp >= max_exp)
-				exp = 0
-				max_exp *= 2
-				src << "You leveled up!"
-				max_power += 10
-				power = max_power
-
+				level_up()
 			src << "You gained [amount] exp!"
+
+		level_up()
+			src << "You leveled up!"
+
+			exp = 0
+			max_exp *= 2
+			max_power += 10
+			power = max_power
 
 		take_damage(damage)
 			damage = rand(damage-3, damage+3)

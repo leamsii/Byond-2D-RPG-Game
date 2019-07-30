@@ -132,9 +132,6 @@ obj/s_damage_num
 	layer = FLY_LAYER
 	name = " "
 	icon_state = ""
-	pixel_x = -6
-	pixel_y = 20
-
 
 proc/s_damage(ref, num, colour)
 	if(!findtext(colour,"#"))
@@ -194,6 +191,12 @@ proc/s_damage(ref, num, colour)
 	if(second) second.loc = target
 	if(third)  third.loc = target
 	if(fourth) fourth.loc = target
+
+	first.pixel_x = ref:step_x-10
+	second.pixel_x = ref:step_x-10
+
+	first.pixel_y = ref:step_y
+	second.pixel_y = ref:step_y
 
 	if(first)
 		first.icon = icon
