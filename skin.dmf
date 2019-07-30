@@ -47,7 +47,7 @@ menu "menu"
 window "default"
 	elem "default"
 		type = MAIN
-		pos = 95,0
+		pos = 281,0
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
@@ -62,15 +62,16 @@ window "default"
 	elem "output1"
 		type = OUTPUT
 		pos = 0,208
-		size = 224x664
+		size = 224x461
 		anchor1 = none
 		anchor2 = none
 		is-default = true
+		border = sunken
 		saved-params = "max-lines"
 	elem "map1"
 		type = MAP
 		pos = 224,0
-		size = 1144x872
+		size = 1032x669
 		anchor1 = none
 		anchor2 = none
 		is-default = true

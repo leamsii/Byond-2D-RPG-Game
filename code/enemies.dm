@@ -12,6 +12,7 @@ mob/enemies
 
 		health = 100
 		max_health = 100
+		obj/health_bar = null
 		power = 10
 		defense = 4
 		speed = 1
@@ -30,19 +31,14 @@ mob/enemies
 				spawn(10)
 				walk(src, FALSE) // Pause
 
-		add_health_bar() // This will add the health bars to the enemies when they spawn
-			overlays=null
+		update_health_bar() // This will add the health bars to the enemies when they spawn
 			var/max = max(max_health,0.000001) // The larger value, or denominator
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((14-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
 
-			var/obj/O = new()
-			O.icon = 'icons/health_bars.dmi'
-			O.icon_state = "[state]"
-			O.layer = MOB_LAYER+1
-			O.pixel_y = 15
-			O.pixel_x = -5
-			overlays += O
+			overlays -= health_bar
+			health_bar.icon_state = "[state]"
+			overlays += health_bar
 
 		take_damage(mob/player/P)
 			if(current_state == DYING) return
@@ -54,12 +50,13 @@ mob/enemies
 			health -= damage
 
 			// Update the health bar
-			add_health_bar()
+			update_health_bar()
 
 			if(health <= 0)
 				die(P)
 
 		die(mob/player/P)
+			walk(src, null)
 			current_state = DYING
 			density=0
 			P.give_exp(rand(exp-5, exp+5))
@@ -92,16 +89,27 @@ mob/enemies
 	New()
 		..() // Call parent New
 		current_state = WANDERING
-		add_health_bar()
+
+		// Add the health bars
+		var/obj/O = new()
+		O.icon = 'icons/health_bars.dmi'
+		O.icon_state = "14"
+		O.layer = MOB_LAYER+1
+		O.pixel_y = 15
+		O.pixel_x = -5
+		health_bar = O
+		overlays += health_bar
+
 		update()
 
 	Bump(mob/player/P)
-		if(current_state==ATTACKING && attack_delay == 0)
-			step_away(P, src, 2,P.speed * 2)
-			P.take_damage(power)
-			attack_delay = 50
-		attack_delay -= 1
-		sleep(rand(10, 20))
+		if(istype(P,/mob/player))
+			if(current_state==ATTACKING && attack_delay == 0)
+				step_away(P, src, 2,P.speed * 2)
+				P.take_damage(power)
+				attack_delay = 50
+			attack_delay -= 1
+			sleep(rand(10, 20))
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
@@ -115,4 +123,4 @@ mob/enemies
 			die_animation_delay = 16
 		slime_acid
 			icon_state = "slime_acid"
-			die_animation_delay = 8
+			die_animation_delay = 7

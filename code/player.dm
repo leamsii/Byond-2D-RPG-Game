@@ -7,7 +7,7 @@ mob/player
 		// The maxes variables will be used to control the recovery of status effects
 		health = 100
 		max_health = 100
-		power = 10
+		power = 20
 		max_power = 10
 		defense = 3
 		max_defense = 3
@@ -16,6 +16,7 @@ mob/player
 		level = 3
 		exp = 0
 		max_exp = 100
+
 	proc
 		give_exp(amount)
 			exp += amount
@@ -23,16 +24,20 @@ mob/player
 				exp = 0
 				max_exp *= 2
 				src << "You leveled up!"
-				max_power += 100
+				max_power += 10
 				power = max_power
 
 			src << "You gained [amount] exp!"
 
 		take_damage(damage)
-			var/sound/S = new('sound/slime/hit.wav')
-			src << S
 			damage = rand(damage-3, damage+3)
+			health -= damage
 			src << "You've been hit [damage] damage!"
+
+			if(health <= 0)
+				health = max_health
+				loc=locate(4, 6, 1)
+				src << "YOU DIED!"
 
 	// Actions or commands
 	verb
@@ -41,7 +46,5 @@ mob/player
 			if(msg) world << "<font color = green> [client]: [msg]</font>"
 
 		Attack()
-			var/sound/S = new('sound/slime/hit.wav')
 			for(var/mob/enemies/E in get_step(src, usr.dir))
-				src << S
 				E.take_damage(src)
