@@ -21,9 +21,15 @@ mob/enemies
 		die_animation_delay = 0
 		current_state = 0
 		attack_delay = 10
+		loot = list("chest", "gold")
 
 	// Define the enemies bahaviors
 	proc
+		drop_item()
+			// Drop a random item from the loot list
+
+
+
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
 				walk(src, FALSE)
@@ -59,22 +65,12 @@ mob/enemies
 				die(P)
 
 		die(mob/player/P)
-			if(prob(20))
-				var/obj/O = new/obj/items/chest(loc)
-				O.step_x = step_x
-				O.step_y = step_y
-			if(prob(70))
-				var/obj/C = new/obj/items/gold(loc)
-				C.step_x = step_x
-				C.step_y = step_y
-
-
-
 			walk(src, null)
 			current_state = DYING
 			density=0
 			P.give_exp(rand(exp-5, exp+5))
 			flick(icon_state+"_die", src)
+			drop_item()
 			sleep(die_animation_delay)
 			loc=locate(1, 1, -1) // Vanish it
 			del src

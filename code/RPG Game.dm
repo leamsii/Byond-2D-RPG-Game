@@ -17,7 +17,7 @@ obj
 	step_size = 4
 
 client.New()
-	src.mob = new/mob/player
+	mob = new/mob/player
 	world << "[src] has joined the world!"
 	perspective = EDGE_PERSPECTIVE
 	view = "17x11"
