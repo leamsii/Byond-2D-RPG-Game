@@ -53,4 +53,4 @@ mob/player
 				E.take_damage(src)
 
 		Test_Effects()
-			overlays += new/icon('icons/Status.dmi', "poison")
+			overlays += new/icon('icons/Status.dmi', "bleed2")
