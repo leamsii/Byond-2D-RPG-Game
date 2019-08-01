@@ -51,3 +51,6 @@ mob/player
 		Attack()
 			for(var/mob/enemies/E in get_step(src, usr.dir))
 				E.take_damage(src)
+
+		Test_Effects()
+			overlays += new/icon('icons/Status.dmi', "poison")
