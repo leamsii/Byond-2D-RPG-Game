@@ -21,14 +21,13 @@ mob/enemies
 		die_animation_delay = 0
 		current_state = 0
 		attack_delay = 10
-		loot = list(/obj/item/gold, /obj/item/chest)
+		loot = list(new/obj/item/gold, new/obj/item/chest)
 
 	// Define the enemies bahaviors
 	proc
 		drop_item()
 			// Drop a random item from the loot list
 			for(var/O in loot)
-				O = new O() // This is bad no good remove
 				if(prob(O:drop_rate))
 					O:step_x = step_x
 					O:step_y = step_y
