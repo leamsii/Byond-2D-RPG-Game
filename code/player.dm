@@ -45,7 +45,7 @@ mob/player
 			if(health <= 0)
 				health = max_health
 				loc=locate(4, 6, 1)
-				Text(src, "YOU DIED", "red")
+				Text(src, "YOU DIED ", "red")
 
 			spawn(8)
 			attacked=FALSE
