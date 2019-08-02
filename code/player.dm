@@ -15,17 +15,18 @@ mob/player
 		max_speed = 2
 		level = 3
 		exp = 0
-		max_exp = 100
+		max_exp = 10
+		attacked=FALSE
 
 	proc
 		give_exp(amount)
 			exp += amount
+			Text(src, "+[amount] EXP ", "yellow")
 			if(exp >= max_exp)
 				level_up()
-			src << "You gained [amount] exp!"
 
 		level_up()
-			src << "You leveled up!"
+			Text(src, "You leveled up! ")
 
 			exp = 0
 			max_exp *= 2
@@ -33,37 +34,30 @@ mob/player
 			power = max_power
 
 			overlays += icon('icons/Jesse.dmi', "level_up")
-			sleep(5)
+			spawn(15)
 			overlays = null
 
 		take_damage(damage)
+			attacked=TRUE
 			damage = rand(damage-3, damage+3)
 			health -= damage
-			src << "You've been hit [damage] damage!"
 
 			if(health <= 0)
 				health = max_health
 				loc=locate(4, 6, 1)
-				src << "YOU DIED!"
+				Text(src, "YOU DIED", "red")
+
+			spawn(8)
+			attacked=FALSE
 
 	// Actions or commands
 	verb
 		Speak()
+			set hidden = 1
 			var/msg = input("", "Type Something")
 			if(msg) world << "<font color = green> [client]: [msg]</font>"
 
 		Attack()
+			set hidden = 1
 			for(var/mob/enemies/E in get_step(src, usr.dir))
 				E.take_damage(src)
-
-		SuperAttack()
-			for(var/mob/enemies/E in view())
-				E.take_damage(src)
-
-		Test_Effects()
-			overlays += new/icon('icons/Status.dmi', "bleed2")
-
-
-mob/Stat()
-	statpanel("Inventory")
-	if(src == usr) stat(src.contents)

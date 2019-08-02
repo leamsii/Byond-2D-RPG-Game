@@ -20,7 +20,6 @@ mob/enemies
 		level = 2
 		die_animation_delay = 0
 		current_state = 0
-		attack_delay = 10
 		loot = list(new/obj/item/gold)
 
 	// Define the enemies bahaviors
@@ -32,8 +31,6 @@ mob/enemies
 					O:step_x = step_x
 					O:step_y = step_y
 					O:loc=loc
-
-
 
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
@@ -55,6 +52,8 @@ mob/enemies
 			if(current_state == DYING) return
 			current_state = ATTACKING
 
+			flick("slime_hurt", src)
+
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)
 			if(prob(20))
@@ -64,7 +63,7 @@ mob/enemies
 			health -= damage
 
 			// Update the health bar
-			update_health_bar()
+			//update_health_bar()
 
 			if(health <= 0)
 				die(P)
@@ -73,9 +72,9 @@ mob/enemies
 			walk(src, null)
 			current_state = DYING
 			density=0
-			P.give_exp(rand(exp-5, exp+5))
 			flick(icon_state+"_die", src)
 			drop_item()
+			P.give_exp(rand(exp-5, exp+5))
 			sleep(die_animation_delay)
 			loc=locate(1, 1, -1) // Vanish it
 			del src
@@ -104,27 +103,14 @@ mob/enemies
 	New()
 		..() // Call parent New
 		current_state = WANDERING
-
-		// Add the health bars
-		var/obj/O = new()
-		O.icon = 'icons/health_bars.dmi'
-		O.icon_state = "14"
-		O.layer = MOB_LAYER+1
-		O.pixel_y = 15
-		O.pixel_x = -5
-		health_bar = O
-		overlays += health_bar
-
 		update()
 
 	Bump(mob/player/P)
-		if(istype(P,/mob/player))
-			if(current_state==ATTACKING && attack_delay == 0)
+		if(current_state==ATTACKING && istype(P,/mob/player))
+			if(!P.attacked)
+				s_damage(P, power, "purple")
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(power)
-				attack_delay = 50
-			attack_delay -= 1
-			sleep(rand(10, 20))
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
@@ -139,6 +125,9 @@ mob/enemies
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16
+			New()
+				overlays += icon('icons/Status.dmi', "poison2")
+				..()
 		slime_acid
 			icon_state = "slime_acid"
 			die_animation_delay = 8

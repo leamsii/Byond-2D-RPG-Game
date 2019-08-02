@@ -3,6 +3,9 @@ macro "macro"
 		name = "Center+REP"
 		command = ".center"
 	elem 
+		name = "Space"
+		command = "Speak"
+	elem 
 		name = "Northeast+REP"
 		command = ".northeast"
 	elem 
@@ -30,13 +33,8 @@ macro "macro"
 		name = "A"
 		command = "Attack"
 	elem 
-		name = "K"
+		name = "F"
 		command = "Action"
-
-macro "macro1"
-	elem 
-		name = "ALT+A+REP"
-		command = "Attack()"
 
 
 menu "menu"
@@ -54,6 +52,7 @@ window "default"
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "IT RPG"
@@ -63,12 +62,13 @@ window "default"
 		menu = "menu"
 	elem "output1"
 		type = OUTPUT
-		pos = 0,208
-		size = 224x461
+		pos = 0,0
+		size = 224x669
 		anchor1 = none
 		anchor2 = none
+		font-family = "@Microsoft JhengHei UI"
 		is-default = true
-		border = sunken
+		border = line
 		saved-params = "max-lines"
 	elem "map1"
 		type = MAP
@@ -81,11 +81,4 @@ window "default"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 64
 		zoom = 2.666667
-	elem "info1"
-		type = INFO
-		pos = 0,0
-		size = 224x208
-		anchor1 = none
-		anchor2 = none
-		saved-params = ""
 

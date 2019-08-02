@@ -42,8 +42,8 @@ obj/item
 
 		Cross(mob/player/P)
 			if(istype(P,/mob/player))
-				P << "You picked up [gold_amount] gold coins!"
 				loc = P
+				Text(usr, "+[gold_amount] gold ", "yellow")
 
 		verb/consume()
 			set src in usr

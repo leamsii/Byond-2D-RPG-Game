@@ -18,6 +18,7 @@
 #include "code\enemies.dm"
 #include "code\items.dm"
 #include "code\macros.dm"
+#include "code\map_text.dm"
 #include "code\player.dm"
 #include "code\RPG Game.dm"
 #include "code\s_damage2.dm"
