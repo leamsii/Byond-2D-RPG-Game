@@ -1,14 +1,13 @@
 obj/item
-	icon = 'icons/items.dmi'
-	density=1
+	icon = 'icons/Jesse.dmi'
 	var
 		drop_rate = 50
 
 	chest
-		icon_state = "chest"
+		icon_state = "slimebox"
 		drop_rate = 0
 	gold
-		icon_state = "gold"
+		icon_state = "coin_pile"
 		drop_rate = 50
 		var/gold_amount = 40
 
