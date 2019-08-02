@@ -29,6 +29,9 @@ macro "macro"
 	elem 
 		name = "A"
 		command = "Attack"
+	elem 
+		name = "K"
+		command = "Action"
 
 macro "macro1"
 	elem 
@@ -51,7 +54,6 @@ window "default"
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "IT RPG"
@@ -86,5 +88,4 @@ window "default"
 		anchor1 = none
 		anchor2 = none
 		saved-params = ""
-		tab-background-color = none
 

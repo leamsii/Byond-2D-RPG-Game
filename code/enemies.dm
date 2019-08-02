@@ -21,7 +21,7 @@ mob/enemies
 		die_animation_delay = 0
 		current_state = 0
 		attack_delay = 10
-		loot = list(new/obj/item/gold, new/obj/item/chest)
+		loot = list(new/obj/item/gold)
 
 	// Define the enemies bahaviors
 	proc
@@ -133,6 +133,9 @@ mob/enemies
 		slime_fire
 			icon_state = "slime_fire"
 			die_animation_delay = 14
+			New()
+				..()
+				loot += new/obj/item/chest
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16

@@ -32,6 +32,10 @@ mob/player
 			max_power += 10
 			power = max_power
 
+			overlays += icon('icons/Jesse.dmi', "level_up")
+			sleep(5)
+			overlays = null
+
 		take_damage(damage)
 			damage = rand(damage-3, damage+3)
 			health -= damage
@@ -52,5 +56,14 @@ mob/player
 			for(var/mob/enemies/E in get_step(src, usr.dir))
 				E.take_damage(src)
 
+		SuperAttack()
+			for(var/mob/enemies/E in view())
+				E.take_damage(src)
+
 		Test_Effects()
 			overlays += new/icon('icons/Status.dmi', "bleed2")
+
+
+mob/Stat()
+	statpanel("Inventory")
+	if(src == usr) stat(src.contents)
