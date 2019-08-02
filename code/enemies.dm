@@ -21,6 +21,7 @@ mob/enemies
 		die_animation_delay = 0
 		current_state = 0
 		loot = list(new/obj/item/gold)
+		sound/hit_sound = new/sound('sound/slime/hit.wav')
 
 	// Define the enemies bahaviors
 	proc
@@ -49,10 +50,12 @@ mob/enemies
 			overlays += health_bar
 
 		take_damage(mob/player/P)
+
 			if(current_state == DYING) return
 			current_state = ATTACKING
 
 			flick("slime_hurt", src)
+			P << hit_sound
 
 			knock_back(P)
 			var/damage = rand(P.power-5, P.power+2)

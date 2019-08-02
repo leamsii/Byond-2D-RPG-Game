@@ -17,6 +17,7 @@ mob/player
 		exp = 0
 		max_exp = 10
 		attacked=FALSE
+		sound/level_up_sound = new/sound('sound/player/level_up.wav')
 
 	proc
 		give_exp(amount)
@@ -34,6 +35,7 @@ mob/player
 			power = max_power
 
 			overlays += icon('icons/Jesse.dmi', "level_up")
+			usr << level_up_sound
 			spawn(15)
 			overlays = null
 
