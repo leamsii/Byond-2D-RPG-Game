@@ -13,8 +13,16 @@ obj/item
 			..()
 			gold_amount = rand(5, 60)
 
-		Crossed(mob/player/P)
+		Cross(mob/player/P)
 			if(istype(P,/mob/player))
 				loc = P
 				P << gold_sound
 				Text(usr, "+[gold_amount] gold ", "yellow")
+
+	HP_Potion
+		icon_state = "HP_pot"
+		drop_rate=5
+		Cross(mob/player/P)
+			if(istype(P,/mob/player))
+				loc = P
+				Text(usr, "+ Health Potion ", "white")

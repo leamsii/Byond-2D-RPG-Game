@@ -20,7 +20,7 @@ mob/enemies
 		level = 2
 		die_animation_delay = 0
 		current_state = 0
-		loot = list(new/obj/item/gold)
+		loot = list(new/obj/item/gold, new/obj/item/HP_Potion)
 		sound/hit_sound = new/sound('sound/slime/hit.wav')
 		sound/explode_sound = new/sound('sound/slime/explode.wav')
 
@@ -147,6 +147,9 @@ mob/enemies
 	Bump(mob/player/P)
 		if(current_state==ATTACKING && istype(P,/mob/player))
 			if(!P.attacked)
+				if(istype(src,/mob/enemies/slime/slime_fire))
+					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
+
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(power)
 

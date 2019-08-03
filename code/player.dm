@@ -55,6 +55,7 @@ mob/player
 
 			if(health <= 0)
 				health = max_health
+				flick(new/icon('icons/player_effects.dmi', "dead"), src)
 				loc=locate(4, 4, 1)
 				Text(src, "YOU DIED ", "red")
 
