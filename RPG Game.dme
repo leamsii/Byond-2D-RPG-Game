@@ -14,16 +14,15 @@
 
 // BEGIN_INCLUDE
 #include "skin.dmf"
-#include "code\colour2html.dm"
 #include "code\emoticons.dm"
 #include "code\enemies.dm"
 #include "code\items.dm"
-#include "code\macros.dm"
-#include "code\map_text.dm"
 #include "code\player.dm"
 #include "code\RPG Game.dm"
-#include "code\s_damage2.dm"
 #include "code\turfs.dm"
 #include "icons\world.dmm"
+#include "libs\colour2html.dm"
+#include "libs\map_text.dm"
+#include "libs\s_damage2.dm"
 // END_INCLUDE
 

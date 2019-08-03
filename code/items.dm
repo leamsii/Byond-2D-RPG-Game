@@ -13,7 +13,7 @@ obj/item
 			..()
 			gold_amount = rand(5, 60)
 
-		Cross(mob/player/P)
+		Crossed(mob/player/P)
 			if(istype(P,/mob/player))
 				loc = P
 				P << gold_sound

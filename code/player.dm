@@ -20,6 +20,8 @@ mob/player
 		exp = 0
 		max_exp = 50
 		attacked=FALSE
+
+		// Sounds
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg')
 		sound/hit_sound = new/sound('sound/player/hit.ogg')
 
@@ -53,7 +55,7 @@ mob/player
 
 			if(health <= 0)
 				health = max_health
-				loc=locate(4, 6, 1)
+				loc=locate(4, 4, 1)
 				Text(src, "YOU DIED ", "red")
 
 			spawn(8)
