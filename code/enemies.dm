@@ -34,6 +34,9 @@ mob/enemies
 					O:step_y = step_y
 					O:loc=loc
 
+					if(istype(O, /obj/item/gold))
+						flick("coin_drop", O)
+
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
 				walk(src, FALSE)
@@ -44,7 +47,7 @@ mob/enemies
 		update_health_bar() // This will add the health bars to the enemies when they spawn
 			var/max = max(max_health,0.000001) // The larger value, or denominator
 			var/min = min(max(health),max) // The smaller value, or numerator
-			var/state = "[round((14-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
 
 			overlays -= health_bar
 			health_bar.icon_state = "[state]"
@@ -53,7 +56,9 @@ mob/enemies
 		take_damage(mob/player/P)
 
 			if(current_state == DYING) return
-			current_state = ATTACKING
+			if(current_state != ATTACKING)
+				new/obj/emoticon/alert(src)
+				current_state = ATTACKING
 
 			var/icon/I = icon('icons/player.dmi', "sword")
 			overlays += I
@@ -67,6 +72,7 @@ mob/enemies
 			else
 				s_damage(src,damage, "yellow")
 			health -= damage
+			update_health_bar()
 
 			// Update the health bar
 			//update_health_bar()
@@ -84,6 +90,7 @@ mob/enemies
 			current_state = DYING
 			density=0
 			flick(icon_state+"_die", src)
+			P << explode_sound
 			drop_item()
 			P.give_exp(rand(exp-5, exp+5))
 			sleep(die_animation_delay)
@@ -108,8 +115,15 @@ mob/enemies
 
 		attack()
 			if(current_state == ATTACKING)
-				for(var/mob/player/P in view(5))
-					walk_to(src, P, -1, 0, speed)
+				var/target=null
+				for(var/mob/player/P in oview(3))
+					target=P
+
+				if(target)
+					walk_to(src, target, -1, 0, speed)
+				else
+					new/obj/emoticon/question(src)
+					current_state = WANDERING
 
 	New()
 		..() // Call parent New
@@ -118,6 +132,16 @@ mob/enemies
 		S.pixel_x = -2
 		underlays += S
 		current_state = WANDERING
+
+		//Add health bar
+		var/obj/O = new()
+		O.icon = 'icons/health_bars.dmi'
+		O.icon_state = "8"
+		health_bar = O
+		O.layer = MOB_LAYER+1
+		O.pixel_y = 8
+		O.pixel_x = -6
+		overlays += O
 		update()
 
 	Bump(mob/player/P)
@@ -129,13 +153,12 @@ mob/enemies
 	slime
 		icon = 'icons/slime_sprites.dmi'
 		icon_state = "slime1"
+		bound_width = 10
+		bound_x = 5
 
 		slime_fire
 			icon_state = "slime_fire"
 			die_animation_delay = 14
-			New()
-				..()
-				loot += new/obj/item/chest
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16

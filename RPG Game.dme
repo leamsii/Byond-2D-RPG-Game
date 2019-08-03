@@ -15,6 +15,7 @@
 // BEGIN_INCLUDE
 #include "skin.dmf"
 #include "code\colour2html.dm"
+#include "code\emoticons.dm"
 #include "code\enemies.dm"
 #include "code\items.dm"
 #include "code\macros.dm"

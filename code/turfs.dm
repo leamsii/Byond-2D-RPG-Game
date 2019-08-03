@@ -5,9 +5,19 @@ turf
 	rock
 		icon_state = "rock"
 		density=1
+	flowers
+		icon_state = "flowers"
+
 	b
 		density=1
-
+obj/sign
+	icon = 'icons/turfs.dmi'
+	icon_state = "sign"
+	density = 1
+	bound_y = 10
+	bound_height = 10
+	bound_x = 10
+	bound_width = 10
 obj/
 	icon = 'icons/turfs.dmi'
 	bottom_right

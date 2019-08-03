@@ -13,33 +13,35 @@
 "m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
 "n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
 "o" = (/turf/grass{icon_state = "base"},/area)
+"p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
+"q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
-adoodfhhhhadooodooodooodoodfhh
-aoooofhhhhaoooooioooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoogofhhhhaoooioooooooooooofhh
+adoodfhhhhadonodonodonodnodfhh
+aoooofhhhhaoooooiooooooooopfhh
+aoooofhhhhaooooooooooooooopfhh
+aoooofhhhhaooooooooooooooppfhh
+aoogofhhhhaoooiooooooooooopfhh
 aoooofhhhhaooooooooiooooooofhh
 agooofhhhhaoooooodooooooioofhh
 aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoonooooooooooooofhh
-aoooofhhhhaononoooooooooooofhh
-adoodfhhhhaoonooooooooooooofhh
+aoooofhhhhappnooooooooooooofhh
+aoooofhhhhapnpnoooooooooooofhh
+adoodfhhhhaopnooooooooooooofhh
 aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
+aooopfhhhhaoooooooooooooooofhh
 aoooofhhhhaodooooooodooooodfhh
 adoodfhhhhaoooooodooooooooofhh
 aoooofhhhhaooooonoooooooooofhh
 aoooofhhhhaoodoooooodooooodfhh
-aoooofhhhhheooooooooooooooofhh
-adoodfhhhhhhccccccceooooooofhh
+aoooofhhhhheoooooooppoooooofhh
+adoodfhhhhhhcccccccepoooooofhh
 aoooofhhhhhhhhhhhhhadooooodfhh
-aoooojkkkkkkkkkkkkklooooooofhh
-aooooodoodooomoodoooomooooofhh
-adoooooooooooooooomooooooobhhh
-aooooobccccccccccccccccccchhhh
+aoooqjkkkkkkkkkkkkklqoooooofhh
+aooooodoodooomoodoooomoooppfhh
+adoooooooooooooooomoooooopbhhh
+aoooopbccccccccccccccccccchhhh
 aoooonfhhhhhhhhhhhhhhhhhhhhhhh
 aoooonfhhhhhhhhhhhhhhhhhhhhhhh
 aoooonfhhhhhhhhhhhhhhhhhhhhhhh

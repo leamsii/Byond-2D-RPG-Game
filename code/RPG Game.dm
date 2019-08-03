@@ -17,6 +17,7 @@ obj
 	step_size = 4
 
 client.New()
+	src << new/sound('sound/player/elina.ogg')
 	mob = new/mob/player
 	perspective = EDGE_PERSPECTIVE
 	view = "17x11"
@@ -24,4 +25,4 @@ client.New()
 
 
 mob/Login()
-	Move(locate(4, 3, 1))
+	Move(locate(4, 4, 1))

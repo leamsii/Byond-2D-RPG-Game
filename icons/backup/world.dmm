@@ -11,38 +11,40 @@
 "k" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
 "l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
 "m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
-"n" = (/mob/tree,/turf/grass{icon_state = "base"},/area)
+"n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
 "o" = (/turf/grass{icon_state = "base"},/area)
+"p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
+"q" = (/turf/grass{icon_state = "base"},/turf/sign,/area)
 
 (1,1,1) = {"
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
-agooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooioooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoogofhhhhaoooioooooooooooofhh
+adoodfhhhhadonodonodonodnodfhh
+aoooofhhhhaoooooiooooooooopfhh
+aoooofhhhhaooooooooooooooopfhh
+aoooofhhhhaooooooooooooooppfhh
+aoogofhhhhaoooiooooooooooopfhh
 aoooofhhhhaooooooooiooooooofhh
-agooofhhhhaoooooooooooooioofhh
+agooofhhhhaoooooodooooooioofhh
 aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhappnooooooooooooofhh
+aoooofhhhhapnpnoooooooooooofhh
+adoodfhhhhaopnooooooooooooofhh
 aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhheooooooooooooooofhh
-aoooofhhhhhhccccccceooooooofhh
-aoooofhhhhhhhhhhhhhaooooooofhh
-aoooojkkkkkkkkkkkkklooooooofhh
-aoooooooooooomooooooomooooofhh
-aoonoooooooooooooomooooooobhhh
-aodooobccccccccccccccccccchhhh
-aooooofhhhhhhhhhhhhhhhhhhhhhhh
-aooooofhhhhhhhhhhhhhhhhhhhhhhh
-aooooofhhhhhhhhhhhhhhhhhhhhhhh
-aooooofhhhhhhhhhhhhhhhhhhhhhhh
+aooopfhhhhaoooooooooooooooofhh
+aoooofhhhhaodooooooodooooodfhh
+adoodfhhhhaoooooodooooooooofhh
+aoooofhhhhaooooonoooooooooofhh
+aoooofhhhhaoodoooooodooooodfhh
+aoooofhhhhheoooooooppoooooofhh
+adoodfhhhhhhcccccccepoooooofhh
+aoooofhhhhhhhhhhhhhadooooodfhh
+aoooqjkkkkkkkkkkkkklqoooooofhh
+aooooodoodooomoodoooomoooppfhh
+adoqoooooooooooooomoooooopbhhh
+aoooopbccccccccccccccccccchhhh
+aoooonfhhhhhhhhhhhhhhhhhhhhhhh
+aoooonfhhhhhhhhhhhhhhhhhhhhhhh
+aoooonfhhhhhhhhhhhhhhhhhhhhhhh
+adooonfhhhhhhhhhhhhhhhhhhhhhhh
 hccccchhhhhhhhhhhhhhhhhhhhhhhh
 "}
