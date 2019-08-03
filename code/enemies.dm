@@ -145,3 +145,6 @@ mob/enemies
 		slime_acid
 			icon_state = "slime_acid"
 			die_animation_delay = 8
+			New()
+				..()
+				overlays += icon('icons/Status.dmi', "regen")

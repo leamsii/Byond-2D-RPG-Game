@@ -20,14 +20,8 @@ client.New()
 	mob = new/mob/player
 	perspective = EDGE_PERSPECTIVE
 	view = "17x11"
+	world << "[src] has joined the game!"
 
-	// Add the macros
-	for(var/i=0;i < 4; i++)
-		var/obj/HUD/macro/O = new()
-		var/x = 1.4 + (i * 1.3)
-		O.screen_loc = "[x], 1.3"
-		screen += O
-		O.name = "[i + 1]"
 
 mob/Login()
-	Move(locate(6, 8, 1))
+	Move(locate(4, 3, 1))

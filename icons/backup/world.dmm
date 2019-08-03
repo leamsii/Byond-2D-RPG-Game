@@ -1,0 +1,48 @@
+"a" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
+"b" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
+"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
+"d" = (/obj/tree,/turf/grass{icon_state = "base"},/area)
+"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
+"f" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
+"g" = (/mob/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
+"h" = (/turf/grass,/turf/b,/area)
+"i" = (/mob/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
+"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
+"k" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
+"l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
+"m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
+"n" = (/mob/tree,/turf/grass{icon_state = "base"},/area)
+"o" = (/turf/grass{icon_state = "base"},/area)
+
+(1,1,1) = {"
+hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
+agooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooioooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoogofhhhhaoooioooooooooooofhh
+aoooofhhhhaooooooooiooooooofhh
+agooofhhhhaoooooooooooooioofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhaoooooooooooooooofhh
+aoooofhhhhheooooooooooooooofhh
+aoooofhhhhhhccccccceooooooofhh
+aoooofhhhhhhhhhhhhhaooooooofhh
+aoooojkkkkkkkkkkkkklooooooofhh
+aoooooooooooomooooooomooooofhh
+aoonoooooooooooooomooooooobhhh
+aodooobccccccccccccccccccchhhh
+aooooofhhhhhhhhhhhhhhhhhhhhhhh
+aooooofhhhhhhhhhhhhhhhhhhhhhhh
+aooooofhhhhhhhhhhhhhhhhhhhhhhh
+aooooofhhhhhhhhhhhhhhhhhhhhhhh
+hccccchhhhhhhhhhhhhhhhhhhhhhhh
+"}
