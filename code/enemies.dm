@@ -9,23 +9,34 @@ mob/enemies
 			DYING = 3
 			IDLE = 4
 
-
+		// Status
 		health = 100
 		max_health = 100
-		obj/health_bar = null
 		power = 10
 		defense = 4
 		speed = 1
 		exp = 20
 		level = 2
+		obj/health_bar = null
+
+		// Animations
 		die_animation_delay = 0
 		current_state = 0
+
+		// Loot
 		loot = list(new/obj/item/gold, new/obj/item/HP_Potion)
+
+		// Sound
 		sound/hit_sound = new/sound('sound/slime/hit.wav')
 		sound/explode_sound = new/sound('sound/slime/explode.wav')
 
 	// Define the enemies bahaviors
 	proc
+		add_star(difficulty)
+			for(var/i = 0;i < difficulty; i++)
+				var/obj/star/S = new()
+				S.pixel_x = -10 + (i * 6)
+				overlays+=S
 		drop_item()
 			// Drop a random item from the loot list
 			for(var/O in loot)
@@ -39,9 +50,8 @@ mob/enemies
 
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
-				walk(src, FALSE)
 				walk(src, rand(1, 4), 0, speed)
-				spawn(10)
+				spawn(rand(5, 20))
 				walk(src, FALSE) // Pause
 
 		update_health_bar() // This will add the health bars to the enemies when they spawn
@@ -142,6 +152,9 @@ mob/enemies
 		O.pixel_y = 8
 		O.pixel_x = -6
 		overlays += O
+
+		// Add difficulty star
+		add_star(1)
 		update()
 
 	Bump(mob/player/P)
@@ -152,6 +165,9 @@ mob/enemies
 
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(power)
+		if(istype(P,/turf))
+			if(current_state == WANDERING)
+				walk(src, rand(1, 4), 0, speed)
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
@@ -165,6 +181,9 @@ mob/enemies
 			power = 15
 			health = 200
 			level = 5
+			New()
+				..()
+				add_star(3) // Tough enemy
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16
@@ -177,3 +196,9 @@ mob/enemies
 			New()
 				..()
 				overlays += icon('icons/Status.dmi', "regen")
+
+obj/star
+	icon = 'icons/health_bars.dmi'
+	icon_state = "star"
+	layer=MOB_LAYER+1
+	pixel_y = 10

@@ -25,4 +25,6 @@ obj/item
 		Cross(mob/player/P)
 			if(istype(P,/mob/player))
 				loc = P
+				P.health = P.max_health
+				P.update_health_bar()
 				Text(usr, "+ Health Potion ", "white")

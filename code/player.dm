@@ -20,6 +20,7 @@ mob/player
 		exp = 0
 		max_exp = 50
 		attacked=FALSE
+		attacking=FALSE
 
 		// Sounds
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg')
@@ -64,6 +65,7 @@ mob/player
 
 			if(health <= 0)
 				health = max_health
+				update_health_bar()
 				flick(new/icon('icons/player_effects.dmi', "dead"), src)
 				loc=locate(4, 4, 1)
 				Text(src, "YOU DIED ", "red")
@@ -83,11 +85,15 @@ mob/player
 
 		Attack()
 			set hidden = 1
+			if(attacking) return
+			attacking=TRUE
 			for(var/mob/enemies/E in oview(1))
 				if(get_dist(src,E)<=1)
 					src.dir=get_dir(src,E)
 					flick("attacking", src)
 					E.take_damage(src)
+			spawn(5)
+			attacking=FALSE
 
 obj
 	shadow
