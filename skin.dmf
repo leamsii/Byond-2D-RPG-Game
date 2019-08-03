@@ -60,16 +60,6 @@ window "default"
 		can-resize = false
 		macro = "macro"
 		menu = "menu"
-	elem "output1"
-		type = OUTPUT
-		pos = 0,0
-		size = 224x669
-		anchor1 = none
-		anchor2 = none
-		font-family = "@Microsoft JhengHei UI"
-		is-default = true
-		border = line
-		saved-params = "max-lines"
 	elem "map1"
 		type = MAP
 		pos = 224,0
@@ -81,4 +71,14 @@ window "default"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 64
 		zoom = 2.666667
+	elem "output1"
+		type = OUTPUT
+		pos = 0,0
+		size = 224x669
+		anchor1 = none
+		anchor2 = none
+		font-family = "@Microsoft JhengHei UI"
+		is-default = true
+		border = line
+		saved-params = "max-lines"
 

@@ -192,11 +192,6 @@ proc/s_damage(ref, num, colour)
 	if(third)  third.loc = target
 	if(fourth) fourth.loc = target
 
-	first.pixel_x = ref:step_x-10
-	second.pixel_x = ref:step_x-10
-
-	first.pixel_y = ref:step_y
-	second.pixel_y = ref:step_y
 
 	if(first)
 		first.icon = icon

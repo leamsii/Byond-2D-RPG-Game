@@ -1,13 +1,16 @@
 mob/player
-	icon = 'icons/temp_player.dmi'
+	icon = 'icons/player.dmi'
 	icon_state = "player"
+	New()
+		..()
+		underlays += new/obj/shadow
 
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
 		health = 100
 		max_health = 100
-		power = 20
+		power = 10
 		max_power = 10
 		defense = 3
 		max_defense = 3
@@ -43,6 +46,7 @@ mob/player
 			attacked=TRUE
 			damage = rand(damage-3, damage+3)
 			health -= damage
+			s_damage(src, damage, "red")
 
 			if(health <= 0)
 				health = max_health
@@ -62,4 +66,10 @@ mob/player
 		Attack()
 			set hidden = 1
 			for(var/mob/enemies/E in get_step(src, usr.dir))
+				flick("attacking", src)
 				E.take_damage(src)
+
+obj/shadow
+	icon = 'icons/player.dmi'
+	icon_state = "shadow"
+	pixel_y = -3

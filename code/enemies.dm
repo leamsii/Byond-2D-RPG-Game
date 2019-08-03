@@ -22,6 +22,7 @@ mob/enemies
 		current_state = 0
 		loot = list(new/obj/item/gold)
 		sound/hit_sound = new/sound('sound/slime/hit.wav')
+		sound/explode_sound = new/sound('sound/slime/explode.wav')
 
 	// Define the enemies bahaviors
 	proc
@@ -105,13 +106,16 @@ mob/enemies
 
 	New()
 		..() // Call parent New
+		var/obj/shadow/S = new()
+		S.pixel_y = -4
+		S.pixel_x = -2
+		underlays += S
 		current_state = WANDERING
 		update()
 
 	Bump(mob/player/P)
 		if(current_state==ATTACKING && istype(P,/mob/player))
 			if(!P.attacked)
-				s_damage(P, power, "purple")
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(power)
 
