@@ -55,6 +55,8 @@ mob/enemies
 			if(current_state == DYING) return
 			current_state = ATTACKING
 
+			var/icon/I = icon('icons/player.dmi', "sword")
+			overlays += I
 			flick("slime_hurt", src)
 			P << hit_sound
 
@@ -72,7 +74,12 @@ mob/enemies
 			if(health <= 0)
 				die(P)
 
+			spawn(5)
+			overlays -= I
+
+
 		die(mob/player/P)
+			overlays = null
 			walk(src, null)
 			current_state = DYING
 			density=0
