@@ -12,39 +12,39 @@
 "l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
 "m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
 "n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
-"o" = (/turf/grass{icon_state = "base"},/area)
 "p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
 "q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
+"r" = (/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
-adoodfhhhhadonodonodonodnodfhh
-aoooofhhhhaoooooiooooooooopfhh
-aoooofhhhhaooooooooooooooopfhh
-aoooofhhhhaooooooooooooooppfhh
-aoogofhhhhaoooiooooooooooopfhh
-aoooofhhhhaooooooooiooooooofhh
-agooofhhhhaoooooodooooooioofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhappnooooooooooooofhh
-aoooofhhhhapnpnoooooooooooofhh
-adoodfhhhhaopnooooooooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aooopfhhhhaoooooooooooooooofhh
-aoooofhhhhaodooooooodooooodfhh
-adoodfhhhhaoooooodooooooooofhh
-aoooofhhhhaooooonoooooooooofhh
-aoooofhhhhaoodoooooodooooodfhh
-aoooofhhhhheoooooooppoooooofhh
-adoodfhhhhhhcccccccepoooooofhh
-aoooofhhhhhhhhhhhhhadooooodfhh
-aoooqjkkkkkkkkkkkkklqoooooofhh
-aooooodoodooomoodoooomoooppfhh
-adoooooooooooooooomoooooopbhhh
-aoooopbccccccccccccccccccchhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-adooonfhhhhhhhhhhhhhhhhhhhhhhh
+adrrdfhhhhadrnrdrnrdrnrdnrdfhh
+arrrrfhhhharrrrrirrrrrrrrrpfhh
+arrrrfhhhharrrrrrrrrrrrrrrpfhh
+arrrrfhhhharrrrrrrrrrrrrrppfhh
+arrgrfhhhharrrirrrrrrrrrrrpfhh
+arrrrfhhhharrrrrrrrirrrrrrrfhh
+agrrrfhhhharrrrrrdrrrrrrirrfhh
+arrrrfhhhharrrrrrrrrrrrrrrrfhh
+arrrrfhhhhappnrrrrrrrrrrrrrfhh
+arrrrfhhhhapnpnrrrrrrrrrrrrfhh
+adrrdfhhhharpnrrrrrrrrrrrrrfhh
+arrrrfhhhharrrrrrrrrrrrrrrrfhh
+arrrpfhhhharrrrrrrrrrrrrrrrfhh
+arrrrfhhhhardrrrrrrrdrrrrrdfhh
+adrrdfhhhharrrrrrdrrrrrrrrrfhh
+arrrrfhhhharrrrrnrrrrrrrrrrfhh
+arrrrfhhhharrdrrrrrrdrrrrrdfhh
+arrrrfhhhhherrrrrrrpprrrrrrfhh
+adrrdfhhhhhhccccccceprrrrrrfhh
+arrrrfhhhhhhhhhhhhhadrrrrrdfhh
+arrrqjkkkkkkkkkkkkklqrrrrrrfhh
+arrrrrdrrdrrrmrrdrrrrmrrrppfhh
+adrrrrrrrrrrrrrrrrmrrrrrrpbhhh
+arrrrpbccccccccccccccccccchhhh
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
+adrrrnfhhhhhhhhhhhhhhhhhhhhhhh
 hccccchhhhhhhhhhhhhhhhhhhhhhhh
 "}

@@ -14,7 +14,8 @@
 "n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
 "o" = (/turf/grass{icon_state = "base"},/area)
 "p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
-"q" = (/turf/grass{icon_state = "base"},/turf/sign,/area)
+"q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
+"r" = (/mob/enemies/flower,/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
@@ -28,7 +29,7 @@ agooofhhhhaoooooodooooooioofhh
 aoooofhhhhaoooooooooooooooofhh
 aoooofhhhhappnooooooooooooofhh
 aoooofhhhhapnpnoooooooooooofhh
-adoodfhhhhaopnooooooooooooofhh
+adoodfhhhhaopnooooroooooooofhh
 aoooofhhhhaoooooooooooooooofhh
 aooopfhhhhaoooooooooooooooofhh
 aoooofhhhhaodooooooodooooodfhh
@@ -40,7 +41,7 @@ adoodfhhhhhhcccccccepoooooofhh
 aoooofhhhhhhhhhhhhhadooooodfhh
 aoooqjkkkkkkkkkkkkklqoooooofhh
 aooooodoodooomoodoooomoooppfhh
-adoqoooooooooooooomoooooopbhhh
+adoooooooooooooooomoooooopbhhh
 aoooopbccccccccccccccccccchhhh
 aoooonfhhhhhhhhhhhhhhhhhhhhhhh
 aoooonfhhhhhhhhhhhhhhhhhhhhhhh
