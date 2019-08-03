@@ -162,6 +162,9 @@ mob/enemies
 		slime_fire
 			icon_state = "slime_fire"
 			die_animation_delay = 14
+			power = 15
+			health = 200
+			level = 5
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16

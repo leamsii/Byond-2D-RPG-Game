@@ -26,6 +26,13 @@ mob/player
 		sound/hit_sound = new/sound('sound/player/hit.ogg')
 
 	proc
+		update_health_bar()
+			var/max = max(max_health,0.000001) // The larger value, or denominator
+			var/min = min(max(health),max) // The smaller value, or numerator
+			var/state = "[round((10-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+
+			for(var/obj/HUD/health/O in src.client.screen)
+				O.icon_state = state
 		give_exp(amount)
 			exp += amount
 			Text(src, "+[amount] EXP ", "yellow")
@@ -40,6 +47,7 @@ mob/player
 			max_power += 3
 			power = max_power
 			health=max_health
+			update_health_bar()
 
 			overlays += icon('icons/Jesse.dmi', "level_up")
 			usr << level_up_sound
@@ -52,6 +60,7 @@ mob/player
 			health -= damage
 			s_damage(src, damage, "red")
 			src << hit_sound
+			update_health_bar()
 
 			if(health <= 0)
 				health = max_health
@@ -74,12 +83,21 @@ mob/player
 
 		Attack()
 			set hidden = 1
-			for(var/mob/enemies/E in get_step(src, usr.dir))
-				flick("attacking", src)
-				E.take_damage(src)
+			for(var/mob/enemies/E in oview(1))
+				if(get_dist(src,E)<=1)
+					src.dir=get_dir(src,E)
+					flick("attacking", src)
+					E.take_damage(src)
 
 obj
 	shadow
 		icon = 'icons/player.dmi'
 		icon_state = "shadow"
 		pixel_y = -3
+
+
+obj/HUD
+	health
+		icon = 'icons/player_health.dmi'
+		icon_state = "10"
+		screen_loc = "2, 2"
