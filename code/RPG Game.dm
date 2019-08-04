@@ -17,7 +17,7 @@ obj
 	step_size = 4
 
 client.New()
-	src << new/sound('sound/player/elina.ogg')
+	//src << new/sound('sound/player/elina.ogg')
 	mob = new/mob/player
 	perspective = EDGE_PERSPECTIVE
 	screen += new/obj/HUD/health()

@@ -23,8 +23,8 @@ mob/player
 		attacking=FALSE
 
 		// Sounds
-		sound/level_up_sound = new/sound('sound/player/level_up.ogg')
-		sound/hit_sound = new/sound('sound/player/hit.ogg')
+		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
+		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
 
 	proc
 		update_health_bar()

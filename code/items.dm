@@ -7,7 +7,7 @@ obj/item
 		var/gold_amount = 40
 		name = "Coin Pile"
 		icon_state = "coin_pile"
-		var/sound/gold_sound = new/sound('sound/player/gold_pick.ogg')
+		var/sound/gold_sound = new/sound('sound/player/gold_pick.ogg', volume=30)
 
 		New()
 			..()

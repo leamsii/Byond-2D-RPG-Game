@@ -16,3 +16,6 @@ obj/emoticon
 
 	typing
 		icon_state = "typing"
+
+	angry
+		icon_state = "angry"

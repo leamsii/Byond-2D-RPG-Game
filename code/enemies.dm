@@ -27,8 +27,8 @@ mob/enemies
 		loot = list(new/obj/item/gold, new/obj/item/HP_Potion)
 
 		// Sound
-		sound/hit_sound = new/sound('sound/slime/hit.wav')
-		sound/explode_sound = new/sound('sound/slime/explode.wav')
+		sound/hit_sound = new/sound('sound/slime/hit.wav', volume=30)
+		sound/explode_sound = new/sound('sound/slime/explode.wav', volume=30)
 
 	// Define the enemies bahaviors
 	proc
