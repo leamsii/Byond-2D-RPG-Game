@@ -77,7 +77,7 @@ mob/player
 	verb
 		Speak()
 			set hidden = 1
-			var/obj/emoticon/typing/EMO = new()
+			var/obj/emoticon/typing/EMO = new(null, -20, 15)
 			overlays += EMO
 			var/msg = input("", "Type Something")
 			if(msg) world << "<font color = green> [client]: [msg]</font>"

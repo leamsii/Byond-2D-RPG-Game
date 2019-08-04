@@ -20,11 +20,16 @@ mob/enemies
 		obj/health_bar = null
 
 		// Animations
+		dying_animation = null
 		die_animation_delay = 0
 		current_state = 0
 
 		// Loot
 		loot = list(new/obj/item/gold, new/obj/item/HP_Potion)
+
+		//Visual
+		emoticon_x = 0
+		emoticon_y = 0
 
 		// Sound
 		sound/hit_sound = new/sound('sound/slime/hit.wav', volume=30)
@@ -32,10 +37,11 @@ mob/enemies
 
 	// Define the enemies bahaviors
 	proc
-		add_star(difficulty)
+		add_star(difficulty, pixel_x, pixel_y)
 			for(var/i = 0;i < difficulty; i++)
 				var/obj/star/S = new()
-				S.pixel_x = -10 + (i * 6)
+				S.pixel_y = pixel_y
+				S.pixel_x = pixel_x + (i * 6)
 				overlays+=S
 		drop_item()
 			// Drop a random item from the loot list
@@ -54,7 +60,18 @@ mob/enemies
 				spawn(rand(5, 20))
 				walk(src, FALSE) // Pause
 
-		update_health_bar() // This will add the health bars to the enemies when they spawn
+		update_health_bar(pixel_x=0, pixel_y=0) // This will add the health bars to the enemies when they spawn
+			if(!health_bar)
+				//Add health bar
+				var/obj/O = new()
+				O.icon = 'icons/health_bars.dmi'
+				O.icon_state = "8"
+				health_bar = O
+				O.layer = MOB_LAYER+1
+				O.pixel_y = pixel_y
+				O.pixel_x = pixel_x
+				overlays += O
+
 			var/max = max(max_health,0.000001) // The larger value, or denominator
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
@@ -67,12 +84,12 @@ mob/enemies
 
 			if(current_state == DYING) return
 			if(current_state != ATTACKING)
-				new/obj/emoticon/alert(src)
+				new/obj/emoticon/alert(src, emoticon_x, emoticon_y)
 				current_state = ATTACKING
 
 			var/icon/I = icon('icons/player.dmi', "sword")
 			overlays += I
-			flick("slime_hurt", src)
+			flick("[name]_hurt", src)
 			P << hit_sound
 
 			knock_back(P)
@@ -83,9 +100,6 @@ mob/enemies
 				s_damage(src,damage, "yellow")
 			health -= damage
 			update_health_bar()
-
-			// Update the health bar
-			//update_health_bar()
 
 			if(health <= 0)
 				die(P)
@@ -99,10 +113,11 @@ mob/enemies
 			walk(src, null)
 			current_state = DYING
 			density=0
-			flick(icon_state+"_die", src)
+			flick(dying_animation, src)
 			P << explode_sound
 			drop_item()
 			P.give_exp(rand(exp-5, exp+5))
+			if(name == "flower") animate(src, alpha=0,time = die_animation_delay)
 			sleep(die_animation_delay)
 			loc=locate(1, 1, -1) // Vanish it
 			del src
@@ -132,7 +147,7 @@ mob/enemies
 				if(target)
 					walk_to(src, target, -1, 0, speed)
 				else
-					new/obj/emoticon/question(src)
+					new/obj/emoticon/question(src, emoticon_x, emoticon_y)
 					current_state = WANDERING
 
 	New()
@@ -142,19 +157,6 @@ mob/enemies
 		S.pixel_x = -2
 		underlays += S
 		current_state = WANDERING
-
-		//Add health bar
-		var/obj/O = new()
-		O.icon = 'icons/health_bars.dmi'
-		O.icon_state = "8"
-		health_bar = O
-		O.layer = MOB_LAYER+1
-		O.pixel_y = 8
-		O.pixel_x = -6
-		overlays += O
-
-		// Add difficulty star
-		add_star(1)
 		update()
 
 	Bump(mob/player/P)
@@ -174,6 +176,14 @@ mob/enemies
 		icon_state = "slime1"
 		bound_width = 10
 		bound_x = 5
+		emoticon_x = -20
+		emoticon_y = 15
+		name = "slime"
+		New()
+			..()
+			dying_animation = icon_state + "_die"
+			update_health_bar(-6, 10)
+			add_star(1, -10, 12)
 
 		slime_fire
 			icon_state = "slime_fire"
@@ -184,7 +194,8 @@ mob/enemies
 			exp = 40
 			New()
 				..()
-				add_star(3) // Tough enemy
+				add_star(3, -10, 12) // Tough enemy
+
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16
@@ -198,8 +209,26 @@ mob/enemies
 				..()
 				overlays += icon('icons/Status.dmi', "regen")
 
+	flower
+		icon = 'icons/flower_enemy.dmi'
+		icon_state = "flower"
+		name = "flower"
+		emoticon_x = -10
+		emoticon_y = 55
+		die_animation_delay = 19
+		level = 10
+		exp = 100
+		power = 30
+		health = 400
+		dying_animation = "flower_dead"
+
+		New()
+			..()
+			underlays=null
+			update_health_bar(11, 52)
+			add_star(5, 0, 55) // Boss
+
 obj/star
 	icon = 'icons/health_bars.dmi'
 	icon_state = "star"
-	layer=MOB_LAYER+1
-	pixel_y = 10
+	layer=MOB_LAYER+8

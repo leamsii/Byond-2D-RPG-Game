@@ -3,8 +3,10 @@ obj/emoticon
 	pixel_y = 20
 	pixel_x = -13
 	layer=MOB_LAYER+1
-	New(mob/M=null)
+	New(mob/M=null, x=0, y=0)
 		..()
+		pixel_x = x
+		pixel_y = y
 		if(M)
 			M.overlays += src
 			spawn(10)
@@ -13,9 +15,7 @@ obj/emoticon
 		icon_state = "alert"
 	question
 		icon_state = "question"
-
 	typing
 		icon_state = "typing"
-
 	angry
 		icon_state = "angry"

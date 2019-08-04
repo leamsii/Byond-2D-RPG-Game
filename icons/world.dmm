@@ -17,6 +17,7 @@
 "q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
 "r" = (/turf/grass{icon_state = "base"},/area)
 "s" = (/mob/NPC/farmer,/turf/grass{icon_state = "base"},/area)
+"t" = (/mob/enemies/flower,/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
@@ -28,7 +29,7 @@ arrgrfhhhharrrirrrrrrrrrrrpfhh
 arrrrfhhhharrrrrrrrirrrrrrrfhh
 agrrrfhhhharrrrrrdrrrrrrirrfhh
 arrrrfhhhharrrrrrrrrrrrrrrrfhh
-arrrrfhhhhaponrrrrrrrrrrrrrfhh
+arrrrfhhhhaponrrrrrrrrtrrrrfhh
 arrrrfhhhhapnpnrrrrrrrrrrrrfhh
 adrrdfhhhharpnrrrrrrrrrrrrrfhh
 arrrrfhhhharrrrrrrrrrrrrrrrfhh
