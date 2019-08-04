@@ -44,7 +44,7 @@ mob/player
 			Text(src, "You leveled up! ")
 
 			exp = 0
-			max_exp *= 3
+			max_exp *= 2
 			max_power += 3
 			power = max_power
 			health=max_health

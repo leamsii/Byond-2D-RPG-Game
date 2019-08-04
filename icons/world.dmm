@@ -12,6 +12,7 @@
 "l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
 "m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
 "n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
+"o" = (/turf/grass{icon_state = "base"},/mob/enemies/slime/slime_poison,/turf/flowers,/area)
 "p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
 "q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
 "r" = (/turf/grass{icon_state = "base"},/area)
@@ -20,22 +21,22 @@
 hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
 adrrdfhhhhadrnrdrnrdrnrdnrdfhh
 arrrrfhhhharrrrrirrrrrrrrrpfhh
-arrrrfhhhharrrrrrrrrrrrrrrpfhh
+agrrrfhhhharrrrrrrrrrrrrrrpfhh
 arrrrfhhhharrrrrrrrrrrrrrppfhh
 arrgrfhhhharrrirrrrrrrrrrrpfhh
 arrrrfhhhharrrrrrrrirrrrrrrfhh
 agrrrfhhhharrrrrrdrrrrrrirrfhh
 arrrrfhhhharrrrrrrrrrrrrrrrfhh
-arrrrfhhhhappnrrrrrrrrrrrrrfhh
+arrrrfhhhhaponrrrrrrrrrrrrrfhh
 arrrrfhhhhapnpnrrrrrrrrrrrrfhh
 adrrdfhhhharpnrrrrrrrrrrrrrfhh
 arrrrfhhhharrrrrrrrrrrrrrrrfhh
-arrrpfhhhharrrrrrrrrrrrrrrrfhh
+arrrpfhhhharrmrrrrrrrrrrrrrfhh
 arrrrfhhhhardrrrrrrrdrrrrrdfhh
 adrrdfhhhharrrrrrdrrrrrrrrrfhh
 arrrrfhhhharrrrrnrrrrrrrrrrfhh
-arrrrfhhhharrdrrrrrrdrrrrrdfhh
-arrrrfhhhhherrrrrrrpprrrrrrfhh
+arrrrfhhhhairdrrrrrrdrrrrrdfhh
+arrrrfhhhhhermrrrrrpprrrrrrfhh
 adrrdfhhhhhhccccccceprrrrrrfhh
 arrrrfhhhhhhhhhhhhhadrrrrrdfhh
 arrrqjkkkkkkkkkkkkklqrrrrrrfhh

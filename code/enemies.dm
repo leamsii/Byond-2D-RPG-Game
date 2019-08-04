@@ -181,6 +181,7 @@ mob/enemies
 			power = 15
 			health = 200
 			level = 5
+			exp = 40
 			New()
 				..()
 				add_star(3) // Tough enemy
