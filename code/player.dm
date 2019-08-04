@@ -92,7 +92,7 @@ mob/player
 					src.dir=get_dir(src,E)
 					flick("attacking", src)
 					E.take_damage(src)
-			spawn(5)
+			spawn(3)
 			attacking=FALSE
 
 obj

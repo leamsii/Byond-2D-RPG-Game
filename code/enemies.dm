@@ -221,6 +221,7 @@ mob/enemies
 		power = 30
 		health = 400
 		dying_animation = "flower_dead"
+		hit_sound = new/sound('sound/flower/hit.ogg',volume=30)
 
 		New()
 			..()
