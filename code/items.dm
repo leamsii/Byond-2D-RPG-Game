@@ -4,6 +4,7 @@ obj/item
 		drop_rate = 50
 	gold
 		drop_rate = 50
+		layer=MOB_LAYER+1
 		var/gold_amount = 40
 		name = "Coin Pile"
 		icon_state = "coin_pile"

@@ -43,12 +43,12 @@ obj/
 
 	top_right
 		icon_state = "tree_top_right"
-		pixel_x = 10
+		pixel_x = 11
 		pixel_y = 48
 		layer=TURF_LAYER+10
 	top_left
 		icon_state = "tree_top_left"
-		pixel_x = -10
+		pixel_x = -11
 		pixel_y = 48
 		layer=TURF_LAYER+10
 

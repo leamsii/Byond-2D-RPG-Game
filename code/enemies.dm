@@ -156,12 +156,15 @@ mob/enemies
 			spawn(20)
 			update()
 
+		get_target(_view)
+			var/target=null
+			for(var/mob/player/P in oview(_view))
+				target=P
+			return target
+
 		attack()
 			if(current_state == ATTACKING)
-				var/target=null
-				for(var/mob/player/P in oview(3))
-					target=P
-
+				var/target=get_target(3)
 				if(target)
 					walk_to(src, target, -1, 0, speed)
 				else
