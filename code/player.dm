@@ -97,6 +97,9 @@ mob/player
 			spawn(5)
 			attacking=FALSE
 
+		Bow()
+			new/obj/projectile/arrow(usr)
+
 obj
 	shadow
 		icon = 'icons/player.dmi'

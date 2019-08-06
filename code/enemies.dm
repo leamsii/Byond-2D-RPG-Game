@@ -67,19 +67,10 @@ mob/enemies
 						flick("coin_drop", O)
 
 		wander() // Wanders around aimlessly
-			var/new_direction = rand(1,4)
-			directions[new_direction] += 1
-
-			for(var/i = 1; i < 4; i++)
-				var/current_dir = directions[i]
-				var/last_dir = directions[i+1]
-
-				if(current_dir == new_direction && last_dir < current_dir)
-					new_direction = last_dir
-
-			walk(src, new_direction, 0, speed)
-			spawn(rand(3, 50))
-			walk(src, FALSE) // Pause
+			if(current_state == WANDERING)
+				walk_rand(src, 0, speed)
+				spawn(rand(1, 10))
+				walk(src, null)
 
 		update_health_bar(pixel_x=0, pixel_y=0) // This will add the health bars to the enemies when they spawn
 			if(!health_bar)

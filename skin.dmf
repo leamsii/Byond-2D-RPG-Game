@@ -35,6 +35,9 @@ macro "macro"
 	elem 
 		name = "F"
 		command = "Action"
+	elem 
+		name = "S"
+		command = "Bow"
 
 
 menu "menu"
@@ -52,7 +55,6 @@ window "default"
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "IT RPG"
