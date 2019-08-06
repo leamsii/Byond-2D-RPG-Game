@@ -12,42 +12,64 @@
 "l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
 "m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
 "n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
-"o" = (/turf/grass{icon_state = "base"},/mob/enemies/slime/slime_poison,/turf/flowers,/area)
+"o" = (/turf/grass,/area)
 "p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
 "q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
 "r" = (/turf/grass{icon_state = "base"},/area)
 "s" = (/mob/NPC/farmer,/turf/grass{icon_state = "base"},/area)
 "t" = (/mob/enemies/flower,/turf/grass{icon_state = "base"},/area)
+"u" = (/turf,/area)
+"v" = (/turf/grass{icon_state = "base"},/mob/enemies/slime/slime_poison,/turf/flowers,/area)
 
 (1,1,1) = {"
-hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
-adrrdfhhhhadrnrdrnrdrnrdnrdfhh
-arrrrfhhhharrrrrirrrrrrrrrpfhh
-agrrrfhhhharrrrrrrrrrrrrrrpfhh
-arrrrfhhhharrrrrrrrrrrrrrppfhh
-arrgrfhhhharrrirrrrrrrrrrrpfhh
-arrrrfhhhharrrrrrrrirrrrrrrfhh
-agrrrfhhhharrrrrrdrrrrrrirrfhh
-arrrrfhhhharrrrrrrrrrrrrrrrfhh
-arrrrfhhhhaponrrrrrrrrtrrrrfhh
-arrrrfhhhhapnpnrrrrrrrrrrrrfhh
-adrrdfhhhharpnrrrrrrrrrrrrrfhh
-arrrrfhhhharrrrrrrrrrrrrrrrfhh
-arrrpfhhhharrmrrrrrrrrrrrrrfhh
-arrrrfhhhhardrrrrrrrdrrrrrdfhh
-adrrdfhhhharrrrrrdrrrrrrrrrfhh
-arrrrfhhhharrrrrnrrrrrrrrrrfhh
-arrrrfhhhhairdrrrrrrdrrrrrdfhh
-arrrrfhhhhhermrrrrrpprrrrrrfhh
-adrrdfhhhhhhccccccceprrrrrrfhh
-arrrrfhhhhhhhhhhhhhadrrrrrdfhh
-arrrqjkkkkkkkkkkkkklqrrrrrrfhh
-arrrrrdrrdrrrmrrdrrrrmrrrppfhh
-adrrrrrrrrrrrrrrrrmrrrrrrpbhhh
-asrrrpbccccccccccccccccccchhhh
-arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
-arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
-arrrrnfhhhhhhhhhhhhhhhhhhhhhhh
-adrrrnfhhhhhhhhhhhhhhhhhhhhhhh
-hccccchhhhhhhhhhhhhhhhhhhhhhhh
+hkkkkkkkkkhoooooooooooooooooooooooooooooooooooouuu
+adrdrdrppnfoooooooooooooooooooooooooooooooooooouuu
+arrrrrpppdfoooooooooooooooooooooooooooooooooooouuu
+arrrrgrrrrfoooooooooooooooooooooooooooooooooooouuu
+argrrrrrrrfoooooooooooooooooooooooooooooooooooouuu
+arrrrrrgrrjkkkkkkkkkkhooooooooooooooooooooooooouuu
+arrrrrrrrrrrrrrgrpnprfooooooooooooooooooooooooouuu
+arrrrrrrrrrrrrrrprrrgfooooooooooooooooooooooooouuu
+arrrrdrdrrrrrrrrrrrrrfooooooooooooooooooooooooouuu
+arrrrrrrrrrrrrrrrrgrrfooooooooooooooooooooooooouuu
+arrrrrrrrrrrrrdrrrprrfooooooooooooooooooooooooouuu
+arrrrrrrrbccccccccccchooooooooooooooooooooooooouuu
+arrrrrrrrfooooooooooooooooooooooooooooooooooooouuu
+arrrgrrrrfooooooooooooooooooooooooooooooooooooouuu
+arrrrrrrrfooooooooooooooooooooooooooooooooooooouuu
+apdrrrrdnfooooooooooooooooooooooooooooooooooooouuu
+apprrrpnnfooooooooooooooooooooooooooooooooooooouuu
+apprrrpppfooooooooooooooooooooooooooooooooooooouuu
+aprrrrpprfooooooooooooooooooooooooooooooooooooouuu
+arrrrbccchooooooooooooooooooooooooooooooooooooouuu
+arrrrfhhhhhkkkkkkkkkkkkkkkkhhhooooooooooooooooouuu
+adrrdfhhhhadrnrdrnrdrnrdnrdfhhooooooooooooooooouuu
+arrrrfhhhharrrrrirrrrrrrrrpfhhooooooooooooooooouuu
+agrrrfhhhharrrrrrrrrrrrrrrpfhhooooooooooooooooouuu
+arrrrfhhhharrrrrrrrrrrrrrppfhhooooooooooooooooouuu
+arrgrfhhhharrrirrrrrrrrrrrpfhhooooooooooooooooouuu
+arrrrfhhhharrrrrrrrirrrrrrrfhhooooooooooooooooouuu
+agrrrfhhhharrrrrrdrrrrrrirrfhhooooooooooooooooouuu
+arrrrfhhhharrrrrrrrrrrrrrrrfhhooooooooooooooooouuu
+arrrrfhhhhapvnrrrrrrrrtrrrrfhhooooooooooooooooouuu
+arrrrfhhhhapnpnrrrrrrrrrrrrfhhooooooooooooooooouuu
+adrrdfhhhharpnrrrrrrrrrrrrrfhhooooooooooooooooouuu
+arrrrfhhhharrrrrrrrrrrrrrrrfhhooooooooooooooooouuu
+arrrpfhhhharrmrrrrrrrrrrrrrfhhooooooooooooooooouuu
+arrrrfhhhhardrrrrrrrdrrrrrdfhhooooooooooooooooouuu
+adrrdfhhhharrrrrrdrrrrrrrrrfhhooooooooooooooooouuu
+arrrrfhhhharrrrrnrrrrrrrrrrfhhooooooooooooooooouuu
+arrrrfhhhhairdrrrrrrdrrrrrdfhhooooooooooooooooouuu
+arrrrfhhhhhermrrrrrpprrrrrrfhhooooooooooooooooouuu
+adrrdfhhhhhhccccccceprrrrrrfhhooooooooooooooooouuu
+arrrrfhhhhhhhhhhhhhadrrrrrdfhhooooooooooooooooouuu
+arrrqjkkkkkkkkkkkkklqrrrrrrfhhooooooooooooooooouuu
+arrrrrdrrdrrrmrrdrrrrmrrrppfhhooooooooooooooooouuu
+adrrrrrrrrrrrrrrrrmrrrrrrpbhhhooooooooooooooooouuu
+asrrrpbccccccccccccccccccchhhhooooooooooooooooouuu
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooooouuu
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooooouuu
+arrrrnfhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooooouuu
+adrrrnfhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooooouuu
+hccccchhhhhhhhhhhhhhhhhhhhhhhhooooooooooooooooouuu
 "}

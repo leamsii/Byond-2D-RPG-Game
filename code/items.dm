@@ -9,9 +9,9 @@ obj/item
 		icon_state = "coin_pile"
 		var/sound/gold_sound = new/sound('sound/player/gold_pick.ogg', volume=30)
 
-		New()
+		New(mob/enemies/owner)
 			..()
-			gold_amount = rand(5, 60)
+			gold_amount = round(owner.exp / 3)
 
 		Cross(mob/player/P)
 			if(istype(P,/mob/player))

@@ -8,17 +8,17 @@ mob/player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 100
-		max_health = 100
-		power = 15
-		max_power = 15
+		health = 50
+		max_health = 50
+		power = 13
+		max_power = 8
 		defense = 3
 		max_defense = 3
 		speed = 2
 		max_speed = 2
-		level = 3
+		level = 1
 		exp = 0
-		max_exp = 50
+		max_exp = 100
 		attacked=FALSE
 		attacking=FALSE
 
@@ -55,11 +55,13 @@ mob/player
 			spawn(15)
 			overlays = null
 
-		take_damage(damage)
+		take_damage(mob/enemies/M)
 			attacked=TRUE
-			damage = rand(damage-3, damage+3)
+			var/damage = rand(M.power-3, M.power+3)
+
+			damage > M.max_power ? s_damage(src, damage, "red") : s_damage(src, damage, "white")
+
 			health -= damage
-			s_damage(src, damage, "red")
 			src << hit_sound
 			update_health_bar()
 
@@ -92,7 +94,7 @@ mob/player
 					src.dir=get_dir(src,E)
 					flick("attacking", src)
 					E.take_damage(src)
-			spawn(3)
+			spawn(5)
 			attacking=FALSE
 
 obj
