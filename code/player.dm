@@ -98,7 +98,11 @@ mob/player
 			attacking=FALSE
 
 		Bow()
+			if(attacking) return
+			attacking=TRUE
 			new/obj/projectile/arrow(usr)
+			spawn(5)
+			attacking=FALSE
 
 obj
 	shadow

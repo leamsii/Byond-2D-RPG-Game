@@ -10,6 +10,8 @@ obj/projectile
 			owner = M
 			dir=M.dir
 			loc=M.loc
+			step_x = M.step_x
+			step_y = M.step_y
 
 			// Set the bounds
 			if(dir == NORTH || dir == SOUTH)
@@ -23,8 +25,20 @@ obj/projectile
 				bound_height=  0
 				bound_y = 23
 
-			step_x = M.step_x
-			step_y = M.step_y
+			// Center the arrow
+			if(dir == NORTH)
+				step_x -=1
+				step_y += 11
+			if(dir == SOUTH)
+				step_x -= 6
+				step_y -= 20
+			if(dir == EAST)
+				step_x += 10
+				step_y -= 10
+			if(dir == WEST)
+				step_x -= 10
+				step_y -= 10
+
 			walk(src, dir, 0, 7)
 			icon_state = "arrow_flying"
 
