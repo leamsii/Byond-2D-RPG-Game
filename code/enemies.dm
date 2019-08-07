@@ -99,8 +99,6 @@ mob/enemies
 				new/obj/emoticon/alert(src, emoticon_x, emoticon_y)
 				current_state = ATTACKING
 
-			var/icon/I = icon('icons/player.dmi', "sword")
-			overlays += I
 			flick("[name]_hurt", src)
 			P << hit_sound
 
@@ -112,10 +110,6 @@ mob/enemies
 
 			if(health <= 0)
 				die(P)
-
-			spawn(5)
-			overlays -= I
-
 
 		die(mob/player/P)
 			overlays = null

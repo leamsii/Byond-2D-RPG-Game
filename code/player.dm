@@ -93,7 +93,11 @@ mob/player
 				if(get_dist(src,E)<=1)
 					src.dir=get_dir(src,E)
 					flick("attacking", src)
+					var/icon/I = icon('icons/player.dmi', "sword")
+					E.overlays += I
 					E.take_damage(src)
+					if(E)
+						E.overlays -= I
 			spawn(5)
 			attacking=FALSE
 
