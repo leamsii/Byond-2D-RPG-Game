@@ -3,8 +3,8 @@ obj/item
 	var
 		drop_rate = 50
 	gold
-		drop_rate = 50
-		layer=MOB_LAYER+1
+		drop_rate = 40
+		layer=MOB_LAYER-1
 		var/gold_amount = 40
 		name = "Coin Pile"
 		icon_state = "coin_pile"
@@ -22,7 +22,7 @@ obj/item
 
 	HP_Potion
 		icon_state = "HP_pot"
-		drop_rate=5
+		drop_rate=20
 		Cross(mob/player/P)
 			if(istype(P,/mob/player))
 				loc = P
