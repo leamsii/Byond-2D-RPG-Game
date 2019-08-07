@@ -35,13 +35,24 @@ mob/player
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((10-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
 
-			for(var/obj/HUD/health/O in src.client.screen)
+			for(var/obj/HUD/health_bar/O in src.client.screen)
 				O.icon_state = state
+
+		update_exp_bar()
+			var/max = max(max_exp,0.000001) // The larger value, or denominator
+			var/min = min(max(exp),max) // The smaller value, or numerator
+			var/state = "[round((6-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+
+			for(var/obj/HUD/exp_bar/O in src.client.screen)
+				O.icon_state = state
+
 		give_exp(amount)
 			exp += amount
 			Text(src, "+[amount] EXP ", "yellow")
 			if(exp >= max_exp)
 				level_up()
+
+			update_exp_bar()
 
 		level_up()
 			Text(src, "You leveled up! ")
@@ -50,7 +61,10 @@ mob/player
 			max_exp *= 2
 			max_power += 3
 			power = max_power
-			health=max_health
+			health += max_health / 2
+			if(health >= max_health)
+				health = max_health
+
 			update_health_bar()
 
 			overlays += icon('icons/Jesse.dmi', "level_up")
@@ -119,7 +133,12 @@ obj
 
 
 obj/HUD
-	health
+	health_bar
 		icon = 'icons/player_health.dmi'
 		icon_state = "10"
-		screen_loc = "2, 2"
+		screen_loc = "2, 2:8"
+
+	exp_bar
+		icon = 'icons/player_exp.dmi'
+		icon_state = "1"
+		screen_loc = "2:3, 2"

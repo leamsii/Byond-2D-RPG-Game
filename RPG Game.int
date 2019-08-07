@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1565197471
+LAST_COMPILE_TIME: 1565216703
 DIR: code icons libs sound\slime 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1472
-WINDOW: code\enemies.dm;code\player.dm;code\turfs.dm;icons\slime_sprites.dmi;icons\s_blacknums.dmi;icons\world.dmm;code\RPG Game.dm;code\items.dm;icons\Jesse.dmi;icons\health_bars.dmi;icons\turfs.dmi;code\emoticons.dm;icons\Status.dmi;icons\sign.dmi;icons\player.dmi;code\NPC.dm;code\projectile.dm
+WINDOW: code\enemies.dm;code\player.dm;code\turfs.dm;icons\slime_sprites.dmi;icons\s_blacknums.dmi;icons\world.dmm;code\RPG Game.dm;code\items.dm;icons\Jesse.dmi;icons\health_bars.dmi;icons\turfs.dmi;code\emoticons.dm;icons\Status.dmi;icons\sign.dmi;code\projectile.dm;icons\npcs.dmi
 FILE: icons\Jesse.dmi
 */
 // END_INTERNALS
