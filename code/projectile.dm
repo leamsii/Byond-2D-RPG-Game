@@ -39,7 +39,16 @@ obj/projectile
 				step_x -= 10
 				step_y -= 10
 
-			walk(src, dir, 0, 7)
+			var/target = null
+			for(var/mob/enemies/E in oview(2))
+				target=E
+
+			if(target)
+				walk(src, get_dir(src, target), 0, 5)
+			else
+				walk(src, dir,  0, 7)
+
+			//walk(src, dir, 0, 7)
 			icon_state = "arrow_flying"
 
 		Bump(mob/M)

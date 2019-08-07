@@ -26,6 +26,9 @@ mob/player
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
 		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
 
+		// Animation delays
+		dust_delay = 0
+
 	proc
 		update_health_bar()
 			var/max = max(max_health,0.000001) // The larger value, or denominator
