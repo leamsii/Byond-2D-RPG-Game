@@ -2,16 +2,18 @@ obj/projectile
 	icon = 'icons/Jesse.dmi'
 	density=1
 	arrow
-		icon_state = "arrow"
+		icon_state = "arrowr"
 		var
 			owner = null
 		New(mob/M) // These directions need to be hard coded to the sprites center
 			..()
-			owner = M
-			dir=M.dir
-			loc=M.loc
-			step_x = M.step_x
-			step_y = M.step_y
+			if(istype(M,/mob/player))
+				owner = M
+				dir=M.dir
+				loc=M.loc
+				step_x = M.step_x
+				step_y = M.step_y
+			//dir=EAST
 
 			// Set the bounds
 			if(dir == NORTH || dir == SOUTH)
@@ -41,14 +43,14 @@ obj/projectile
 
 
 			walk(src, dir,  0, 7)
-			icon_state = "arrow_flying"
+			icon_state = "arrowr_flying"
 
 		Bump(mob/M)
 			if(istype(M,/mob/enemies))
 				M:take_damage(owner)
 				del src
 			else if(!istype(M,/obj/item))
-				icon_state = "arrow_stuck"
+				icon_state = "arrowr_stuck"
 				walk(src,null)
 				density=0
 				sleep(10)
