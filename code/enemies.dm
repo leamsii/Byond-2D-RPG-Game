@@ -42,7 +42,7 @@ mob/enemies
 	proc
 		calc_stats()
 			max_power = rand(3, 10) + (level * 3)
-			max_health = rand(20, 40) + (level * 9)
+			max_health = rand(20, 40) + (level * 20)
 
 			health = max_health
 			power = max_power
@@ -174,12 +174,12 @@ mob/enemies
 
 				// Effects
 				if(istype(src,/mob/enemies/slime/slime_poison)) // If hit by purple slime
-					if(prob(20)) // 20% Chance of getting poisoned
+					if(prob(20) && !P.is_poisoned) // 20% Chance of getting poisoned
 						new/obj/status/poison(P)
 						P.is_poisoned = TRUE
 
 				if(istype(src,/mob/enemies/slime/slime_fire)) // If hit by fire slime
-					if(prob(20)) // 20% Chance of getting poisoned
+					if(prob(20) && !P.is_poisoned) // 20% Chance of getting poisoned
 						new/obj/status/burning(P)
 						P.is_poisoned = TRUE
 

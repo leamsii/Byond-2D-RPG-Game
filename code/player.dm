@@ -27,9 +27,6 @@ mob/player
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
 		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
 
-		// Animation delays
-		dust_delay = 0
-
 		is_poisoned = FALSE
 		poison_effect = null
 
@@ -68,6 +65,7 @@ mob/player
 			health += max_health / 2
 			if(health >= max_health)
 				health = max_health
+			max_health += 20
 
 			update_health_bar()
 
@@ -78,15 +76,17 @@ mob/player
 
 		death_check()
 			if(health <= 0)
+				loc=locate(4, 4, 1)
+
 				// Remove effects
 				is_poisoned = FALSE
-				overlays -= poison_effect
+				overlays = null
+				icon = initial(icon)
 
 				// Continue
 				health = max_health
 				update_health_bar()
 				flick(new/icon('icons/player_effects.dmi', "dead"), src)
-				loc=locate(4, 4, 1)
 				Text(src, "YOU DIED ", "red")
 
 		take_damage(mob/enemies/M)

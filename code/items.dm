@@ -35,7 +35,7 @@ obj/item
 
 	HP_Potion
 		icon_state = "HP_pot"
-		drop_rate=20
+		drop_rate= 15
 		layer=MOB_LAYER+1
 
 		// Bound values
