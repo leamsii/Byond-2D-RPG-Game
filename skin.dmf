@@ -36,7 +36,7 @@ macro "macro"
 		name = "F"
 		command = "Action"
 	elem 
-		name = "S"
+		name = "S+UP"
 		command = "Bow"
 
 

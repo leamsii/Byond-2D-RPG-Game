@@ -63,9 +63,6 @@ mob/enemies
 					O:step_y = step_y
 					O:loc=loc
 
-					if(istype(O, /obj/item/gold))
-						flick("coin_drop", O)
-
 		wander() // Wanders around aimlessly
 			if(current_state == WANDERING)
 				walk_rand(src, 0, speed)
@@ -175,6 +172,17 @@ mob/enemies
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(src)
 
+				// Effects
+				if(istype(src,/mob/enemies/slime/slime_poison)) // If hit by purple slime
+					if(prob(20)) // 20% Chance of getting poisoned
+						new/obj/status/poison(P)
+						P.is_poisoned = TRUE
+
+				if(istype(src,/mob/enemies/slime/slime_fire)) // If hit by fire slime
+					if(prob(20)) // 20% Chance of getting poisoned
+						new/obj/status/burning(P)
+						P.is_poisoned = TRUE
+
 	slime
 		icon = 'icons/slime_sprites.dmi'
 		icon_state = "slime1"
@@ -216,6 +224,13 @@ mob/enemies
 		level = 8
 		dying_animation = "flower_dead"
 		hit_sound = new/sound('sound/flower/hit.ogg',volume=30)
+		layer=MOB_LAYER+1
+
+		// Bounds
+		bound_width = 32
+		bound_x = 12
+		bound_y = 10
+		bound_height = 12
 
 		New()
 			..()

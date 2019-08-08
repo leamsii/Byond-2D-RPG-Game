@@ -27,4 +27,5 @@ client.New()
 
 
 mob/Login()
-	Move(locate(4, 4, 1))
+	Move(locate(4, 3, 1))
+	dir=NORTH

@@ -4,6 +4,7 @@ mob/player
 	New()
 		..()
 		underlays += new/obj/shadow
+		update()
 
 	// Variables
 	var
@@ -28,6 +29,9 @@ mob/player
 
 		// Animation delays
 		dust_delay = 0
+
+		is_poisoned = FALSE
+		poison_effect = null
 
 	proc
 		update_health_bar()
@@ -72,6 +76,19 @@ mob/player
 			spawn(15)
 			overlays = null
 
+		death_check()
+			if(health <= 0)
+				// Remove effects
+				is_poisoned = FALSE
+				overlays -= poison_effect
+
+				// Continue
+				health = max_health
+				update_health_bar()
+				flick(new/icon('icons/player_effects.dmi', "dead"), src)
+				loc=locate(4, 4, 1)
+				Text(src, "YOU DIED ", "red")
+
 		take_damage(mob/enemies/M)
 			attacked=TRUE
 			var/damage = rand(M.power-3, M.power+3)
@@ -82,15 +99,19 @@ mob/player
 			src << hit_sound
 			update_health_bar()
 
-			if(health <= 0)
-				health = max_health
-				update_health_bar()
-				flick(new/icon('icons/player_effects.dmi', "dead"), src)
-				loc=locate(4, 4, 1)
-				Text(src, "YOU DIED ", "red")
+			death_check()
 
 			spawn(8)
 			attacked=FALSE
+
+		update()
+			if(is_poisoned)
+				health -= rand(1, 8)
+				death_check()
+				update_health_bar()
+
+			spawn(20)
+			update()
 
 	// Actions or commands
 	verb

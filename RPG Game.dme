@@ -21,6 +21,7 @@
 #include "code\player.dm"
 #include "code\projectile.dm"
 #include "code\RPG Game.dm"
+#include "code\status.dm"
 #include "code\turfs.dm"
 #include "icons\world.dmm"
 #include "libs\colour2html.dm"
