@@ -179,14 +179,17 @@ mob/enemies
 		icon_state = "slime1"
 		bound_width = 10
 		bound_x = 5
-		bound_y = 7
-		bound_height = 5
+		bound_y = 5
+		bound_height = 10
 		emoticon_x = -20
 		emoticon_y = 15
 		name = "slime"
 		New()
+
 			..()
 			loot = list(new/obj/item/gold(src, 60), new/obj/item/HP_Potion(src, 10))
+
+
 			level = rand(1, 2)
 			dying_animation = icon_state + "_die"
 			update_health_bar(-6, 10)

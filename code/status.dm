@@ -2,8 +2,9 @@ obj/status
 	icon = 'icons/Status.dmi'
 	layer = MOB_LAYER+1
 	var
-		delay = 80
 		_color = null
+		delay = 100
+
 	New(mob/player/M)
 		M.overlays += src
 		M.poison_effect = src
