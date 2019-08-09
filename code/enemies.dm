@@ -187,7 +187,7 @@ mob/enemies
 		New()
 
 			..()
-			loot = list(new/obj/item/gold(src, 60), new/obj/item/HP_Potion(src, 10))
+			loot = list(new/obj/item/gold(src, 60), new/obj/item/HP_Potion(src, 10), new/obj/item/MP_Potion(src, 10))
 
 
 			level = rand(1, 2)
@@ -233,7 +233,7 @@ mob/enemies
 
 		New()
 			..()
-			loot = list(new/obj/item/gold(src, 100), new/obj/item/HP_Potion(src, 100))
+			loot = list(new/obj/item/gold(src, 100), new/obj/item/HP_Potion(src, 100), new/obj/item/MP_Potion(src, 100))
 			underlays=null
 			update_health_bar(11, 52)
 			add_star(5, 0, 55)

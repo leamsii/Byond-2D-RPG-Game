@@ -33,6 +33,9 @@ macro "macro"
 		name = "A"
 		command = "Attack"
 	elem 
+		name = "D+UP"
+		command = "Teleport"
+	elem 
 		name = "F"
 		command = "Action"
 	elem 
@@ -55,6 +58,7 @@ window "default"
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "IT RPG"

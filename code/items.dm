@@ -51,5 +51,30 @@ obj/item
 			if(istype(P,/mob/player))
 				loc = P
 				P.health = P.max_health
-				P.update_health_bar()
-				Text(usr, "+ Health Potion ", "white")
+				P.update_bars()
+				Text(usr, "+Health Potion ", "white")
+	MP_Potion
+		icon_state = "MP_pot"
+		layer=MOB_LAYER+1
+
+		// Bound values
+		bound_x = 15
+		bound_width = 3
+		bound_y = 7
+		bound_height = 3
+
+		Cross(mob/player/P)
+			if(istype(P,/mob/player))
+				loc = P
+				P.mana = P.max_mana
+				P.update_bars()
+				Text(usr, "+MP Potion ", "white")
+	Chest
+		icon_state = "chest"
+		layer=MOB_LAYER+1
+
+		// Bound values
+		bound_x = 15
+		bound_width = 3
+		bound_y = 7
+		bound_height = 3

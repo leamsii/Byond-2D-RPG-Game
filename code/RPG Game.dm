@@ -11,7 +11,7 @@ world
 // Make objects move 8 pixels per tick when walking
 
 mob
-	step_size = 3
+	step_size = 2
 
 obj
 	step_size = 4
@@ -21,6 +21,7 @@ client.New()
 	mob = new/mob/player
 	perspective = EDGE_PERSPECTIVE
 	screen += new/obj/HUD/health_bar()
+	screen += new/obj/HUD/mana_bar()
 	screen += new/obj/HUD/exp_bar()
 	view = "17x11"
 	world << "[src] has joined the game!"

@@ -5,14 +5,20 @@ obj/status
 		_color = null
 		delay = 100
 
+	proc
+		remove_effect(mob/player/P)
+			P.poison_effect = null
+			P.overlays -= src
+			P.is_poisoned = FALSE
+
 	New(mob/player/M)
 		M.overlays += src
 		M.poison_effect = src
-		M.icon += _color
+		//M.icon += _color
 
 		spawn(delay)
-			M.overlays -= src
-			M.is_poisoned = FALSE
+			if(M.poison_effect == src)
+				remove_effect(M)
 
 	poison
 		icon_state = "poison2"

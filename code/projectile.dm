@@ -49,14 +49,10 @@ obj/projectile
 			if(istype(M,/mob/enemies))
 				M:take_damage(owner)
 				del src
-			else if(!istype(M,/obj/item))
+			else if(!istype(M,/obj/item) && !istype(M,/mob/player))
 				icon_state = "arrowr_stuck"
 				walk(src,null)
 				density=0
-				sleep(10)
-				animate(src, alpha=0, time=10)
-				spawn(10)
-				del src
 			else
 				del src
 
