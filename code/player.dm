@@ -42,10 +42,11 @@ mob/player
 
 	proc
 		effect(effect)
+			// You can make this better
 			if(effect == "burn")
-				new/obj/status/burning(src)
+				new/Effect/Burning(src)
 			if(effect == "poison")
-				new/obj/status/poison(src)
+				new/Effect/Poison(src)
 
 			is_poisoned = TRUE
 
@@ -106,12 +107,12 @@ mob/player
 
 				underlays = null
 				overlays = null
-				if(poison_effect)
-					poison_effect:remove_effect()
+				if(poison_effect != null)
+					poison_effect:remove_effect(src)
 
 				icon = new/icon('icons/player_effects.dmi', "dead")
 
-				for(var/mob/enemies/M in view())
+				for(var/enemies/M in view())
 					if(M.target == src)
 						M.target = null
 						M.current_state = M.WANDERING
@@ -127,7 +128,7 @@ mob/player
 					is_dead = FALSE
 
 
-		take_damage(mob/enemies/M)
+		take_damage(enemies/M)
 			attacked=TRUE
 			var/damage = rand(M.power-3, M.power+3)
 
@@ -143,7 +144,7 @@ mob/player
 			attacked=FALSE
 
 		update()
-			if(is_poisoned)
+			if(is_poisoned && !is_dead)
 				health -= rand(1, 8)
 				death_check()
 				update_bars()
@@ -155,7 +156,7 @@ mob/player
 	verb
 		Speak()
 			set hidden = 1
-			var/obj/emoticon/typing/EMO = new(null, -20, 15)
+			var/Emoticon/Typing/EMO = new(null, -20, 15)
 			overlays += EMO
 			var/msg = input("", "Type Something")
 			if(msg) world << "<font color = green> [client]: [msg]</font>"
@@ -165,7 +166,7 @@ mob/player
 			set hidden = 1
 			if(attacking || is_dead) return
 			attacking=TRUE
-			for(var/mob/enemies/E in oview(1))
+			for(var/enemies/E in oview(1))
 				if(get_dist(src,E)<=1)
 					src.dir=get_dir(src,E)
 					flick("attacking", src)
@@ -181,7 +182,7 @@ mob/player
 			if(attacking || is_dead) return
 			src << bow_shot
 			attacking=TRUE
-			new/obj/projectile/arrow(usr)
+			new/projectile/Arrow(usr)
 			spawn(5)
 			attacking=FALSE
 

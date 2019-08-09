@@ -1,14 +1,15 @@
-obj/item
+item
 	icon = 'icons/Jesse.dmi'
+	parent_type = /obj
 	var
 		drop_rate = 100
 		gold_amount = 0
 
-	New(mob/enemies/owner, dr)
+	New(enemies/owner, drop_rate)
 		..()
-		drop_rate = dr
+		src.drop_rate = drop_rate
 
-		if(istype(src,/obj/item/gold))
+		if(istype(src,/item/Gold))
 			gold_amount = round(owner.exp / 3)
 
 			if(gold_amount >= 20)
@@ -18,12 +19,12 @@ obj/item
 			else
 				icon_state = "small"
 
-	gold
+	Gold
 		icon = 'icons/items.dmi'
 		layer=MOB_LAYER-1
-		name = "Coin Pile"
 		icon_state = "sack"
-		var/sound/gold_sound = new/sound('sound/player/gold_pick.ogg', volume=30)
+		var
+			sound/gold_sound = new/sound('sound/player/gold_pick.ogg', volume=30)
 
 		// Bound values
 		bound_x = 10

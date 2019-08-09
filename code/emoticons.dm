@@ -1,8 +1,8 @@
-obj/emoticon
+Emoticon
+	parent_type = /obj
 	icon = 'icons/emoticons.dmi'
-	pixel_y = 20
-	pixel_x = -13
 	layer=MOB_LAYER+1
+
 	New(mob/M=null, x=0, y=0)
 		..()
 		pixel_x = x
@@ -11,11 +11,11 @@ obj/emoticon
 			M.overlays += src
 			spawn(10)
 			M.overlays -= src
-	alert
+	Alert
 		icon_state = "alert"
-	question
+	Question
 		icon_state = "question"
-	typing
+	Typing
 		icon_state = "typing"
-	angry
+	Angry
 		icon_state = "angry"

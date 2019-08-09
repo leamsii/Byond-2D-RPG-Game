@@ -31,13 +31,13 @@
 "E" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_left"},/turf/b,/area)
 "F" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
 "G" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom3"},/area)
-"H" = (/mob/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
-"I" = (/mob/NPC/farmer,/turf/grass{icon_state = "base"},/area)
-"J" = (/turf/grass{icon_state = "base"},/mob/enemies/slime/slime_acid,/turf/flowers,/area)
-"K" = (/mob/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
-"L" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
-"M" = (/mob/enemies/flower,/turf/grass{icon_state = "base"},/area)
-"N" = (/turf/grass{icon_state = "base"},/mob/enemies/slime/slime_poison,/turf/flowers,/area)
+"H" = (/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
+"I" = (/NPC/Farmer,/turf/grass{icon_state = "base"},/area)
+"J" = (/turf/grass{icon_state = "base"},/enemies/slime/slime_acid,/turf/flowers,/area)
+"K" = (/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
+"L" = (/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
+"M" = (/enemies/flower,/turf/grass{icon_state = "base"},/area)
+"N" = (/turf/grass{icon_state = "base"},/enemies/slime/slime_poison,/turf/flowers,/area)
 
 (1,1,1) = {"
 oooooooooooooooooooooooooooooooooooooooooooooooooo

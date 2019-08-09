@@ -1,51 +1,93 @@
-"a" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
-"b" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
-"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
-"d" = (/obj/tree,/turf/grass{icon_state = "base"},/area)
-"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
-"f" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
-"g" = (/mob/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
-"h" = (/turf/grass,/turf/b,/area)
-"i" = (/mob/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
-"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
-"k" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
-"l" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
-"m" = (/mob/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
-"n" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
-"o" = (/turf/grass{icon_state = "base"},/area)
-"p" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
-"q" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
-"r" = (/mob/enemies/flower,/turf/grass{icon_state = "base"},/area)
+"a" = (/turf/grass,/turf/b,/area)
+"b" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
+"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
+"d" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
+"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
+"f" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
+"g" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
+"h" = (/turf/grass,/turf/grass{icon_state = "grass_5"},/turf/b,/area)
+"i" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
+"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
+"k" = (/turf/grass,/turf/grass{icon_state = "grass_7"},/turf/b,/area)
+"l" = (/obj/tree,/turf/grass{icon_state = "base"},/area)
+"m" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass1"},/area)
+"n" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass2"},/area)
+"o" = (/turf/grass,/area)
+"p" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_left"},/area)
+"q" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_right"},/area)
+"r" = (/turf/grass{icon_state = "base"},/area)
+"s" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomleft"},/area)
+"t" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomright"},/area)
+"u" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
+"v" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
+"w" = (/obj/m_house,/turf/grass{icon_state = "base"},/area)
+"x" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass3"},/area)
+"y" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom2"},/area)
+"z" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom1"},/area)
+"A" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/fence{icon_state = "fence_left"},/turf/b,/area)
+"B" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence,/turf/b,/area)
+"C" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_mid2"},/turf/b,/area)
+"D" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_end"},/turf/b,/area)
+"E" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_left"},/turf/b,/area)
+"F" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
+"G" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom3"},/area)
+"H" = (/enemies/slime/slime_acid,/turf/grass{icon_state = "base"},/area)
+"I" = (/NPC/farmer,/turf/grass{icon_state = "base"},/area)
+"J" = (/turf/grass{icon_state = "base"},/enemies/slime/slime_acid,/turf/flowers,/area)
+"K" = (/enemies/slime/slime_fire,/turf/grass{icon_state = "base"},/area)
+"L" = (/enemies/slime/slime_poison,/turf/grass{icon_state = "base"},/area)
+"M" = (/enemies/flower,/turf/grass{icon_state = "base"},/area)
+"N" = (/turf/grass{icon_state = "base"},/enemies/slime/slime_poison,/turf/flowers,/area)
 
 (1,1,1) = {"
-hkkkkhhhhhhkkkkkkkkkkkkkkkkhhh
-adoodfhhhhadonodonodonodnodfhh
-aoooofhhhhaoooooiooooooooopfhh
-aoooofhhhhaooooooooooooooopfhh
-aoooofhhhhaooooooooooooooppfhh
-aoogofhhhhaoooiooooooooooopfhh
-aoooofhhhhaooooooooiooooooofhh
-agooofhhhhaoooooodooooooioofhh
-aoooofhhhhaoooooooooooooooofhh
-aoooofhhhhappnooooooooooooofhh
-aoooofhhhhapnpnoooooooooooofhh
-adoodfhhhhaopnooooroooooooofhh
-aoooofhhhhaoooooooooooooooofhh
-aooopfhhhhaoooooooooooooooofhh
-aoooofhhhhaodooooooodooooodfhh
-adoodfhhhhaoooooodooooooooofhh
-aoooofhhhhaooooonoooooooooofhh
-aoooofhhhhaoodoooooodooooodfhh
-aoooofhhhhheoooooooppoooooofhh
-adoodfhhhhhhcccccccepoooooofhh
-aoooofhhhhhhhhhhhhhadooooodfhh
-aoooqjkkkkkkkkkkkkklqoooooofhh
-aooooodoodooomoodoooomoooppfhh
-adoooooooooooooooomoooooopbhhh
-aoooopbccccccccccccccccccchhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-aoooonfhhhhhhhhhhhhhhhhhhhhhhh
-adooonfhhhhhhhhhhhhhhhhhhhhhhh
-hccccchhhhhhhhhhhhhhhhhhhhhhhh
+oooooooooooooooooooooooooooooooooooooooooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooo
+ooooooooabbbbbbaooooooooooooabbbbbbbbbbbbbbbbaoooo
+oooooooacrrrrrrdooooooooooooelGlrruuurrrlrrrldoooo
+oooooooerlvwrlrdooooooooooooeGGGrrrurrrrrrlrrdoooo
+oooooooemnrpqrudooooooooooooelGlrrrrrrrrrrrrldoooo
+oooooooemmrstrudooooooooooooeGGrrrrrrHrpqrrrrdoooo
+oooooooenrrrrrrdooooooooooooerrrrrrrrrrstrrrldoooo
+oooooooaflrrrrldooooooooooooerrrrHrrrrrrrrHrrdoooo
+ooooooooafrrrIrdooooooooooooerrrrrrrlylrrFrFrdoooo
+oooooooooerrrrrdooooooooooooerrrrrrrrrrrrFFrrdoooo
+oooooooooerrHrrABCCCCCCDEBDbcvrrrrrrrrrrrrFrrdoooo
+oooooooooerrrrFFrrrrrFnxnrrFrrrpqrrrrrHrrrrrrdoooo
+oooooooooelrrrrrrFFrrrJFrrrrFrrstrrrrurrrrrrrdoooo
+oooooooooerrrFyzlJrlFrlrlrFlHrrrrrrruuzurrrrrdoooo
+ooooooooohpqijjjjjjjjjjjjjjjjjjjjjjjjjjjflrrldoooo
+ooooooooohstdoooooooooooooooooooooooooooerrrrdoooo
+ooooooooohpqdoooooooooooooooooooooooooooerrrrdoooo
+ooooooooohstdoooooooooooooooooooooooooooerrrrdoooo
+ooooooooohpqdoooooooooooooooooooooooooooerrrrdoooo
+ooooooabbcstdoooooooooooooooooooooooooooepqpqdoooo
+oooooohrrrrrgbbECBDECBDbbbbECBDECBDbbbbbcststgaooo
+oooooohrrrrrvrrrrrrrrrrurrrrrrGGGGGGGGrrvrpqrugaoo
+oooooohrrrrrrrrrrrrrrrifrrrrrrrGGGGGGGrrrrstrrudoo
+oabbbbcrrrrrrrrrrrrrrrdelifrrrrrlGGGlrrrrrrrrurdoo
+ohlrrlzrrrrrrrrrrrrrrrderderrrrrrrrrrrrrrrrrrrudoo
+ohrrrrrrrrrrrrrrrrrrrrdexderrrrrrrrrrrrrrrrrrurdoo
+ohrrlrrrrrrrrrrrrrrrrrdelderrrrrrrrrrrrrrrrrrrudoo
+ohlrrrrrrrrrrrrrrrrrrrderderrrrrrrrrrrrrrrrrrrrdoo
+ohrrrrrrrrrrrrrrlrrrrrdexderrrrrrrrlrKrrrrrrrrrdoo
+ohmmrrrrrrrrrrrrrrrrrrderderrrrrrrrrrrrmrrrrrrrdoo
+ohmmrrrrLrrrrrrrrrrrrrdelderrrrrrrrrrrrrrrrrrrrdoo
+ohmmrrrrrrrrrrrrrrrrrrderderrKrrrrrrFrFrrpqrrKrdoo
+ohmmrrrrrrFFFFFrrrLrrrdexderrrrrrmrrlFrlrstrrrrdoo
+ohmmrrrrrrlifFFrrrrrrrderderrrryrrrrFrFFrrrrrrrdoo
+ohrrrrrrrzioaflFrrrrrrdelderrrrrrrrrrrrrrrrrrrrdoo
+ohrrLrrrriaooafrrrrrrrderderrrrKrpqrrrrrrKrrrrrdoo
+ohrrrrrrrgaooacrrrrrrrgcrderrrrrrstrrrrrrrrrrrrdoo
+ohrrrrrrrxgaaclrrrrrrrpqrgcrlrrrrrrrrrrrrrrrrrrdoo
+ohrrrrrLrrlgcrrrrrLrrrstrurrrrrrrrrriflrrrrrlrrdoo
+ohrrrlifFFrFrrrrrrrrijjjjjjfrrrrrrlioafrrrrrrrrdoo
+ohrrrioaflFrrrrrrrrrdooooooerrrrrriaooafrrrrrrrdoo
+ohrriaooafrrrrrrrrrrdooooooerrrrrrgaooacrrrrrrKdoo
+ohLrgaooacrrrLrrrrrldooooooerrrKrrrgaaclrKrGrrrdoo
+ohrrrgaaclrrrrrrrrrrdooooooerFrrFrrlgcrrrrrrrrGdoo
+ohFFrlgcrrrrrrrrrlrldooooooeuurFrFrrrrrrrrrGrGGdoo
+ohFFFrrrrrrrrmrrrrrrdooooooeuFFrrrKrrrrrrrMrGGGdoo
+ohlFFNrrrrrmmmmrlrrldooooooeuurrrrrrrrrrrrrGGGGdoo
+oakkkkkkkkkkkkkkkkkkaooooooakkkkkkkkkkkkkkkkkkkaoo
+oooooooooooooooooooooooooooooooooooooooooooooooooo
 "}

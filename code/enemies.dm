@@ -1,5 +1,6 @@
-mob/enemies
+enemies
 	// Define the stats for the enemies
+	parent_type = /mob
 	var
 		//States
 		const
@@ -93,7 +94,7 @@ mob/enemies
 
 			if(current_state == DYING) return
 			if(current_state != ATTACKING)
-				new/obj/emoticon/alert(src, emoticon_x, emoticon_y)
+				new/Emoticon/Alert(src, emoticon_x, emoticon_y)
 				current_state = ATTACKING
 
 			flick("[name]_hurt", src)
@@ -148,7 +149,7 @@ mob/enemies
 				if(target)
 					walk_to(src, target, -1, 0, speed)
 				else
-					new/obj/emoticon/question(src, emoticon_x, emoticon_y)
+					new/Emoticon/Question(src, emoticon_x, emoticon_y)
 					current_state = WANDERING
 
 	New()
@@ -164,7 +165,7 @@ mob/enemies
 	Bump(mob/player/P)
 		if(current_state==ATTACKING && istype(P,/mob/player) && P.is_dead == FALSE)
 			if(!P.attacked)
-				if(istype(src,/mob/enemies/slime/slime_fire))
+				if(istype(src,/enemies/slime/slime_fire))
 					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
 
 				step_away(P, src, 2,P.speed * 2)
@@ -187,7 +188,7 @@ mob/enemies
 		New()
 
 			..()
-			loot = list(new/obj/item/gold(src, 60), new/obj/item/HP_Potion(src, 10), new/obj/item/MP_Potion(src, 10))
+			loot = list(new/item/Gold(src, 60), new/item/HP_Potion(src, 10), new/item/MP_Potion(src, 10))
 
 
 			level = rand(1, 2)
@@ -233,7 +234,7 @@ mob/enemies
 
 		New()
 			..()
-			loot = list(new/obj/item/gold(src, 100), new/obj/item/HP_Potion(src, 100), new/obj/item/MP_Potion(src, 100))
+			loot = list(new/item/Gold(src, 100), new/item/HP_Potion(src, 100), new/item/MP_Potion(src, 100))
 			underlays=null
 			update_health_bar(11, 52)
 			add_star(5, 0, 55)
