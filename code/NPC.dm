@@ -3,8 +3,10 @@ mob/NPC
 
 	farmer
 		icon_state = "farmer"
-		bound_height = 1
-		bound_y = 13
+		bound_height = 20
+		bound_y = 8
+		bound_width = 15
+		bound_x = 8
 		var
 			list/spoked=list("")
 		verb/Action()

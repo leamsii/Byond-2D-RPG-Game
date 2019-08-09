@@ -35,8 +35,8 @@ mob/enemies
 		sound/hit_sound = new/sound('sound/slime/hit.wav', volume=30)
 		sound/explode_sound = new/sound('sound/slime/explode.wav', volume=30)
 
-		// Movements
-		directions = list(0, 0, 0, 0) // NORTH, SOUTH, EAST, WEST
+		effect = null
+		target = null
 
 	// Define the enemies bahaviors
 	proc
@@ -139,14 +139,12 @@ mob/enemies
 			update()
 
 		get_target(_view)
-			var/target=null
 			for(var/mob/player/P in oview(_view))
 				target=P
-			return target
 
 		attack()
 			if(current_state == ATTACKING)
-				var/target=get_target(3)
+				get_target(3)
 				if(target)
 					walk_to(src, target, -1, 0, speed)
 				else
@@ -164,7 +162,7 @@ mob/enemies
 		update()
 
 	Bump(mob/player/P)
-		if(current_state==ATTACKING && istype(P,/mob/player))
+		if(current_state==ATTACKING && istype(P,/mob/player) && P.is_dead == FALSE)
 			if(!P.attacked)
 				if(istype(src,/mob/enemies/slime/slime_fire))
 					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
@@ -172,28 +170,23 @@ mob/enemies
 				step_away(P, src, 2,P.speed * 2)
 				P.take_damage(src)
 
-				// Effects
-				if(istype(src,/mob/enemies/slime/slime_poison)) // If hit by purple slime
-					if(prob(20) && !P.is_poisoned) // 20% Chance of getting poisoned
-						new/obj/status/poison(P)
-						P.is_poisoned = TRUE
-
-				if(istype(src,/mob/enemies/slime/slime_fire)) // If hit by fire slime
-					if(prob(20) && !P.is_poisoned) // 20% Chance of getting poisoned
-						new/obj/status/burning(P)
-						P.is_poisoned = TRUE
+				if(effect && P.is_poisoned == FALSE)
+					if(prob(20))
+						P.effect(effect)
 
 	slime
 		icon = 'icons/slime_sprites.dmi'
 		icon_state = "slime1"
 		bound_width = 10
 		bound_x = 5
+		bound_y = 7
+		bound_height = 5
 		emoticon_x = -20
 		emoticon_y = 15
 		name = "slime"
 		New()
 			..()
-			loot = list(new/obj/item/gold(src), new/obj/item/HP_Potion)
+			loot = list(new/obj/item/gold(src, 60), new/obj/item/HP_Potion(src, 10))
 			level = rand(1, 2)
 			dying_animation = icon_state + "_die"
 			update_health_bar(-6, 10)
@@ -203,6 +196,7 @@ mob/enemies
 			icon_state = "slime_fire"
 			die_animation_delay = 14
 			level = 3
+			effect = "burn"
 			New()
 				..()
 				add_star(3, -10, 12) // Tough enemy
@@ -210,6 +204,8 @@ mob/enemies
 		slime_poison
 			icon_state = "slime_poison"
 			die_animation_delay = 16
+			effect = "poison"
+
 		slime_acid
 			icon_state = "slime_acid"
 			die_animation_delay = 8
@@ -234,10 +230,10 @@ mob/enemies
 
 		New()
 			..()
-			loot = list(new/obj/item/gold(src), new/obj/item/HP_Potion)
+			loot = list(new/obj/item/gold(src, 100), new/obj/item/HP_Potion(src, 100))
 			underlays=null
 			update_health_bar(11, 52)
-			add_star(5, 0, 55) // Boss
+			add_star(5, 0, 55)
 
 obj/star
 	icon = 'icons/health_bars.dmi'

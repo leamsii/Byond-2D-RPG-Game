@@ -11,7 +11,7 @@ world
 // Make objects move 8 pixels per tick when walking
 
 mob
-	step_size = 2
+	step_size = 3
 
 obj
 	step_size = 4
@@ -27,5 +27,5 @@ client.New()
 
 
 mob/Login()
-	Move(locate(4, 3, 1))
-	dir=NORTH
+	Move(locate(12, 44, 1))
+	dir=SOUTH

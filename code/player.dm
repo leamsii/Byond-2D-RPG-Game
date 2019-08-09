@@ -1,6 +1,9 @@
 mob/player
 	icon = 'icons/player.dmi'
 	icon_state = "player"
+	Move()
+		if(!is_dead)
+			return ..()
 	New()
 		..()
 		underlays += new/obj/shadow
@@ -26,12 +29,24 @@ mob/player
 		// Sounds
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
 		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
+		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
 
 		is_poisoned = FALSE
 		poison_effect = null
+		is_dead = FALSE
 
 	proc
+		effect(effect)
+			if(effect == "burn")
+				new/obj/status/burning(src)
+			if(effect == "poison")
+				new/obj/status/poison(src)
+
+			is_poisoned = TRUE
+
 		update_health_bar()
+			if(health < 0) health = 0
+
 			var/max = max(max_health,0.000001) // The larger value, or denominator
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((10-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
@@ -76,18 +91,30 @@ mob/player
 
 		death_check()
 			if(health <= 0)
-				loc=locate(4, 4, 1)
-
-				// Remove effects
-				is_poisoned = FALSE
-				overlays = null
-				icon = initial(icon)
-
-				// Continue
-				health = max_health
-				update_health_bar()
-				flick(new/icon('icons/player_effects.dmi', "dead"), src)
+				is_dead = TRUE
 				Text(src, "YOU DIED ", "red")
+
+				underlays = null
+				overlays = null
+				is_poisoned = FALSE
+
+				icon = new/icon('icons/player_effects.dmi', "dead")
+
+				for(var/mob/enemies/M in view())
+					if(M.target == src)
+						M.target = null
+						M.current_state = M.WANDERING
+
+				animate(src, alpha = 0, time = 40)
+				spawn(40)
+					loc=locate(12, 44, 1)
+					dir = SOUTH
+					icon = initial(icon)
+					alpha = 255
+					health = max_health
+					update_health_bar()
+					is_dead = FALSE
+
 
 		take_damage(mob/enemies/M)
 			attacked=TRUE
@@ -97,9 +124,9 @@ mob/player
 
 			health -= damage
 			src << hit_sound
-			update_health_bar()
 
 			death_check()
+			update_health_bar()
 
 			spawn(8)
 			attacked=FALSE
@@ -141,6 +168,7 @@ mob/player
 
 		Bow()
 			if(attacking) return
+			src << bow_shot
 			attacking=TRUE
 			new/obj/projectile/arrow(usr)
 			spawn(5)

@@ -9,7 +9,15 @@ turf
 		icon_state = "flowers"
 
 	b
+		icon_state = "b"
 		density=1
+		New()
+			..()
+			icon_state = ""
+	fence
+		icon = 'icons/large_turfs.dmi'
+		icon_state = "fence_mid"
+
 obj/sign
 	icon = 'icons/turfs.dmi'
 	icon_state = "sign"
@@ -18,7 +26,7 @@ obj/sign
 	bound_height = 10
 	bound_x = 10
 	bound_width = 10
-obj/
+obj/m_tree
 	icon = 'icons/turfs.dmi'
 	bottom_right
 		icon_state = "tree_bottom_right"
@@ -64,8 +72,48 @@ obj/tree
 	New()
 		..()
 		//new/obj/bottom_left(loc)
-		new/obj/bottom_right(loc)
-		new/obj/mid_left(loc)
-		new/obj/mid_right(loc)
-		new/obj/top_left(loc)
-		new/obj/top_right(loc)
+		new/obj/m_tree/bottom_right(loc)
+		new/obj/m_tree/mid_left(loc)
+		new/obj/m_tree/mid_right(loc)
+		new/obj/m_tree/top_left(loc)
+		new/obj/m_tree/top_right(loc)
+
+
+obj/m_house
+	icon = 'icons/house.dmi'
+	icon_state = "bottom_left"
+	density = 1
+	pixel_x = -10
+	bound_x = 0
+	bound_width = 10
+	bound_y = 10
+	bound_height = 15
+	New()
+		..()
+		//new/obj/bottom_left(loc)
+		new/obj/house/bottom_right(loc)
+		new/obj/house/top_left(loc)
+		new/obj/house/top_right(loc)
+
+obj/
+	icon = 'icons/house.dmi'
+	house
+		bottom_right
+			icon_state = "bottom_right"
+			density = 1
+			pixel_x = 10
+			bound_x = 10
+			bound_width = 10
+			bound_y = 10
+			bound_height = 15
+
+		top_right
+			icon_state = "top_right"
+			pixel_x = 11
+			pixel_y = 20
+			layer=TURF_LAYER+10
+		top_left
+			icon_state = "top_left"
+			pixel_x = -11
+			pixel_y = 20
+			layer=TURF_LAYER+10
