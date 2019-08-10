@@ -1,14 +1,27 @@
-enemies
-	// Define the stats for the enemies
+Enemies
+	New()
+		..()
+		var/obj/shadow/S = new()
+		S.pixel_y = -4
+		S.pixel_x = -2
+		underlays += S
+		Set_Stats()
+
+		current_state[WANDERING] = TRUE
+		Wander()
+
+	// Define the stats for the Enemies
 	parent_type = /mob
 	var
 		//States
 		const
-			WANDERING = 0
-			ATTACKING = 1
-			FOLLOWING = 2
-			DYING = 3
-			IDLE = 4
+			WANDERING = 1
+			ATTACKING = 2
+			FOLLOWING = 3
+			DYING = 4
+			IDLE = 5
+
+		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE)
 
 		// Status
 		health = 40
@@ -18,12 +31,12 @@ enemies
 		speed = 1
 		exp = 20
 		level = 1
+		difficulty = 1
 		obj/health_bar = null
 
 		// Animations
 		dying_animation = null
-		die_animation_delay = 0
-		current_state = 0
+		dying_animation_delay = 0
 
 		// Loot
 		loot = null
@@ -36,41 +49,41 @@ enemies
 		sound/hit_sound = new/sound('sound/slime/hit.wav', volume=30)
 		sound/explode_sound = new/sound('sound/slime/explode.wav', volume=30)
 
-		effect = null
-		target = null
+		// Other
+		status_effect = null
+		current_target = null
 
-	// Define the enemies bahaviors
+	// Define the Enemies bahaviors
 	proc
-		calc_stats()
-			max_power = rand(3, 10) + (level * 3)
-			max_health = rand(20, 40) + (level * 20)
-
-			health = max_health
-			power = max_power
-
+		Set_Stats()
+			power = max_power = rand(3, 10) + (level * 3)
+			health = max_health = rand(20, 40) + (level * 20)
 			exp = round((power + health) / 2)
 
-		add_star(difficulty, pixel_x, pixel_y)
+		Add_Stars(difficulty, pixel_x, pixel_y)
 			for(var/i = 0;i < difficulty; i++)
 				var/obj/star/S = new()
 				S.pixel_y = pixel_y
 				S.pixel_x = pixel_x + (i * 6)
 				overlays+=S
-		drop_item()
-			// Drop a random item from the loot list
+
+		Drop_Item()
+			// Drop a random Item from the loot list
 			for(var/O in loot)
 				if(prob(O:drop_rate))
 					O:step_x = step_x
 					O:step_y = step_y
 					O:loc=loc
 
-		wander() // Wanders around aimlessly
-			if(current_state == WANDERING)
-				walk_rand(src, 0, speed)
-				spawn(rand(1, 10))
-				walk(src, null)
+		Wander() // Wanders around aimlessly
+			if(!current_state[WANDERING]) return
+			walk_rand(src, 0, speed)
+			spawn(rand(1, 10))
+			walk(src, null)
 
-		update_health_bar(pixel_x=0, pixel_y=0) // This will add the health bars to the enemies when they spawn
+			spawn(20) Wander()
+
+		Update_Health(pixel_x=0, pixel_y=0) // This will add the health bars to the Enemies when they spawn
 			if(!health_bar)
 				//Add health bar
 				var/obj/O = new()
@@ -90,138 +103,126 @@ enemies
 			health_bar.icon_state = "[state]"
 			overlays += health_bar
 
-		take_damage(mob/player/P)
+		Take_Damage(Player/P)
+			if(current_state[DYING]) return
 
-			if(current_state == DYING) return
-			if(current_state != ATTACKING)
-				new/Emoticon/Alert(src, emoticon_x, emoticon_y)
-				current_state = ATTACKING
+			if(!current_state[ATTACKING])
+				new/Emoticon/Alert(src, emoticon_x, emoticon_y) // Alert emoticon
+				current_state[ATTACKING] = TRUE
+				current_state[WANDERING] = FALSE
+				current_target = P
+				Follow_Target()
 
 			flick("[name]_hurt", src)
 			P << hit_sound
 
-			knock_back(P)
+			step_away(src, P, 10, speed * 2) // Knock Back
+
 			var/damage = rand(P.power-5, P.power+2)
 			damage > P.max_power ? s_damage(src,damage, "red") : s_damage(src,damage, "yellow")
 			health -= damage
-			update_health_bar()
+			Update_Health()
 
 			if(health <= 0)
-				die(P)
+				Death(P)
 
-		die(mob/player/P)
+		Death(Player/P) // Handles the death of enemies
 			overlays = null
 			walk(src, null)
-			current_state = DYING
+
+			current_state[DYING] = TRUE
+			current_state[WANDERING] = FALSE
+			current_state[ATTACKING] = FALSE
+
 			density=0
 			flick(dying_animation, src)
+
 			P << explode_sound
-			drop_item()
-			P.give_exp(exp)
-			if(name == "flower") animate(src, alpha=0,time = die_animation_delay)
-			sleep(die_animation_delay)
-			loc=locate(1, 1, -1) // Vanish it
-			del src
 
+			Drop_Item()
+			P.Give_EXP(exp)
 
-		knock_back(mob/player/P)
-			step_away(src, P, 10, speed * 2)
+			if(name == "flower") animate(src, alpha=0,time = dying_animation_delay)
 
-		update()
-			if(current_state == WANDERING)
-				wander()
-			if(current_state == IDLE)
-				walk(src, null)
+			// Remove it from map and delete
+			sleep(dying_animation_delay)
+			loc=locate(1, 1, -1)
+			spawn(100) del src
 
-			if(current_state == ATTACKING)
-				attack()
+		Follow_Target()
+			if(!current_state[ATTACKING]) return
+			if(current_target && get_dist(src, current_target) <= 4)
+				walk_to(src, current_target, -1, 0, speed)
+			else
+				new/Emoticon/Question(src, emoticon_x, emoticon_y)
+				current_state[WANDERING] = TRUE
+				current_state[ATTACKING] = FALSE
+				current_target = null
+				Wander()
 
-			spawn(20)
-			update()
+			spawn(30) Follow_Target()
 
-		get_target(_view)
-			for(var/mob/player/P in oview(_view))
-				target=P
+	Bump(Player/P)
+		if(current_state[ATTACKING] && istype(P,/Player))
+			if(!P.current_state[P.ATTACKED] && !P.current_state[P.DEAD] )
 
-		attack()
-			if(current_state == ATTACKING)
-				get_target(3)
-				if(target)
-					walk_to(src, target, -1, 0, speed)
-				else
-					new/Emoticon/Question(src, emoticon_x, emoticon_y)
-					current_state = WANDERING
-
-	New()
-		..() // Call parent New
-		var/obj/shadow/S = new()
-		S.pixel_y = -4
-		S.pixel_x = -2
-		underlays += S
-		current_state = WANDERING
-		calc_stats()
-		update()
-
-	Bump(mob/player/P)
-		if(current_state==ATTACKING && istype(P,/mob/player) && P.is_dead == FALSE)
-			if(!P.attacked)
-				if(istype(src,/enemies/slime/slime_fire))
+				// If hit by fire slime, play burnt icon effect
+				if(istype(src,/Enemies/Slime/SlimeFire))
 					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
 
-				step_away(P, src, 2,P.speed * 2)
-				P.take_damage(src)
+				step_away(P, src, 2,P.speed * 2) // Knock back for player
+				P.Take_Damage(src)
 
-				if(effect && P.is_poisoned == FALSE)
+				if(status_effect && P.status_effect == null) // Burnt and Poison effects
 					if(prob(20))
-						P.effect(effect)
+						P.Apply_Effect(status_effect)
 
-	slime
+	Slime
 		icon = 'icons/slime_sprites.dmi'
 		icon_state = "slime1"
+		name = "slime"
+
+		// Bounds
 		bound_width = 10
 		bound_x = 5
 		bound_y = 5
 		bound_height = 10
 		emoticon_x = -20
 		emoticon_y = 15
-		name = "slime"
+
 		New()
 
 			..()
-			loot = list(new/item/Gold(src, 60), new/item/HP_Potion(src, 10), new/item/MP_Potion(src, 10))
-
+			loot = list(new/Item/Gold(src, 60), new/Item/HP_Potion(src, 10), new/Item/MP_Potion(src, 10))
 
 			level = rand(1, 2)
 			dying_animation = icon_state + "_die"
-			update_health_bar(-6, 10)
-			add_star(1, -10, 12)
+			Update_Health(-6, 10)
+			Add_Stars(difficulty, -10, 12)
 
-		slime_fire
+		SlimeFire
 			icon_state = "slime_fire"
-			die_animation_delay = 14
+			dying_animation_delay = 14
 			level = 3
-			effect = "burn"
-			New()
-				..()
-				add_star(3, -10, 12) // Tough enemy
-
-		slime_poison
+			difficulty = 2
+			status_effect = "burn"
+		SlimePoison
 			icon_state = "slime_poison"
-			die_animation_delay = 16
-			effect = "poison"
-
-		slime_acid
+			dying_animation_delay = 16
+			status_effect = "poison"
+		SlimeAcid
 			icon_state = "slime_acid"
-			die_animation_delay = 8
+			dying_animation_delay = 8
 
-	flower
+	Flower
 		icon = 'icons/flower_enemy.dmi'
 		icon_state = "flower"
 		name = "flower"
 		emoticon_x = -10
 		emoticon_y = 55
-		die_animation_delay = 19
+		dying_animation_delay = 19
 		level = 8
+		difficulty = 5
 		dying_animation = "flower_dead"
 		hit_sound = new/sound('sound/flower/hit.ogg',volume=30)
 		layer=MOB_LAYER+1
@@ -234,10 +235,10 @@ enemies
 
 		New()
 			..()
-			loot = list(new/item/Gold(src, 100), new/item/HP_Potion(src, 100), new/item/MP_Potion(src, 100))
+			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 			underlays=null
-			update_health_bar(11, 52)
-			add_star(5, 0, 55)
+			Update_Health(11, 52)
+			Add_Stars(5, 0, 55)
 
 obj/star
 	icon = 'icons/health_bars.dmi'

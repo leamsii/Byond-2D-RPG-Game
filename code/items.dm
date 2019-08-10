@@ -1,15 +1,15 @@
-item
+Item
 	icon = 'icons/Jesse.dmi'
 	parent_type = /obj
 	var
 		drop_rate = 100
 		gold_amount = 0
 
-	New(enemies/owner, drop_rate)
+	New(Enemies/owner, drop_rate)
 		..()
 		src.drop_rate = drop_rate
 
-		if(istype(src,/item/Gold))
+		if(istype(src,/Item/Gold))
 			gold_amount = round(owner.exp / 3)
 
 			if(gold_amount >= 20)
@@ -20,7 +20,7 @@ item
 				icon_state = "small"
 
 	Gold
-		icon = 'icons/items.dmi'
+		icon = 'icons/Items.dmi'
 		layer=MOB_LAYER-1
 		icon_state = "sack"
 		var
@@ -32,8 +32,8 @@ item
 		bound_y = 10
 		bound_height = 2
 
-		Cross(mob/player/P)
-			if(istype(P,/mob/player))
+		Cross(Player/P)
+			if(istype(P,/Player))
 				loc = P
 				P << gold_sound
 				Text(usr, "+[gold_amount] gold ", "yellow")
@@ -48,11 +48,11 @@ item
 		bound_y = 7
 		bound_height = 3
 
-		Cross(mob/player/P)
-			if(istype(P,/mob/player))
+		Cross(Player/P)
+			if(istype(P,/Player))
 				loc = P
 				P.health = P.max_health
-				P.update_bars()
+				P.Update_Bar(list("health"))
 				Text(usr, "+Health Potion ", "white")
 	MP_Potion
 		icon_state = "MP_pot"
@@ -64,11 +64,11 @@ item
 		bound_y = 7
 		bound_height = 3
 
-		Cross(mob/player/P)
-			if(istype(P,/mob/player))
+		Cross(Player/P)
+			if(istype(P,/Player))
 				loc = P
 				P.mana = P.max_mana
-				P.update_bars()
+				P.Update_Bar(list("mana"))
 				Text(usr, "+MP Potion ", "white")
 	Chest
 		icon_state = "chest"

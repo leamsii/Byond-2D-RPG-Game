@@ -9,7 +9,6 @@ world
 
 
 // Make objects move 8 pixels per tick when walking
-
 mob
 	step_size = 2
 
@@ -17,16 +16,21 @@ obj
 	step_size = 4
 
 client.New()
-	src << new/sound('sound/player/elina.ogg')
-	mob = new/mob/player
-	perspective = EDGE_PERSPECTIVE
-	screen += new/obj/HUD/health_bar()
-	screen += new/obj/HUD/mana_bar()
-	screen += new/obj/HUD/exp_bar()
+	mob = new/Player
 	view = "17x11"
+	perspective = EDGE_PERSPECTIVE
+	//src << new/sound('sound/player/elina.ogg')
 	world << "[src] has joined the game!"
 
 
-mob/Login()
-	Move(locate(12, 44, 1))
+Player/Login()
+	..()
+	health_bar = new/obj/HUD/health_bar()
+	mana_bar = new/obj/HUD/mana_bar()
+	exp_bar = new/obj/HUD/exp_bar()
+	client.screen += health_bar
+	client.screen += mana_bar
+	client.screen += exp_bar
+
+	loc=locate(12, 44, 1)
 	dir=SOUTH

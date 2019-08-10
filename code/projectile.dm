@@ -1,4 +1,4 @@
-projectile
+Projectile
 	parent_type = /obj
 	icon = 'icons/Jesse.dmi'
 	density=1
@@ -10,7 +10,7 @@ projectile
 
 		New(mob/M)
 			..()
-			if(istype(M,/mob/player))
+			if(istype(M,/Player))
 				owner = M
 				dir=M.dir
 				loc=M.loc
@@ -48,10 +48,10 @@ projectile
 			icon_state = "arrowr_flying"
 
 		Bump(mob/M)
-			if(istype(M,/enemies))
-				M:take_damage(owner)
+			if(istype(M,/Enemies))
+				M:Take_Damage(owner)
 				del src
-			else if(!istype(M,/item) && !istype(M,/mob/player))
+			else if(!istype(M,/Item) && !istype(M,/Player))
 				icon_state = "arrowr_stuck"
 				walk(src,null)
 				density=0
