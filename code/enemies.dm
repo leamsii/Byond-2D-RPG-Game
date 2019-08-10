@@ -20,6 +20,7 @@ Enemies
 			FOLLOWING = 3
 			DYING = 4
 			IDLE = 5
+			POSITIONING = 6
 
 			// Type of enemies
 			MEELEE = 0
@@ -121,8 +122,6 @@ Enemies
 					P.target_list.Add(src)
 
 				Follow_Target()
-				if(enemy_type == ARCHER)
-					spawn(3) Shoot()
 
 			flick("[name]_hurt", src)
 			P << hit_sound
@@ -162,8 +161,8 @@ Enemies
 
 		Follow_Target()
 			if(!current_state[ATTACKING]) return
-			if(current_target && get_dist(src, current_target) <= 4)
-				walk_to(src, current_target, -1, 0, speed)
+			if(current_target && get_dist(src, current_target) <= 6)
+				Keep_Distance()
 			else
 				new/Emoticon/Question(src, emoticon_x, emoticon_y)
 				current_state[WANDERING] = TRUE
@@ -171,14 +170,23 @@ Enemies
 				current_target = null
 				Wander()
 
-			spawn(30) Follow_Target()
+			spawn(5) Follow_Target()
+
+		Keep_Distance()
+			if(enemy_type == ARCHER)
+				if(get_dist(src, current_target) < 2)
+					walk_away(src, current_target, 3,0, speed)
+				else
+					walk_to(src, current_target, 2, 0, speed)
+					Shoot()
+			else
+				walk_to(src, current_target, -1, 0, speed)
+
 		Shoot()
-			if(!current_state[ATTACKING] || !current_target) return
 			new/Projectile/Arrow(src)
-			spawn(4) Shoot()
 
 	Bump(Player/P)
-		//if(enemy_type == ARCHER) return
+		if(enemy_type == ARCHER) return
 		if(current_state[ATTACKING] && istype(P,/Player))
 			if(!P.current_state[P.ATTACKED] && !P.current_state[P.DEAD] )
 
@@ -260,10 +268,12 @@ Enemies
 		icon = 'icons/skeleton.dmi'
 		icon_state = "skeleton"
 		level = 5
+		speed = 2
 		difficulty = 3
 		emoticon_x = -15
 		emoticon_y = 20
 		enemy_type = ARCHER
+
 		New()
 			..()
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))

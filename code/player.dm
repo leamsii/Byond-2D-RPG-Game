@@ -9,7 +9,8 @@ Player
 	New()
 		..()
 		// HUD Bars
-		underlays += new/obj/shadow
+		shadow_underlay = new/obj/shadow
+		underlays += shadow_underlay
 
 	// Variables
 	var
@@ -57,6 +58,7 @@ Player
 			health_bar = null
 			exp_bar = null
 			mana_bar = null
+			shadow_underlay
 
 	proc
 		Update_State(state, delay)
@@ -227,17 +229,21 @@ Player
 
 			if(isturf(nextloc))
 				if(nextloc.density==0)
+					// Save the shadow
+					underlays -= shadow_underlay
+
 					Update_State(TELEPORTING, 5)
 
-					mana -= 10
+					//mana -= 10
 					Update_Bar(list("mana"))
 					src << teleport_sound
 
 					flick(new/icon('icons/Jesse.dmi', "teleport_out"), src)
-					sleep(1)
+					sleep(1.4)
 					loc=nextloc
-					sleep(1)
 					flick(new/icon('icons/Jesse.dmi', "teleport_in"), src)
+
+					underlays += shadow_underlay
 
 obj
 	shadow
