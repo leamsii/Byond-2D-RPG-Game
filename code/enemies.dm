@@ -21,6 +21,10 @@ Enemies
 			DYING = 4
 			IDLE = 5
 
+			// Type of enemies
+			MEELEE = 0
+			ARCHER = 1
+
 		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE)
 
 		// Status
@@ -52,6 +56,7 @@ Enemies
 		// Other
 		status_effect = null
 		current_target = null
+		enemy_type = MEELEE
 
 	// Define the Enemies bahaviors
 	proc
@@ -104,14 +109,20 @@ Enemies
 			overlays += health_bar
 
 		Take_Damage(Player/P)
-			if(current_state[DYING]) return
+			if(current_state[DYING] || !istype(P,/Player)) return
 
 			if(!current_state[ATTACKING])
 				new/Emoticon/Alert(src, emoticon_x, emoticon_y) // Alert emoticon
 				current_state[ATTACKING] = TRUE
 				current_state[WANDERING] = FALSE
 				current_target = P
+
+				if(!P.target_list.Find(src))
+					P.target_list.Add(src)
+
 				Follow_Target()
+				if(enemy_type == ARCHER)
+					spawn(3) Shoot()
 
 			flick("[name]_hurt", src)
 			P << hit_sound
@@ -161,8 +172,13 @@ Enemies
 				Wander()
 
 			spawn(30) Follow_Target()
+		Shoot()
+			if(!current_state[ATTACKING] || !current_target) return
+			new/Projectile/Arrow(src)
+			spawn(4) Shoot()
 
 	Bump(Player/P)
+		//if(enemy_type == ARCHER) return
 		if(current_state[ATTACKING] && istype(P,/Player))
 			if(!P.current_state[P.ATTACKED] && !P.current_state[P.DEAD] )
 
@@ -239,6 +255,20 @@ Enemies
 			underlays=null
 			Update_Health(11, 52)
 			Add_Stars(5, 0, 55)
+
+	Skeleton
+		icon = 'icons/skeleton.dmi'
+		icon_state = "skeleton"
+		level = 5
+		difficulty = 3
+		emoticon_x = -15
+		emoticon_y = 20
+		enemy_type = ARCHER
+		New()
+			..()
+			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
+			Update_Health(-3, 16)
+			Add_Stars(difficulty, -8, 16)
 
 obj/star
 	icon = 'icons/health_bars.dmi'

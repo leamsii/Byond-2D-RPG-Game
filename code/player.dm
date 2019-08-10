@@ -50,6 +50,7 @@ Player
 			TELEPORTING = 4
 
 		list/current_state = list(FALSE, FALSE, FALSE, FALSE) // 5 States
+		list/target_list = list()
 
 		//Bars
 		obj/
@@ -140,12 +141,14 @@ Player
 
 				icon = new/icon('icons/player_effects.dmi', "dead")
 
-				for(var/Enemies/M in view())
-					if(M.current_target == src)
+				for(var/Enemies/M in target_list)
+					if(M)
 						M.current_target = null
 						M.current_state[M.WANDERING] = TRUE
 						M.current_state[M.ATTACKING] = FALSE
 						M.Wander()
+
+				target_list = list()
 
 				animate(src, alpha = 0, time = 40)
 				spawn(40)
