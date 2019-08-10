@@ -15,7 +15,7 @@
 "o" = (/turf/grass,/area)
 "p" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_left"},/area)
 "q" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_right"},/area)
-"r" = (/turf/grass{icon_state = "base"},/area)
+"r" = (/Enemies/Skeleton,/turf/grass{icon_state = "base"},/area)
 "s" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomleft"},/area)
 "t" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomright"},/area)
 "u" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
@@ -33,62 +33,62 @@
 "G" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom3"},/area)
 "H" = (/Enemies/Slime/SlimeAcid,/turf/grass{icon_state = "base"},/area)
 "I" = (/NPC/Farmer,/turf/grass{icon_state = "base"},/area)
-"J" = (/Enemies/Slime/SlimeTest,/turf/grass{icon_state = "base"},/area)
+"J" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimeAcid,/turf/flowers,/area)
 "K" = (/Enemies/Slime/SlimeFire,/turf/grass{icon_state = "base"},/area)
 "L" = (/Enemies/Slime/SlimePoison,/turf/grass{icon_state = "base"},/area)
 "M" = (/Enemies/Flower,/turf/grass{icon_state = "base"},/area)
-"N" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimeAcid,/turf/flowers,/area)
-"O" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
+"N" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
+"O" = (/turf/grass{icon_state = "base"},/area)
 
 (1,1,1) = {"
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 ooooooooabbbbbbaooooooooooooabbbbbbbbbbbbbbbbaoooo
-oooooooacrrrrrrdooooooooooooelGlrruuurrrlrrrldoooo
-oooooooerlvwrlrdooooooooooooeGGGrrrurrrrrrlrrdoooo
-oooooooemnrpqrudooooooooooooelGlrrrrrrrrrrrrldoooo
-oooooooemmrstrudooooooooooooeGGrrrrrrHrpqrrrrdoooo
-oooooooenrrrrrrdooooooooooooerrrrrrrrrrstrrrldoooo
-oooooooaflrrrrldooooooooooooerrrrHrrrrrrrrHrrdoooo
-ooooooooafrrrIrdooooooooooooerrrrrrrlylrrFrFrdoooo
-oooooooooerrrrrdooooooooooooerrrrrrrrrrrrFFrrdoooo
-oooooooooerrHrrABCCCCCCDEBDbcvrrrrrrrrrrrrFrrdoooo
-oooooooooerrJrFFrrrrrFnxnrrFrrrpqrrrrrHrrrrrrdoooo
-oooooooooelrrrrrrFFrrrNFrrrrFrrstrrrrurrrrrrrdoooo
-oooooooooerrrFyzlNrlFrlrlrFlHrrrrrrruuzurrrrrdoooo
-ooooooooohpqijjjjjjjjjjjjjjjjjjjjjjjjjjjflrrldoooo
-ooooooooohstdoooooooooooooooooooooooooooerrrrdoooo
-ooooooooohpqdoooooooooooooooooooooooooooerrrrdoooo
-ooooooooohstdoooooooooooooooooooooooooooerrrrdoooo
-ooooooooohpqdoooooooooooooooooooooooooooerrrrdoooo
+oooooooacOOOOOOdooooooooooooelGlOOuuuOOOlOOOldoooo
+oooooooeOlvwOlOdooooooooooooeGGGOOOuOOOOOOlOOdoooo
+oooooooemnOpqOudooooooooooooelGlOOOOOOOOOOOOldoooo
+oooooooemmOstOudooooooooooooeGGOOOOOOHOpqOOOOdoooo
+oooooooenOOOOOOdooooooooooooeOOOOOOOOOOstOOOldoooo
+oooooooaflOOOOldooooooooooooeOOOOHOOOOOOOOHOOdoooo
+ooooooooafOOOIOdooooooooooooeOOOOOOOlylOOFOFOdoooo
+oooooooooeOOOOOdooooooooooooeOOOOOOOOOOOOFFOOdoooo
+oooooooooeOOHOOABCCCCCCDEBDbcvOOOOOOOOOOOOFOOdoooo
+oooooooooeOOOOFFOOOOOFnxnOOFOOOpqOOOOOHOOOOOOdoooo
+oooooooooelOOOOOOFFOOOJFOOOOFOOstOOOOuOOOOOOOdoooo
+oooooooooeOOOFyzlJOlFOlOlOFlHOOOOOOOuuzuOOOOOdoooo
+ooooooooohpqijjjjjjjjjjjjjjjjjjjjjjjjjjjflOOldoooo
+ooooooooohstdoooooooooooooooooooooooooooeOOOOdoooo
+ooooooooohpqdoooooooooooooooooooooooooooeOOOOdoooo
+ooooooooohstdoooooooooooooooooooooooooooeOOOOdoooo
+ooooooooohpqdoooooooooooooooooooooooooooeOOOOdoooo
 ooooooabbcstdoooooooooooooooooooooooooooepqpqdoooo
-oooooohrrrrrgbbECBDECBDbbbbECBDECBDbbbbbcststgaooo
-oooooohrrrrrvrrrrrrrrrrurrrrrrGGGGGGGGrrvrpqrugaoo
-oooooohrrrrrrrrrrrrrrrifrrrrrrrGGGGGGGrrrrstrrudoo
-oabbbbcrrrrrrrrrrrrrrrdelifrrrrrlGGGlrrrrrrrrurdoo
-ohlrrlzrrrrrrrrrrrrrrrderderrrrrrrrrrrrrrrrrrrudoo
-ohrrrrrrrrrrrrrrrrrrrrdexderrrrrrrrrrrrrrrrrrurdoo
-ohrrlrrrrrrrrrrrrrrrrrdelderrrrrrrrrrrrrrrrrrrudoo
-ohlrrrrrrrrrrrrrrrrrrrderderrrrrrrrrrrrrrrrrrrrdoo
-ohrrrrrrrrrrrrrrlrrrrrdexderrrrrrrrlrKrrrrrrrrrdoo
-ohmmrrrrrrrrrrrrrrrrrrderderrrrrrrrrrrrmrrrrrrrdoo
-ohmmrrrrLrrrrrrrrrrrrrdelderrrrrrrrrrrrrrrrrrrrdoo
-ohmmrrrrrrrrrrrrrrrrrrderderrKrrrrrrFrFrrpqrrKrdoo
-ohmmrrrrrrFFFFFrrrLrrrdexderrrrrrmrrlFrlrstrrrrdoo
-ohmmrrrrrrlifFFrrrrrrrderderrrryrrrrFrFFrrrrrrrdoo
-ohrrrrrrrzioaflFrrrrrrdelderrrrrrrrrrrrrrrrrrrrdoo
-ohrrLrrrriaooafrrrrrrrderderrrrKrpqrrrrrrKrrrrrdoo
-ohrrrrrrrgaooacrrrrrrrgcrderrrrrrstrrrrrrrrrrrrdoo
-ohrrrrrrrxgaaclrrrrrrrpqrgcrlrrrrrrrrrrrrrrrrrrdoo
-ohrrrrrLrrlgcrrrrrLrrrstrurrrrrrrrrriflrrrrrlrrdoo
-ohrrrlifFFrFrrrrrrrrijjjjjjfrrrrrrlioafrrrrrrrrdoo
-ohrrrioaflFrrrrrrrrrdooooooerrrrrriaooafrrrrrrrdoo
-ohrriaooafrrrrrrrrrrdooooooerrrrrrgaooacrrrrrrKdoo
-ohLrgaooacrrrLrrrrrldooooooerrrKrrrgaaclrKrGrrrdoo
-ohrrrgaaclrrrrrrrrrrdooooooerFrrFrrlgcrrrrrrrrGdoo
-ohFFrlgcrrrrrrrrrlrldooooooeuurFrFrrrrrrrrrGrGGdoo
-ohFFFrrrrrrrrmrrrrrrdooooooeuFFrrrKrrrrrrrMrGGGdoo
-ohlFFOrrrrrmmmmrlrrldooooooeuurrrrrrrrrrrrrGGGGdoo
+oooooohOOOOOgbbECBDECBDbbbbECBDECBDbbbbbcststgaooo
+oooooohOOOOOvOOOOOOOOOOuOOOOOOGGGGGGGGOOvOpqOugaoo
+oooooohOOOOOOOOOOOOOOOifOOOOOOOGGGGGGGOOOOstOOudoo
+oabbbbcOOOOOOOOOOOOOOOdelifOOOOOlGGGlOOOOOOOOuOdoo
+ohlOOlzOOOOOOOOOOOOOOOdeOdeOOOOOOOOOOOOOOOOOOOudoo
+ohOOOOOOOMOOOOOOMOOOOOdexdeOOOMOOOOOOOOMOOOOOuOdoo
+ohOOlOOOOOOOOOOOOOOOOOdeldeOOOOOOOOOOOOOOOOOOOudoo
+ohlOOOOOOOOOOOOOOOOOOOdeOdeOOOrOOOOOOOOOOOrOOOOdoo
+ohOOOOOOOOOOrOOOlOOOOOdexdeOOOOOOOOlOKOOOOOOOOOdoo
+ohmmOrOOOOOOOrOOOOOOOOdeOdeOOOOOOOOOOOOmOOOOOOOdoo
+ohmmOOOOLOOOOOOOOOOrOOdeldeOOOOOrOOOOOOOOOOrOOOdoo
+ohmmOOOOOOOOOOOOOOOOOOdeOdeOOKOOOOOOFOFOOpqOOKOdoo
+ohmmOOOOOOFFFFFOOOLOOOdexdeOOOOOOmOOlFOlOstOOOOdoo
+ohmmOrOOOOlifFFOOOOOOOdeOdeOOOOyOOOOFOFFOOOOOOOdoo
+ohOOOOOOOzioaflFOOOOOOdeldeOOOOOOOOOOOOOOOOOOOOdoo
+ohOOLOOOOiaooafOOOOOOOdeOdeOOOOKOpqOOOOOOKOOOOOdoo
+ohOOOOOOOgaooacOOOOOOOgcOdeOOOOOOstOOOOOOOOOOOOdoo
+ohOOOOOOOxgaaclOOOOOOOpqOgcOlOOOOOOOOOOOOOOOOOOdoo
+ohOOOOOLOOlgcOOOOOLOOOstOuOOOOOOOOOOiflOOOOOlOOdoo
+ohOOOlifFFOFOOOOOOOOijjjjjjfOOOOOOlioafOOOOOOOOdoo
+ohOOOioaflFOOOOOOOOOdooooooeOOOOOOiaooafOOOOOOOdoo
+ohOOiaooafOOOOOOOOOOdooooooeOOOOOOgaooacOOOOOOKdoo
+ohLOgaooacOOOLOOOOOldooooooeOOOKOOOgaaclOKOGOOOdoo
+ohOOOgaaclOOOOOOOOOOdooooooeOFOOFOOlgcOOOOOOOOGdoo
+ohFFOlgcOOOOOOOOOlOldooooooeuuOFOFOOOOOOOOOGOGGdoo
+ohFFFOOOOOOOOmOOOOOOdooooooeuFFOOOKOOOOOOOMOGGGdoo
+ohlFFNOOOOOmmmmOlOOldooooooeuuOOOOOOOOOOOOOGGGGdoo
 oakkkkkkkkkkkkkkkkkkaooooooakkkkkkkkkkkkkkkkkkkaoo
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 "}

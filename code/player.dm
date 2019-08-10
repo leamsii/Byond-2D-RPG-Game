@@ -15,11 +15,11 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 50
-		max_health = 50
+		health = 750
+		max_health = 750
 
 		power = 13
-		max_power = 8
+		max_power = 13
 
 		defense = 3
 		max_defense = 3
@@ -45,12 +45,11 @@ Player
 
 		// States
 		const
-			ATTACKED = 1
-			ATTACKING = 2
-			DEAD = 3
-			TELEPORTING = 4
+			ATTACKING = 1
+			DEAD = 2
+			TELEPORTING = 3
 
-		list/current_state = list(FALSE, FALSE, FALSE, FALSE) // 5 States
+		list/current_state = list(FALSE, FALSE, FALSE) // 3 States
 		list/target_list = list()
 
 		//Bars
@@ -164,8 +163,7 @@ Player
 					Update_Bar(list("health", "mana"))
 
 		Take_Damage(Enemies/M)
-			if(current_state[ATTACKED] || current_state[DEAD]) return
-			Update_State(ATTACKED, 8)
+			if(current_state[DEAD]) return
 
 			var/damage = rand(M.power-3, M.power+3)
 			damage > M.max_power ? s_damage(src, damage, "red") : s_damage(src, damage, "white") // Critical hit

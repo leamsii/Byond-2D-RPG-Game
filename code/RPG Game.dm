@@ -19,7 +19,7 @@ client.New()
 	mob = new/Player
 	view = "17x11"
 	perspective = EDGE_PERSPECTIVE
-	//src << new/sound('sound/player/elina.ogg')
+	src << sound('sound/player/elina.ogg')
 	world << "[src] has joined the game!"
 
 

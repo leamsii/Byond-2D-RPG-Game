@@ -20,13 +20,14 @@ Enemies
 			FOLLOWING = 3
 			DYING = 4
 			IDLE = 5
-			POSITIONING = 6
+			SHOOTING = 6
+			ATTACKED = 7
 
 			// Type of enemies
 			MEELEE = 0
 			ARCHER = 1
 
-		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE)
+		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
 
 		// Status
 		health = 40
@@ -50,14 +51,11 @@ Enemies
 		emoticon_x = 0
 		emoticon_y = 0
 
-		// Sound
-		sound/hit_sound = new/sound('sound/slime/hit.wav', volume=30)
-		sound/explode_sound = new/sound('sound/slime/explode.wav', volume=30)
-
 		// Other
 		status_effect = null
 		current_target = null
 		enemy_type = MEELEE
+		attack_delay = 10
 
 	// Define the Enemies bahaviors
 	proc
@@ -124,7 +122,7 @@ Enemies
 				Follow_Target()
 
 			flick("[name]_hurt", src)
-			P << hit_sound
+			Play_Sound(P, name, "hit.wav")
 
 			step_away(src, P, 10, speed * 2) // Knock Back
 
@@ -147,7 +145,7 @@ Enemies
 			density=0
 			flick(dying_animation, src)
 
-			P << explode_sound
+			Play_Sound(P, name, "death.wav")
 
 			Drop_Item()
 			P.Give_EXP(exp)
@@ -183,23 +181,34 @@ Enemies
 				walk_to(src, current_target, -1, 0, speed)
 
 		Shoot()
+			if(current_state[SHOOTING]) return
+			current_state[SHOOTING] = TRUE
 			new/Projectile/Arrow(src)
+			spawn(15) current_state[SHOOTING] = FALSE
 
 	Bump(Player/P)
 		if(enemy_type == ARCHER) return
 		if(current_state[ATTACKING] && istype(P,/Player))
-			if(!P.current_state[P.ATTACKED] && !P.current_state[P.DEAD] )
+			if(!current_state[ATTACKED] && !P.current_state[P.DEAD] )
+				current_state[ATTACKED] = TRUE
 
 				// If hit by fire slime, play burnt icon effect
 				if(istype(src,/Enemies/Slime/SlimeFire))
 					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
 
+				// Handle for flower
+				if(istype(src,/Enemies/Flower))
+					flick("attack", src)
+
+				sleep(1)
 				step_away(P, src, 2,P.speed * 2) // Knock back for player
 				P.Take_Damage(src)
 
 				if(status_effect && P.status_effect == null) // Burnt and Poison effects
 					if(prob(20))
 						P.Apply_Effect(status_effect)
+
+				spawn(attack_delay) current_state[ATTACKED] = FALSE
 
 	Slime
 		icon = 'icons/slime_sprites.dmi'
@@ -242,13 +251,13 @@ Enemies
 		icon = 'icons/flower_enemy.dmi'
 		icon_state = "flower"
 		name = "flower"
+
 		emoticon_x = -10
 		emoticon_y = 55
 		dying_animation_delay = 19
 		level = 8
 		difficulty = 5
 		dying_animation = "flower_dead"
-		hit_sound = new/sound('sound/flower/hit.ogg',volume=30)
 		layer=MOB_LAYER+1
 
 		// Bounds
@@ -264,9 +273,11 @@ Enemies
 			Update_Health(11, 52)
 			Add_Stars(5, 0, 55)
 
-	Skeleton
-		icon = 'icons/skeleton.dmi'
-		icon_state = "skeleton"
+	Monkey
+		icon = 'icons/monkey.dmi'
+		icon_state = "monkey"
+		name = "monkey"
+
 		level = 5
 		speed = 2
 		difficulty = 3
@@ -279,8 +290,15 @@ Enemies
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 			Update_Health(-3, 16)
 			Add_Stars(difficulty, -8, 16)
-
 obj/star
 	icon = 'icons/health_bars.dmi'
 	icon_state = "star"
 	layer=MOB_LAYER+8
+
+
+
+// Handle Sounds
+proc
+	Play_Sound(target, enemy_name, sound_name, v=30)
+		target << sound("sound/[enemy_name]/[sound_name]", volume=v, repeat=0)
+
