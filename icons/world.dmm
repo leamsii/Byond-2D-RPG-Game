@@ -33,29 +33,30 @@
 "G" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom3"},/area)
 "H" = (/Enemies/Slime/SlimeAcid,/turf/grass{icon_state = "base"},/area)
 "I" = (/NPC/Farmer,/turf/grass{icon_state = "base"},/area)
-"J" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimeAcid,/turf/flowers,/area)
+"J" = (/Dummy,/turf/grass{icon_state = "base"},/area)
 "K" = (/Enemies/Slime/SlimeFire,/turf/grass{icon_state = "base"},/area)
 "L" = (/Enemies/Slime/SlimePoison,/turf/grass{icon_state = "base"},/area)
 "M" = (/Enemies/Flower,/turf/grass{icon_state = "base"},/area)
-"N" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
+"N" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimeAcid,/turf/flowers,/area)
 "O" = (/turf/grass{icon_state = "base"},/area)
+"P" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
 
 (1,1,1) = {"
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 oooooooooooooooooooooooooooooooooooooooooooooooooo
-ooooooooabbbbbbaooooooooooooabbbbbbbbbbbbbbbbaoooo
-oooooooacOOOOOOdooooooooooooelGlOOuuuOOOlOOOldoooo
-oooooooeOlvwOlOdooooooooooooeGGGOOOuOOOOOOlOOdoooo
-oooooooemnOpqOudooooooooooooelGlOOOOOOOOOOOOldoooo
-oooooooemmOstOudooooooooooooeGGOOOOOOHOpqOOOOdoooo
-oooooooenOOOOOOdooooooooooooeOOOOOOOOOOstOOOldoooo
-oooooooaflOOOOldooooooooooooeOOOOHOOOOOOOOHOOdoooo
-ooooooooafOOOIOdooooooooooooeOOOOOOOlylOOFOFOdoooo
+ooooooooabbbbbbaoOOOOOOOOOOoabbbbbbbbbbbbbbbbaoooo
+oooooooacOOOOOOdoOOOOOOOOOOoelGlOOuuuOOOlOOOldoooo
+oooooooeOlvwOlOdoOOOJOOOOOOoeGGGOOOuOOOOOOlOOdoooo
+oooooooemnOpqOudoOOOOOOOOOOoelGlOOOOOOOOOOOOldoooo
+oooooooemmOstOOOOOOOOOOOOOOoeGGOOOOOOHOpqOOOOdoooo
+oooooooenOOOOOOOOOOOOOOOOOOoeOOOOOOOOOOstOOOldoooo
+oooooooaflOOOOldoOOOOOOOJOOoeOOOOHOOOOOOOOHOOdoooo
+ooooooooafOOOIOdoOOOOOOOOOOoeOOOOOOOlylOOFOFOdoooo
 oooooooooeOOOOOdooooooooooooeOOOOOOOOOOOOFFOOdoooo
 oooooooooeOOHOOABCCCCCCDEBDbcvOOOOOOOOOOOOFOOdoooo
 oooooooooeOOOOFFOOOOOFnxnOOFOOOpqOOOOOHOOOOOOdoooo
-oooooooooelOOOOOOFFOOOJFOOOOFOOstOOOOuOOOOOOOdoooo
-oooooooooeOOOFyzlJOlFOlOlOFlHOOOOOOOuuzuOOOOOdoooo
+oooooooooelOOOOOOFFOOONFOOOOFOOstOOOOuOOOOOOOdoooo
+oooooooooeOOOFyzlNOlFOlOlOFlHOOOOOOOuuzuOOOOOdoooo
 ooooooooohpqijjjjjjjjjjjjjjjjjjjjjjjjjjjflOOldoooo
 ooooooooohstdoooooooooooooooooooooooooooeOOOOdoooo
 ooooooooohpqdoooooooooooooooooooooooooooeOOOOdoooo
@@ -88,7 +89,7 @@ ohLOgaooacOOOLOOOOOldooooooeOOOKOOOgaaclOKOGOOOdoo
 ohOOOgaaclOOOOOOOOOOdooooooeOFOOFOOlgcOOOOOOOOGdoo
 ohFFOlgcOOOOOOOOOlOldooooooeuuOFOFOOOOOOOOOGOGGdoo
 ohFFFOOOOOOOOmOOOOOOdooooooeuFFOOOKOOOOOOOMOGGGdoo
-ohlFFNOOOOOmmmmOlOOldooooooeuuOOOOOOOOOOOOOGGGGdoo
+ohlFFPOOOOOmmmmOlOOldooooooeuuOOOOOOOOOOOOOGGGGdoo
 oakkkkkkkkkkkkkkkkkkaooooooakkkkkkkkkkkkkkkkkkkaoo
 oooooooooooooooooooooooooooooooooooooooooooooooooo
 "}

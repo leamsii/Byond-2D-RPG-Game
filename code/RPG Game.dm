@@ -25,9 +25,9 @@ client.New()
 
 Player/Login()
 	..()
-	health_bar = new/obj/HUD/health_bar()
-	mana_bar = new/obj/HUD/mana_bar()
-	exp_bar = new/obj/HUD/exp_bar()
+	health_bar = new/HUD/health_bar()
+	mana_bar = new/HUD/mana_bar()
+	exp_bar = new/HUD/exp_bar()
 	client.screen += health_bar
 	client.screen += mana_bar
 	client.screen += exp_bar

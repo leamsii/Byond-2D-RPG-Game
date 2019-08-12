@@ -290,6 +290,7 @@ Enemies
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 			Update_Health(-3, 16)
 			Add_Stars(difficulty, -8, 16)
+
 obj/star
 	icon = 'icons/health_bars.dmi'
 	icon_state = "star"
@@ -302,3 +303,13 @@ proc
 	Play_Sound(target, enemy_name, sound_name, v=30)
 		target << sound("sound/[enemy_name]/[sound_name]", volume=v, repeat=0)
 
+
+Dummy
+	icon = 'icons/dummy.dmi'
+	icon_state = "dummy"
+	parent_type = /obj
+
+Whirl
+	parent_type = /obj
+	icon = 'icons/large_effects.dmi'
+	icon_state = "whirlwind"

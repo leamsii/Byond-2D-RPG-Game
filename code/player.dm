@@ -53,7 +53,7 @@ Player
 		list/target_list = list()
 
 		//Bars
-		obj/
+		HUD/
 			health_bar = null
 			exp_bar = null
 			mana_bar = null
@@ -70,6 +70,7 @@ Player
 				if("burn")
 					status_effect = new/Effect/Burning(src)
 				if("poison")
+					spawn(-1) Poison_Effect(20)
 					status_effect = new/Effect/Poison(src)
 
 		Get_Bar_State(val, max_val, num)
@@ -173,6 +174,14 @@ Player
 
 			Death_Check()
 
+		Poison_Effect(amount)
+			for(var/i=0;i < amount; i++)
+				sleep(3.5)
+				var/Particle/O = new(src, 0, 1, 0, 0)
+				O.loc = loc
+				O.icon_state = "poison2"
+				spawn(-1) O.Fade(rand(5, 10))
+
 	// Actions or commands
 	verb
 		Speak()
@@ -250,7 +259,8 @@ obj
 		pixel_y = -3
 
 
-obj/HUD
+HUD
+	parent_type = /obj
 	health_bar
 		icon = 'icons/player_health.dmi'
 		icon_state = "10"
@@ -265,3 +275,35 @@ obj/HUD
 		icon = 'icons/player_exp.dmi'
 		icon_state = "1"
 		screen_loc = "2:3, 1:17"
+
+
+Particle
+	parent_type = /obj
+	icon = 'icons/Status.dmi'
+	layer = MOB_LAYER+1
+	var
+		angle_x = 0
+		angle_y = 0
+		xspeed = 0
+		yspeed = 0
+
+	New(Player/Owner, angle_x, angle_y, xspeed, yspeed)
+		..()
+		src.angle_x = angle_x
+		src.angle_y = angle_y
+		src.xspeed = xspeed
+		src.yspeed = yspeed
+		step_x = rand(Owner.step_x - 17, Owner.step_x + 10)
+		step_y = rand(Owner.step_y - 20, Owner.step_y - 5)
+		pixel_x = rand(-2, 2)
+
+	proc
+		Fade(delay)
+			spawn(delay)
+				icon_state = "poison3"
+				sleep(1)
+				del src
+			while(src)
+				pixel_x += angle_x
+				pixel_y += angle_y
+				sleep(0.1)
