@@ -70,12 +70,3 @@ Item
 				P.mana = P.max_mana
 				P.Update_Bar(list("mana"))
 				Text(usr, "+MP Potion ", "white")
-	Chest
-		icon_state = "chest"
-		layer=MOB_LAYER+1
-
-		// Bound values
-		bound_x = 15
-		bound_width = 3
-		bound_y = 7
-		bound_height = 3

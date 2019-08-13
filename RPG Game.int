@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1565661164
+LAST_COMPILE_TIME: 1565716662
 DIR: code icons 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1472
-WINDOW: code\items.dm;icons\world.dmm;icons\turfs2.dmi;icons\williams.dmi;code\RPG Game.dm;code\turfs2.dm;code\projectile.dm;code\player.dm;icons\player.dmi;icons\items.dmi;icons\Jesse.dmi;code\enemies.dm;icons\slime_sprites.dmi;icons\flower_enemy.dmi
-FILE: icons\williams.dmi
+WINDOW: icons\world.dmm;icons\williams.dmi;code\RPG Game.dm;code\projectile.dm;code\player.dm;icons\player.dmi;icons\items.dmi;icons\Jesse.dmi;code\enemies.dm;icons\slime_sprites.dmi;icons\flower_enemy.dmi;code\NPC.dm;icons\monkey.dmi;icons\npcs.dmi;icons\house.dmi;icons\s_blacknums.dmi;code\status_effects.dm;icons\turfs.dmi;icons\Status.dmi;icons\player_mana.dmi;icons\player_health.dmi;icons\player_exp.dmi;icons\large_turfs.dmi;icons\large_effects.dmi;icons\emoticons.dmi;icons\dummy.dmi;code\emoticons.dm;code\turfs.dm;code\particle.dm;icons\particles.dmi
+FILE: code\turfs.dm
 */
 // END_INTERNALS

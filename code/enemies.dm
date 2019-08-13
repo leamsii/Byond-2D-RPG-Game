@@ -33,7 +33,6 @@ Enemies
 		speed = 1
 		exp = 20
 		level = 1
-		difficulty = 1
 		obj/health_bar = null
 
 		// Animations
@@ -60,13 +59,6 @@ Enemies
 			health = max_health = rand(20, 40) + (level * 20)
 			exp = round((power + health) / 2)
 
-		Add_Stars(difficulty, pixel_x, pixel_y)
-			for(var/i = 0;i < difficulty; i++)
-				var/obj/star/S = new()
-				S.pixel_y = pixel_y
-				S.pixel_x = pixel_x + (i * 6)
-				overlays+=S
-
 		Drop_Item()
 			// Drop a random Item from the loot list
 			for(var/O in loot)
@@ -82,26 +74,6 @@ Enemies
 			walk(src, null)
 
 			spawn(20) Wander()
-
-		Update_Health(pixel_x=0, pixel_y=0) // This will add the health bars to the Enemies when they spawn
-			if(!health_bar)
-				//Add health bar
-				var/obj/O = new()
-				O.icon = 'icons/health_bars.dmi'
-				O.icon_state = "8"
-				health_bar = O
-				O.layer = MOB_LAYER+1
-				O.pixel_y = pixel_y
-				O.pixel_x = pixel_x
-				overlays += O
-
-			var/max = max(max_health,0.000001) // The larger value, or denominator
-			var/min = min(max(health),max) // The smaller value, or numerator
-			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
-
-			overlays -= health_bar
-			health_bar.icon_state = "[state]"
-			overlays += health_bar
 
 		Take_Damage(Player/P)
 			if(current_state[DYING] || !istype(P,/Player)) return
@@ -186,10 +158,6 @@ Enemies
 			if(!current_state[ATTACKED] && !P.current_state[P.DEAD] )
 				current_state[ATTACKED] = TRUE
 
-				// If hit by fire slime, play burnt icon effect
-				if(istype(src,/Enemies/Slime/SlimeFire))
-					flick(new/icon('icons/player_effects.dmi', "burnt"), P)
-
 				// Handle for flower
 				if(istype(src,/Enemies/Flower))
 					flick("attack", src)
@@ -228,7 +196,6 @@ Enemies
 			icon_state = "slime_fire"
 			dying_animation_delay = 14
 			level = 3
-			difficulty = 2
 			status_effect = "burn"
 		SlimePoison
 			icon_state = "slime_poison"
@@ -261,7 +228,6 @@ Enemies
 		emoticon_y = 55
 		dying_animation_delay = 19
 		level = 8
-		difficulty = 5
 		dying_animation = "flower_dead"
 		layer=MOB_LAYER+1
 
@@ -275,8 +241,6 @@ Enemies
 			..()
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 			underlays=null
-			Update_Health(11, 52)
-			Add_Stars(5, 0, 55)
 
 	Monkey
 		icon = 'icons/monkey.dmi'
@@ -285,7 +249,6 @@ Enemies
 
 		level = 5
 		speed = 2
-		difficulty = 3
 		emoticon_x = -15
 		emoticon_y = 20
 		enemy_type = ARCHER
@@ -293,15 +256,6 @@ Enemies
 		New()
 			..()
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
-			Update_Health(-3, 16)
-			Add_Stars(difficulty, -8, 16)
-
-obj/star
-	icon = 'icons/health_bars.dmi'
-	icon_state = "star"
-	layer=MOB_LAYER+8
-
-
 
 // Handle Sounds
 proc

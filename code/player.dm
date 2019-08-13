@@ -304,3 +304,11 @@ Particle
 				pixel_x += angle_x
 				pixel_y += angle_y
 				sleep(0.1)
+
+		Explode(delay)
+			icon = new/icon('icons/williams.dmi', "goo1")
+			spawn(delay) del src
+			while(src)
+				pixel_x += angle_x
+				pixel_y += angle_y
+				sleep(0.1)
