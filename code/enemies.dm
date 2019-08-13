@@ -1,10 +1,6 @@
 Enemies
 	New()
 		..()
-		var/obj/shadow/S = new()
-		S.pixel_y = -4
-		S.pixel_x = -2
-		underlays += S
 		Set_Stats()
 
 		current_state[WANDERING] = TRUE
@@ -129,7 +125,6 @@ Enemies
 			var/damage = rand(P.power-5, P.power+2)
 			damage > P.max_power ? s_damage(src,damage, "red") : s_damage(src,damage, "yellow")
 			health -= damage
-			Update_Health()
 
 			if(health <= 0)
 				Death(P)
@@ -143,8 +138,7 @@ Enemies
 			current_state[ATTACKING] = FALSE
 
 			density=0
-			flick(dying_animation, src)
-
+			icon_state = dying_animation
 			Play_Sound(P, name, "death.wav")
 
 			Drop_Item()
@@ -201,7 +195,6 @@ Enemies
 					flick("attack", src)
 
 				sleep(1)
-				step_away(P, src, 2,P.speed * 2) // Knock back for player
 				P.Take_Damage(src)
 
 				if(status_effect && P.status_effect == null) // Burnt and Poison effects
@@ -230,8 +223,6 @@ Enemies
 
 			level = rand(1, 2)
 			dying_animation = icon_state + "_die"
-			Update_Health(-6, 10)
-			Add_Stars(difficulty, -10, 12)
 
 		SlimeFire
 			icon_state = "slime_fire"
@@ -246,6 +237,20 @@ Enemies
 		SlimeAcid
 			icon_state = "slime_acid"
 			dying_animation_delay = 8
+
+		DummySlime2
+			icon = 'icons/williams.dmi'
+			icon_state = "slime_idle"
+
+		Forest_Slime
+			icon = 'icons/williams.dmi'
+			icon_state = "forest_slime"
+			name = "forest_slime"
+			dying_animation_delay = 6
+			New()
+				..()
+				dying_animation = "forest_slime_dying"
+
 
 	Flower
 		icon = 'icons/flower_enemy.dmi'

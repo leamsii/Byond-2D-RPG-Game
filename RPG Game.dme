@@ -23,6 +23,7 @@
 #include "code\RPG Game.dm"
 #include "code\status_effects.dm"
 #include "code\turfs.dm"
+#include "code\turfs2.dm"
 #include "icons\world.dmm"
 #include "libs\colour2html.dm"
 #include "libs\map_text.dm"

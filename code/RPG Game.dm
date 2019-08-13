@@ -3,7 +3,7 @@
  */
 
 world
-	fps = 40		// 40 frames per second
+	fps = 50		// 40 frames per second
 	icon_size = 24	// 32x32 icon size by default
 	view = "43x28"
 
@@ -13,7 +13,7 @@ mob
 	step_size = 2
 
 obj
-	step_size = 4
+	step_size = 3
 
 client.New()
 	mob = new/Player
@@ -32,5 +32,5 @@ Player/Login()
 	client.screen += mana_bar
 	client.screen += exp_bar
 
-	loc=locate(12, 44, 1)
+	loc=locate(13, 44, 1)
 	dir=SOUTH

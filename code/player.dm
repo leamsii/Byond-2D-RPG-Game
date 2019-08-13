@@ -1,6 +1,6 @@
 Player
 	parent_type = /mob
-	icon = 'icons/player.dmi'
+	icon = 'icons/williams.dmi'
 	icon_state = "player"
 
 	Move() // Block movement if dead
@@ -9,8 +9,8 @@ Player
 	New()
 		..()
 		// HUD Bars
-		shadow_underlay = new/obj/shadow
-		underlays += shadow_underlay
+		//shadow_underlay = new/obj/shadow
+		//underlays += shadow_underlay
 
 	// Variables
 	var
@@ -141,7 +141,8 @@ Player
 				if(status_effect)
 					status_effect:Remove_Effect(src)
 
-				icon = new/icon('icons/player_effects.dmi', "dead")
+				flick("dying", src)
+				icon_state = "dead"
 
 				for(var/Enemies/M in target_list)
 					if(M)
@@ -152,11 +153,11 @@ Player
 
 				target_list = list()
 
-				animate(src, alpha = 0, time = 40)
+				//animate(src, alpha = 0, time = 40)
 				spawn(40)
 					loc=locate(12, 44, 1)
 					dir = SOUTH
-					icon = initial(icon)
+					icon_state = "player"
 					alpha = 255
 					health = max_health
 					mana = max_mana
@@ -207,12 +208,8 @@ Player
 				Update_State(ATTACKING, 4)
 
 				dir=get_dir(src,target)
-				flick("attacking", src)
-				var/icon/I = icon('icons/player.dmi', "sword")
-
-				target.overlays += I
+				flick("sword_attack", src)
 				target.Take_Damage(src)
-				target.overlays -= I
 
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD]) return
