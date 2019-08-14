@@ -15,7 +15,7 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 100
+		health = 1
 		max_health = 100
 
 		power = 3
@@ -130,6 +130,7 @@ Player
 
 		Death_Check()
 			Update_Bar(list("health", "exp"))
+			if(current_state[DEAD]) return
 			if(health <= 0)
 				Update_State(DEAD, 40)
 
@@ -141,7 +142,8 @@ Player
 				if(status_effect)
 					status_effect:Remove_Effect(src)
 
-				Play_Animation(src, "dead", "dying", 20)
+				flick("dying", src)
+				icon_state = "dead"
 
 				for(var/Enemies/M in target_list)
 					if(M)
@@ -151,8 +153,6 @@ Player
 						M.Wander()
 
 				target_list = list()
-
-				//animate(src, alpha = 0, time = 40)
 				spawn(40)
 					loc=locate(12, 44, 1)
 					dir = SOUTH
@@ -165,20 +165,18 @@ Player
 
 		Take_Damage(Enemies/M)
 			if(current_state[DEAD] || current_state[ATTACKED]) return
-			Update_State(ATTACKED, 3)
+			Update_State(ATTACKED, 5)
 
 			var/damage = rand(M.power-3, M.power+3)
 			s_damage(src, damage, "red")
 
-
-			// Flash
-			var/last_icon = icon
+			// Flinch
 			spawn(-1)
-				for(var/i = 0; i < 2; i++)
-					sleep(1)
+				for(var/i = 0; i < 3; i++)
+					sleep(0.5)
 					icon += rgb(255, 255, 255)
 					sleep(1)
-					icon = last_icon
+					icon = initial(icon)
 
 			// Knock back
 			var/tmp_dir = dir
@@ -190,7 +188,6 @@ Player
 			health -= damage
 			src << hit_sound
 
-			icon = last_icon
 			Death_Check()
 
 	// Actions or commands
@@ -218,8 +215,7 @@ Player
 				Update_State(ATTACKING, 4)
 
 				dir=get_dir(src,target)
-				Play_Animation(src,"player", "sword_attack", 8)
-				//flick("sword_attack", src)
+				flick("sword_attack", src)
 				target.Take_Damage(src)
 
 		Bow()
@@ -283,9 +279,3 @@ HUD
 		icon = 'icons/player_exp.dmi'
 		icon_state = "1"
 		screen_loc = "2:3, 1:17"
-
-proc
-	Play_Animation(Player/P, current_name, animation_name, delay)
-		P.icon_state = animation_name
-		spawn(delay)
-			P.icon_state = current_name

@@ -19,6 +19,7 @@ turf
 		icon_state = "fence_mid"
 
 	tall_grass
+		density = 1
 		layer=MOB_LAYER+1
 		icon = 'icons/williams.dmi'
 		icon_state = "tall_grass"
