@@ -112,7 +112,6 @@ Enemies
 			density=0
 			icon_state = dying_animation
 			Play_Sound(P, name, "death.wav")
-
 			Drop_Item()
 			P.Give_EXP(exp)
 
@@ -177,7 +176,7 @@ Enemies
 		name = "slime"
 
 		// Bounds
-		bound_width = 10
+		bound_width = 15
 		bound_x = 5
 		bound_y = 5
 		bound_height = 10

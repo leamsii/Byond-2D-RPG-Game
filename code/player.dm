@@ -15,10 +15,10 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 750
-		max_health = 750
+		health = 100
+		max_health = 100
 
-		power = 13
+		power = 3
 		max_power = 13
 
 		defense = 3
@@ -48,8 +48,9 @@ Player
 			ATTACKING = 1
 			DEAD = 2
 			TELEPORTING = 3
+			ATTACKED = 4
 
-		list/current_state = list(FALSE, FALSE, FALSE) // 3 States
+		list/current_state = list(FALSE, FALSE, FALSE, FALSE) // 3 States
 		list/target_list = list()
 
 		//Bars
@@ -70,7 +71,6 @@ Player
 				if("burn")
 					status_effect = new/Effect/Burning(src)
 				if("poison")
-					spawn(-1) Poison_Effect(20)
 					status_effect = new/Effect/Poison(src)
 
 		Get_Bar_State(val, max_val, num)
@@ -141,8 +141,7 @@ Player
 				if(status_effect)
 					status_effect:Remove_Effect(src)
 
-				flick("dying", src)
-				icon_state = "dead"
+				Play_Animation(src, "dead", "dying", 20)
 
 				for(var/Enemies/M in target_list)
 					if(M)
@@ -165,23 +164,34 @@ Player
 					Update_Bar(list("health", "mana"))
 
 		Take_Damage(Enemies/M)
-			if(current_state[DEAD]) return
+			if(current_state[DEAD] || current_state[ATTACKED]) return
+			Update_State(ATTACKED, 3)
 
 			var/damage = rand(M.power-3, M.power+3)
-			damage > M.max_power ? s_damage(src, damage, "red") : s_damage(src, damage, "white") // Critical hit
+			s_damage(src, damage, "red")
+
+
+			// Flash
+			var/last_icon = icon
+			spawn(-1)
+				for(var/i = 0; i < 2; i++)
+					sleep(1)
+					icon += rgb(255, 255, 255)
+					sleep(1)
+					icon = last_icon
+
+			// Knock back
+			var/tmp_dir = dir
+			for(var/i = 0; i < 10; i++)
+				sleep(0.1)
+				step_away(src, M, 5, speed)
+				dir = tmp_dir
 
 			health -= damage
 			src << hit_sound
 
+			icon = last_icon
 			Death_Check()
-
-		Poison_Effect(amount)
-			for(var/i=0;i < amount; i++)
-				sleep(3.5)
-				var/Particle/O = new(src, 0, 1, 0, 0)
-				O.loc = loc
-				O.icon_state = "poison2"
-				spawn(-1) O.Fade(rand(5, 10))
 
 	// Actions or commands
 	verb
@@ -196,7 +206,7 @@ Player
 		Attack()
 			set hidden = 1
 
-			if(current_state[ATTACKING] || current_state[DEAD]) return
+			if(current_state[ATTACKING] || current_state[DEAD] || current_state[ATTACKED]) return
 
 			var/Enemies/target=null // Define a target
 			for(var/Enemies/E in oview(1))
@@ -208,7 +218,8 @@ Player
 				Update_State(ATTACKING, 4)
 
 				dir=get_dir(src,target)
-				flick("sword_attack", src)
+				Play_Animation(src,"player", "sword_attack", 8)
+				//flick("sword_attack", src)
 				target.Take_Damage(src)
 
 		Bow()
@@ -273,42 +284,8 @@ HUD
 		icon_state = "1"
 		screen_loc = "2:3, 1:17"
 
-
-Particle
-	parent_type = /obj
-	icon = 'icons/Status.dmi'
-	layer = MOB_LAYER+1
-	var
-		angle_x = 0
-		angle_y = 0
-		xspeed = 0
-		yspeed = 0
-
-	New(Player/Owner, angle_x, angle_y, xspeed, yspeed)
-		..()
-		src.angle_x = angle_x
-		src.angle_y = angle_y
-		src.xspeed = xspeed
-		src.yspeed = yspeed
-		step_x = rand(Owner.step_x - 17, Owner.step_x + 10)
-		step_y = rand(Owner.step_y - 20, Owner.step_y - 5)
-		pixel_x = rand(-2, 2)
-
-	proc
-		Fade(delay)
-			spawn(delay)
-				icon_state = "poison3"
-				sleep(1)
-				del src
-			while(src)
-				pixel_x += angle_x
-				pixel_y += angle_y
-				sleep(0.1)
-
-		Explode(delay)
-			icon = new/icon('icons/williams.dmi', "goo1")
-			spawn(delay) del src
-			while(src)
-				pixel_x += angle_x
-				pixel_y += angle_y
-				sleep(0.1)
+proc
+	Play_Animation(Player/P, current_name, animation_name, delay)
+		P.icon_state = animation_name
+		spawn(delay)
+			P.icon_state = current_name

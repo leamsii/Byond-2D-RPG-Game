@@ -18,6 +18,11 @@ turf
 		icon = 'icons/large_turfs.dmi'
 		icon_state = "fence_mid"
 
+	tall_grass
+		layer=MOB_LAYER+1
+		icon = 'icons/williams.dmi'
+		icon_state = "tall_grass"
+
 obj/sign
 	icon = 'icons/turfs.dmi'
 	icon_state = "sign"
