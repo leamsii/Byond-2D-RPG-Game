@@ -25,8 +25,6 @@
 #include "code\status_effects.dm"
 #include "code\turfs.dm"
 #include "icons\world.dmm"
-#include "libs\colour2html.dm"
 #include "libs\map_text.dm"
-#include "libs\s_damage2.dm"
 // END_INCLUDE
 

@@ -43,11 +43,6 @@ Projectile
 
 		// Move the arrow
 		walk(src, dir,  0, 7)
-		if(istype(owner,/Enemies))
-			if(owner:current_target)
-				if(prob(40))
-					walk_towards(src, owner:current_target, 0, 7)
-
 		icon_state = flying_iconstate
 
 	Bump(mob/M)

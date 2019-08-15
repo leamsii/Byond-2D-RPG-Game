@@ -15,11 +15,11 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 1
-		max_health = 100
+		health = 200
+		max_health = 50
 
-		power = 3
-		max_power = 13
+		power = 120
+		max_power = 12
 
 		defense = 3
 		max_defense = 3
@@ -132,7 +132,7 @@ Player
 			Update_Bar(list("health", "exp"))
 			if(current_state[DEAD]) return
 			if(health <= 0)
-				Update_State(DEAD, 40)
+				Update_State(DEAD, 50)
 
 				Text(src, "YOU DIED ", "red")
 
@@ -142,9 +142,6 @@ Player
 				if(status_effect)
 					status_effect:Remove_Effect(src)
 
-				flick("dying", src)
-				icon_state = "dead"
-
 				for(var/Enemies/M in target_list)
 					if(M)
 						M.current_target = null
@@ -153,6 +150,10 @@ Player
 						M.Wander()
 
 				target_list = list()
+
+				flick("dying", src)
+				icon_state = "dead"
+
 				spawn(40)
 					loc=locate(12, 44, 1)
 					dir = SOUTH
@@ -168,7 +169,6 @@ Player
 			Update_State(ATTACKED, 5)
 
 			var/damage = rand(M.power-3, M.power+3)
-			s_damage(src, damage, "red")
 
 			// Flinch
 			spawn(-1)
@@ -202,7 +202,6 @@ Player
 
 		Attack()
 			set hidden = 1
-
 			if(current_state[ATTACKING] || current_state[DEAD] || current_state[ATTACKED]) return
 
 			var/Enemies/target=null // Define a target
@@ -216,6 +215,7 @@ Player
 
 				dir=get_dir(src,target)
 				flick("sword_attack", src)
+
 				target.Take_Damage(src)
 
 		Bow()
@@ -245,7 +245,7 @@ Player
 
 					Update_State(TELEPORTING, 5)
 
-					//mana -= 10
+					mana -= 10
 					Update_Bar(list("mana"))
 					src << teleport_sound
 

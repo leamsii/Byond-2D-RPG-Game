@@ -21,6 +21,6 @@ NPC
 			set src in oview(1)
 			if(!spoked.Find(usr.client))
 				new/Emoticon/Angry(src, -20, 17)
-				usr << "<font color = black><b>Farmer: There's a huge flower monster on my field!</b></font>"
+				usr << "<font color = black><b>Farmer: Bitch nigga Justin you ain't gonna kill me!</b></font>"
 
 				spoked.Add(usr.client)

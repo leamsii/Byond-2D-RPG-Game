@@ -95,7 +95,6 @@ Enemies
 			step_away(src, P, 10, speed * 2) // Knock Back
 
 			var/damage = rand(P.power-5, P.power+2)
-			damage > P.max_power ? s_damage(src,damage, "red") : s_damage(src,damage, "yellow")
 			health -= damage
 
 			if(health <= 0)
@@ -110,10 +109,13 @@ Enemies
 			current_state[ATTACKING] = FALSE
 
 			density=0
-			icon_state = dying_animation
+			flick(dying_animation, src)
 			Play_Sound(P, name, "death.wav")
 			Drop_Item()
 			P.Give_EXP(exp)
+
+			for(var/i = 0; i < 10; i++)
+				new/Particle/Goo(src)
 
 			if(name == "flower") animate(src, alpha=0,time = dying_animation_delay)
 
@@ -212,7 +214,7 @@ Enemies
 			icon = 'icons/williams.dmi'
 			icon_state = "forest_slime"
 			name = "forest_slime"
-			dying_animation_delay = 6
+			dying_animation_delay = 3
 			New()
 				..()
 				dying_animation = "forest_slime_dying"
