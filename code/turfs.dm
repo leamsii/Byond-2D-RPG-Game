@@ -24,6 +24,11 @@ turf
 		icon = 'icons/williams.dmi'
 		icon_state = "tall_grass"
 
+	tree
+		layer = MOB_LAYER+1
+		icon = 'icons/orange_tree.dmi'
+		icon_state = "tree"
+
 obj/sign
 	icon = 'icons/turfs.dmi'
 	icon_state = "sign"

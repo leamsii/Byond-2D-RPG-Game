@@ -9,6 +9,13 @@ Particle
 			if(prob(30))
 				icon_state = "goo2"
 
+			// Handle for different type of goos
+			if(istype(M,/Enemies/Slime/SlimeFire))
+				if(prob(30))
+					icon_state = "fire_goo2"
+				else
+					icon_state = "fire_goo1"
+
 			step_x = M.step_x
 			step_y = M.step_y
 			loc = M.loc

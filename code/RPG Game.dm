@@ -19,7 +19,7 @@ client.New()
 	mob = new/Player
 	view = "17x11"
 	perspective = EDGE_PERSPECTIVE
-	src << sound('sound/player/elina.ogg')
+	//src << sound('sound/player/elina.ogg')
 	world << "[src] has joined the game!"
 
 
@@ -32,5 +32,5 @@ Player/Login()
 	client.screen += mana_bar
 	client.screen += exp_bar
 
-	loc=locate(4, 4, 2)
+	loc=locate(3, 8, 2)
 	dir=SOUTH

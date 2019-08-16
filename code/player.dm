@@ -15,10 +15,10 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 200
-		max_health = 50
+		health = 100
+		max_health = 100
 
-		power = 120
+		power = 12
 		max_power = 12
 
 		defense = 3
@@ -38,6 +38,8 @@ Player
 		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
 		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
 		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
+		sound/effect_fire = new/sound('sound/player/effects_fire.wav')
+		sound/low_health = new/sound('sound/player/low_health.wav')
 		sound/teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
 
 		// Effects
@@ -49,8 +51,9 @@ Player
 			DEAD = 2
 			TELEPORTING = 3
 			ATTACKED = 4
+			LOW_HEALTH = 5
 
-		list/current_state = list(FALSE, FALSE, FALSE, FALSE) // 3 States
+		list/current_state = list(FALSE, FALSE, FALSE, FALSE, FALSE) // 3 States
 		list/target_list = list()
 
 		//Bars
@@ -69,6 +72,7 @@ Player
 			if(status_effect || current_state[DEAD]) return
 			switch(effect)
 				if("burn")
+					src << effect_fire
 					status_effect = new/Effect/Burning(src)
 				if("poison")
 					status_effect = new/Effect/Poison(src)
@@ -171,8 +175,8 @@ Player
 			var/damage = rand(M.power-3, M.power+3)
 
 			// Flinch
-			spawn(-1)
-				for(var/i = 0; i < 3; i++)
+			if(!status_effect)
+				for(var/i = 0; i < 1; i++)
 					sleep(0.5)
 					icon += rgb(255, 255, 255)
 					sleep(1)
@@ -186,6 +190,7 @@ Player
 				dir = tmp_dir
 
 			health -= damage
+			Show_Damage(src, damage, 12, 32)
 			src << hit_sound
 
 			Death_Check()

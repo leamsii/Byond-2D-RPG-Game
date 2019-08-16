@@ -89,13 +89,14 @@ Enemies
 
 				Follow_Target()
 
-			flick("[name]_hurt", src)
+			flick("[icon_state]_hurt", src)
 			Play_Sound(P, name, "hit.wav")
 
 			step_away(src, P, 10, speed * 2) // Knock Back
 
 			var/damage = rand(P.power-5, P.power+2)
 			health -= damage
+			Show_Damage(src, damage, 10, 24)
 
 			if(health <= 0)
 				Death(P)
@@ -167,7 +168,7 @@ Enemies
 				P.Take_Damage(src)
 
 				if(status_effect && P.status_effect == null) // Burnt and Poison effects
-					if(prob(20))
+					if(prob(30))
 						P.Apply_Effect(status_effect)
 
 				spawn(attack_delay) current_state[ATTACKED] = FALSE
@@ -194,8 +195,9 @@ Enemies
 			dying_animation = icon_state + "_die"
 
 		SlimeFire
+			icon = 'icons/williams.dmi'
 			icon_state = "slime_fire"
-			dying_animation_delay = 14
+			dying_animation_delay = 1
 			level = 3
 			status_effect = "burn"
 		SlimePoison
@@ -213,7 +215,7 @@ Enemies
 		Forest_Slime
 			icon = 'icons/williams.dmi'
 			icon_state = "forest_slime"
-			name = "forest_slime"
+			//name = "forest_slime"
 			dying_animation_delay = 3
 			New()
 				..()

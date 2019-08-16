@@ -6,6 +6,7 @@ Projectile
 		owner = null
 		flying_iconstate = ""
 		stuck_iconstate = ""
+		sound/arrow_stuck = sound('sound/player/arrow_stuck.wav')
 
 	New(mob/M)
 		..()
@@ -52,6 +53,7 @@ Projectile
 			del src
 		else if(!istype(M,/Item))
 			icon_state = stuck_iconstate
+			owner << arrow_stuck
 			walk(src,null)
 			density=0
 		else

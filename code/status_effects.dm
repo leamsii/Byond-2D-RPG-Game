@@ -38,6 +38,6 @@ Effect
 
 	Burning
 		icon_state = "burning2"
-		pixel_x = -2
-		pixel_y = -5
-		_color = rgb(200, 0, 0)
+		pixel_x = 10
+		pixel_y = 6
+		_color = rgb(255, 0, 0)
