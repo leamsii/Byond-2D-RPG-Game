@@ -10,9 +10,11 @@ Item
 		src.drop_rate = drop_rate
 
 		if(istype(src,/Item/Gold))
-			gold_amount = round(owner.exp / 3)
+			gold_amount = round(owner.exp) // Control the amount of gold dropped from enemies
 
-			if(gold_amount >= 20)
+			if(gold_amount >= 20 && gold_amount < 50)
+				icon_state = "large"
+			else if(gold_amount > 50)
 				icon_state = "sack"
 			else if(gold_amount < 20 && gold_amount >= 10)
 				icon_state = "med"

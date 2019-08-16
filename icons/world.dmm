@@ -18,6 +18,7 @@
 "s" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomleft"},/area)
 "t" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomright"},/area)
 "u" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
+"v" = (/Portal,/turf/grass{icon_state = "base"},/area)
 "x" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass3"},/area)
 "z" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom1"},/area)
 "F" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
@@ -72,7 +73,7 @@ SOOOSSSSSSSSSSOOOOOOOOOOOOOOOOOOOSO
 SOOOOOOOOOSSSSSOOOOOOOSOOOOOOOOOOSO
 SOOOOOOOOOOOOSSOOOOOOSSSSSSSOOOOSSO
 SOOOOOOOOOOOOOSTVOOOOOSSSSSSOOOOSSO
-STVOOOJOOOOKOOSSSSOOOOOOSSSSOOOOSSO
+STVOOOJOOOOKOOSSSSOOOOOOSSSSOvOOSSO
 SOOOOOOTVOOOJOOOOOOOOOOOOOOOOOOOSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO

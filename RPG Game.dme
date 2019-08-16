@@ -21,6 +21,7 @@
 #include "code\NPC.dm"
 #include "code\particle.dm"
 #include "code\player.dm"
+#include "code\portals.dm"
 #include "code\projectile.dm"
 #include "code\RPG Game.dm"
 #include "code\status_effects.dm"

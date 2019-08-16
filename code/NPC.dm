@@ -6,10 +6,10 @@ NPC
 		icon_state = "farmer"
 
 		// Define its collison rect
-		bound_height = 20
-		bound_y = 8
-		bound_width = 15
-		bound_x = 8
+		bound_height = 32
+		bound_y = 1
+		bound_width = 32
+		bound_x = 1
 
 		// Properties
 		var

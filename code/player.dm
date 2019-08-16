@@ -39,7 +39,6 @@ Player
 		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
 		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
 		sound/effect_fire = new/sound('sound/player/effects_fire.wav')
-		sound/low_health = new/sound('sound/player/low_health.wav')
 		sound/teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
 
 		// Effects
