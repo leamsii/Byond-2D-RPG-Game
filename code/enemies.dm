@@ -179,10 +179,10 @@ Enemies
 		name = "slime"
 
 		// Bounds
-		bound_width = 15
-		bound_x = 5
-		bound_y = 5
-		bound_height = 10
+		bound_width = 23
+		bound_x = 14
+		bound_y = 0
+		bound_height = 20
 		emoticon_x = -20
 		emoticon_y = 15
 

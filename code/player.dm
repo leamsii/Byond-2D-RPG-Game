@@ -63,6 +63,11 @@ Player
 			mana_bar = null
 			shadow_underlay
 
+	bound_y = 0
+	bound_height = 30
+	bound_x = 14
+	bound_width = 24
+
 	proc
 		Update_State(state, delay)
 			current_state[state] = TRUE
@@ -159,7 +164,7 @@ Player
 				icon_state = "dead"
 
 				spawn(40)
-					loc=locate(12, 44, 1)
+					loc=locate(3, 8, 2)
 					dir = SOUTH
 					icon_state = "player"
 					alpha = 255
@@ -225,6 +230,10 @@ Player
 
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD]) return
+			for(var/Enemies/E in oview(1))
+				src << "Too close to enemy!"
+				return
+
 			Update_State(ATTACKING, 5)
 
 			src << bow_shot

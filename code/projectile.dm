@@ -18,29 +18,29 @@ Projectile
 
 		// Set the bounds
 		if(dir == NORTH || dir == SOUTH)
-			bound_y = 12
-			bound_height = 18
-			bound_x = 14
-			bound_width = -4
+			bound_y = 3
+			bound_height = 26
+			bound_x = 13
+			bound_width = 3
 		else
-			bound_x = 10
+			bound_x = 1
 			bound_width = 10
-			bound_height=  0
-			bound_y = 23
+			bound_height=  3
+			bound_y = 12
 
 		// Center the arrow
 		if(dir == NORTH)
-			step_x -=1
+			step_x += 10
 			step_y += 11
 		if(dir == SOUTH)
-			step_x -= 6
-			step_y -= 20
+			step_x += 5
+			step_y -= 25
 		if(dir == EAST)
-			step_x += 10
-			step_y -= 10
+			step_x += 25
+			step_y += 1
 		if(dir == WEST)
-			step_x -= 10
-			step_y -= 10
+			step_x -= 25
+			step_y += 1
 
 		// Move the arrow
 		walk(src, dir,  0, 7)
@@ -61,13 +61,13 @@ Projectile
 
 	Arrow
 		icon_state = "arrowr"
-		flying_iconstate = "arrowr_flying"
+		flying_iconstate = "arrowc_flying"
 		New(mob/M)
 			..(M)
 			if(istype(M,/Player))
 				icon_state = "arrowr"
-				flying_iconstate = "arrowr_flying"
-				stuck_iconstate  = "arrowr_stuck"
+				flying_iconstate = "arrowc_flying"
+				stuck_iconstate  = "arrowc_stuck"
 			else
 				icon_state = "arrowb"
 				flying_iconstate = "arrowb_flying"

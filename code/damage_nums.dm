@@ -9,7 +9,7 @@ Damage_Number
 		step_y = M.step_y + yoffset
 		loc = M.loc
 
-		icon+=rgb(255, 100 ,0)
+		icon+=rgb(255, 50 ,0)
 
 
 		animate(src, alpha = 0, time = 10)
