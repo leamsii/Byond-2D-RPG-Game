@@ -80,8 +80,11 @@ Item
 		icon_state = "bow"
 		layer = MOB_LAYER+1
 		Cross(Player/P)
+			if(P.ARCHER) return
 			if(istype(P,/Player))
+				animate(src, alpha = 0, time = 5)
 				P.ARCHER = TRUE
 				Text(P, "+New Bow ", rgb(255, 255,0))
 				P << P.ability_sound
+				spawn(5)
 				del src

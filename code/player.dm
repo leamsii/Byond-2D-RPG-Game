@@ -40,7 +40,7 @@ Player
 		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
 		sound/effect_fire = new/sound('sound/player/effects_fire.wav')
 		sound/teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
-		sound/ability_sound = new/sound('sound/player/new_ability.ogg', volume=50)
+		sound/ability_sound = new/sound('sound/player/new_ability.wav', volume=50)
 
 		// Effects
 		status_effect = null
