@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1566069617
+LAST_COMPILE_TIME: 1566079329
 DIR: code icons libs sound\player 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1472
-WINDOW: icons\world.dmm;icons\williams.dmi;code\player.dm;code\enemies.dm;code\emoticons.dm;icons\player_exp.dmi;icons\player.dmi;icons\boss_health_bar.dmi;icons\player_health.dmi;icons\health_bar.dmi;icons\items.dmi;icons\Jesse.dmi;code\RPG Game.dm;libs\map_text.dm;code\status_effects.dm;icons\golem.dmi;code\NPC.dm;code\items.dm;code\particle.dm
-FILE: code\player.dm
+WINDOW: icons\world.dmm;icons\williams.dmi;code\player.dm;code\enemies.dm;code\emoticons.dm;icons\player_exp.dmi;icons\player.dmi;icons\boss_health_bar.dmi;icons\player_health.dmi;icons\health_bar.dmi;icons\items.dmi;icons\Jesse.dmi;code\RPG Game.dm;libs\map_text.dm;code\portals.dm;code\status_effects.dm;code\items.dm
+FILE: code\items.dm
 */
 // END_INTERNALS

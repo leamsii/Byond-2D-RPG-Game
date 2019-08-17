@@ -84,7 +84,7 @@ Item
 			if(istype(P,/Player))
 				animate(src, alpha = 0, time = 5)
 				P.ARCHER = TRUE
-				Text(P, "+New Bow ", rgb(255, 255,0))
+				Text(P, "+BOW  ", rgb(100, 255, 0))
 				P << P.ability_sound
 				spawn(5)
 				del src

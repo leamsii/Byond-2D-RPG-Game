@@ -86,6 +86,7 @@ window "default"
 		saved-params = "zoom;letterbox;zoom-mode"
 		icon-size = 64
 		zoom = 2.666667
+		style = "font-size=1pt"
 	elem "output1"
 		type = OUTPUT
 		pos = 0,0

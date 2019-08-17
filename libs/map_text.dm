@@ -2,6 +2,7 @@ var
 	list/groups = new/list()
 	last_position = 0
 
+
 /HUD/Text
 	parent_type = /obj
 	screen_loc = "2, 2"
@@ -31,7 +32,7 @@ proc/Text(mob/M,var/Text="", var/color="white")
 	while(length(Blank)-2<length(Text)+1)
 		//sleep(M.TxtSpd)
 		Blank = addtext(Blank,"[getCharacter(Text,length(Blank))]")
-		T.maptext = "<font color = [color]><font size=0>[Blank]" // The name of the font is not its file's name.
+		T.maptext = "<font color = [color] size=1>[Blank]" // The name of the font is not its file's name.
 
 		// Black bar underlay
 		var/HUD/black_bar/BAR = new()

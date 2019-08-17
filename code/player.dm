@@ -18,7 +18,7 @@ Player
 		health = 500
 		max_health = 500
 
-		power = 20
+		power = 120
 		max_power = 20
 
 		defense = 3
@@ -117,7 +117,7 @@ Player
 			Update_Bar(list("exp"))
 
 		Level_Up()
-			Text(src, "You leveled up! ")
+			Text(src, "+LEVEL UP ", rgb(100, 255, 0))
 
 			exp = 0
 			max_exp *= 2
