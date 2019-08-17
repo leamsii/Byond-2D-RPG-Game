@@ -1,7 +1,7 @@
 Emoticon
 	parent_type = /obj
 	icon = 'icons/emoticons.dmi'
-	layer=MOB_LAYER+1
+	layer=MOB_LAYER+99
 
 	New(mob/M=null, x=0, y=0)
 		..()

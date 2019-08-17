@@ -32,5 +32,5 @@ Player/Login()
 	client.screen += mana_bar
 	client.screen += exp_bar
 
-	loc=locate(3, 8, 2)
+	loc=locate(3, 8, 1)
 	dir=SOUTH

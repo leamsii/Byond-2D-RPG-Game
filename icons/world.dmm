@@ -1,65 +1,14 @@
-"a" = (/turf/grass,/turf/b,/area)
-"b" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
-"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
-"d" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
-"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
-"f" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
-"g" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
-"h" = (/turf/grass,/turf/grass{icon_state = "grass_5"},/turf/b,/area)
-"i" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
-"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
-"k" = (/turf/grass,/turf/grass{icon_state = "grass_7"},/turf/b,/area)
-"l" = (/obj/tree,/turf/grass{icon_state = "base"},/area)
-"m" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass1"},/area)
-"o" = (/turf/grass,/area)
-"p" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_left"},/area)
-"q" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_right"},/area)
-"r" = (/Enemies/Monkey,/turf/grass{icon_state = "base"},/area)
-"s" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomleft"},/area)
-"t" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomright"},/area)
-"u" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
+"a" = (/NPC/Grandpa,/turf/grass{icon_state = "base"},/area)
+"b" = (/Enemies/Golem,/turf/grass{icon_state = "base"},/area)
 "v" = (/Portal,/turf/grass{icon_state = "base"},/area)
-"x" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass3"},/area)
-"z" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom1"},/area)
-"F" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
 "J" = (/Enemies/Slime/Forest_Slime,/turf/grass{icon_state = "base"},/area)
 "K" = (/Enemies/Slime/SlimeFire,/turf/grass{icon_state = "base"},/area)
-"L" = (/Enemies/Slime/SlimePoison,/turf/grass{icon_state = "base"},/area)
 "O" = (/turf/grass{icon_state = "base"},/area)
-"Q" = (/turf,/area)
 "S" = (/turf/grass{icon_state = "base"},/turf/tall_grass,/area)
 "T" = (/turf/grass{icon_state = "base"},/turf/tree,/area)
 "V" = (/turf/grass{icon_state = "base"},/turf/b,/area)
 
 (1,1,1) = {"
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-ohmmOrOOOOOOOrOOOOOOOOdeOdeOOOQQQQQ
-ohmmOOOOLOOOOOOOOOOrOOdeldeOOOQQQQQ
-ohmmOOOOOOOOOOOOOOOOOOdeOdeOOKQQQQQ
-ohmmOOOOOOFFFFFOOOLOOOdexdeOOOQQQQQ
-ohmmOrOOOOlifFFOOOOOOOdeOdeOOOQQQQQ
-ohOOOOOOOzioaflFOOOOOOdeldeOOOQQQQQ
-ohOOLOOOOiaooafOOOOOOOdeOdeOOOQQQQQ
-ohOOOOOOOgaooacOOOOOOOgcOdeOOOQQQQQ
-ohOOOOOOOxgaaclOOOOOOOpqOgcOlOQQQQQ
-ohOOOOOLOOlgcOOOOOLOOOstOuOOOOQQQQQ
-ohOOOlifFFOFOOOOOOOOijjjjjjfOOQQQQQ
-ohOOOioaflFOOOOOOOOOdooooooeOOQQQQQ
-ohOOiaooafOOOOOOOOOOdooooooeOOQQQQQ
-ohLOgaooacOOOLOOOOOldooooooeOOQQQQQ
-ohOOOgaaclOOOOOOOOOOdooooooeOFQQQQQ
-ohFFOlgcOOOOOOOOOlOldooooooeuuQQQQQ
-ohFFFOOOOOOOOmOOOOOOdooooooeuFQQQQQ
-ohlFFbOOOOOmmmmOlOOldooooooeuuQQQQQ
-oakkkkkkkkkkkkkkkkkkaooooooakkQQQQQ
-ooooooooooooooooooooooooooooooQQQQQ
-"}
-
-(1,1,2) = {"
 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSO
 SSSOOOOOOOOOOOOOOOSOOOOOOOOOOOOOOSO
@@ -71,13 +20,13 @@ SOOOOOOOKOOOOOOOSSOOOOOOOOOOJOOOOSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
 SOOOSSSSSSSSSSOOOOOOOOOOOOOOOOOOOSO
 SOOOOOOOOOSSSSSOOOOOOOSOOOOOOOOOOSO
-SOOOOOOOOOOOOSSOOOOOOSSSSSSSOOOOSSO
+SOOvOaOOOOOOOSSOOOOOOSSSSSSSOOOOSSO
 SOOOOOOOOOOOOOSTVOOOOOSSSSSSOOOOSSO
-STVOOOJOOOOKOOSSSSOOOOOOSSSSOvOOSSO
+STVOOOJOOOOKOOSSSSOOOOOOSSSSOOOOSSO
 SOOOOOOTVOOOJOOOOOOOOOOOOOOOOOOOSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
-SOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOSO
+SOOOOOOOObOOOOOOOOOOOJOOOOOOOOOOOSO
 SOOOOOOOOOKOOOOOOOOOOOOOOOOOOOOOOSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
 SOOOOOOOJOOOOTVOOOOOOOOOOOOOOOOOOSO

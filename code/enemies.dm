@@ -51,6 +51,9 @@ Enemies
 		current_target = null
 		enemy_type = MEELEE
 		attack_delay = 10
+		BOSS = FALSE
+
+		sound/golem_roar = sound('sound/golem/roar.wav')
 
 	// Define the Enemies bahaviors
 	proc
@@ -88,6 +91,8 @@ Enemies
 					P.target_list.Add(src)
 
 				Follow_Target()
+				if(BOSS)
+					P << golem_roar
 
 			flick("[icon_state]_hurt", src)
 			Play_Sound(P, name, "hit.wav")
@@ -96,6 +101,9 @@ Enemies
 
 			var/damage = rand(P.power-5, P.power+2)
 			health -= damage
+			if(BOSS)
+				Update_Health()
+
 			Show_Damage(src, damage, 10, 24)
 
 			if(health <= 0)
@@ -115,6 +123,10 @@ Enemies
 			Drop_Item()
 			P.Give_EXP(exp)
 
+			for(var/Player/PP in view())
+				PP.client.screen -= health_bar
+
+
 			for(var/i = 0; i < 10; i++)
 				new/Particle/Goo(src)
 
@@ -130,11 +142,12 @@ Enemies
 			if(current_target && get_dist(src, current_target) <= 6)
 				Keep_Distance()
 			else
-				new/Emoticon/Question(src, emoticon_x, emoticon_y)
-				current_state[WANDERING] = TRUE
-				current_state[ATTACKING] = FALSE
-				current_target = null
-				Wander()
+				if(!BOSS)
+					new/Emoticon/Question(src, emoticon_x, emoticon_y)
+					current_state[WANDERING] = TRUE
+					current_state[ATTACKING] = FALSE
+					current_target = null
+					Wander()
 
 			spawn(5) Follow_Target()
 
@@ -153,6 +166,25 @@ Enemies
 			current_state[SHOOTING] = TRUE
 			new/Projectile/Arrow(src)
 			spawn(15) current_state[SHOOTING] = FALSE
+
+
+		Update_Health()
+			var/max = max(max_health,0.000001) // The larger value, or denominator
+			var/min = min(max(health),max) // The smaller value, or numerator
+			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+
+			health_bar.icon_state = state
+
+			if(current_target)
+				var/has_bar = FALSE
+				for(var/Health_Bar/O in current_target:client:screen)
+					O.icon_state = state
+					has_bar = TRUE
+
+				if(!has_bar)
+					var/Health_Bar/H = new()
+					H.icon_state = state
+					current_target:client:screen += H
 
 	Bump(Player/P)
 		if(enemy_type == ARCHER) return
@@ -243,7 +275,6 @@ Enemies
 		New()
 			..()
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
-			underlays=null
 
 	Monkey
 		icon = 'icons/monkey.dmi'
@@ -256,8 +287,22 @@ Enemies
 		emoticon_y = 20
 		enemy_type = ARCHER
 
+	Golem
+		icon = 'icons/golem.dmi'
+		icon_state = "golem"
+		name = "golem"
+		emoticon_x = -10
+		emoticon_y = 50
+		bound_y = 4
+		bound_height = 35
+		bound_x = 10
+		bound_width = 40
+		level = 20
+		speed = 1
+		BOSS = TRUE
 		New()
 			..()
+			health_bar = new/Health_Bar()
 			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 
 // Handle Sounds
@@ -275,3 +320,10 @@ Whirl
 	parent_type = /obj
 	icon = 'icons/large_effects.dmi'
 	icon_state = "whirlwind"
+
+
+Health_Bar
+	parent_type = /obj
+	icon = 'icons/boss_health_bar.dmi'
+	icon_state = "6"
+	screen_loc = "5, 11"

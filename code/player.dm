@@ -144,6 +144,10 @@ Player
 
 				Text(src, "YOU DIED ", "red")
 
+				// Remove BOSS health bars
+				for(var/Health_Bar/H in client.screen)
+					del H
+
 				underlays = null
 				overlays = null
 
@@ -163,7 +167,7 @@ Player
 				icon_state = "dead"
 
 				spawn(40)
-					loc=locate(3, 8, 2)
+					loc=locate(3, 8, 1)
 					dir = SOUTH
 					icon_state = "player"
 					alpha = 255
@@ -215,7 +219,7 @@ Player
 
 			var/Enemies/target=null // Define a target
 			for(var/Enemies/E in oview(1))
-				if(get_dist(src,E)<=1)
+				if(get_dist(src,E) <= 2)
 					target = E
 					break
 

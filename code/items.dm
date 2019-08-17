@@ -10,7 +10,7 @@ Item
 		src.drop_rate = drop_rate
 
 		if(istype(src,/Item/Gold))
-			gold_amount = round(owner.exp) // Control the amount of gold dropped from enemies
+			gold_amount = round(owner.exp / rand(2,  3)) // Control the amount of gold dropped from enemies
 
 			if(gold_amount >= 20 && gold_amount < 50)
 				icon_state = "large"

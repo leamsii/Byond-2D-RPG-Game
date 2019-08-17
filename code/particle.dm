@@ -16,6 +16,12 @@ Particle
 				else
 					icon_state = "fire_goo1"
 
+			if(istype(M,/Enemies/Golem))
+				if(prob(30))
+					icon_state = "golem1"
+				else
+					icon_state = "golem2"
+
 			step_x = M.step_x
 			step_y = M.step_y
 			loc = M.loc

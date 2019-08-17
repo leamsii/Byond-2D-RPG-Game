@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1565977518
+LAST_COMPILE_TIME: 1566004846
 DIR: code icons libs sound 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1472
-WINDOW: icons\world.dmm;code\player.dm;code\enemies.dm;code\RPG Game.dm;libs\map_text.dm;icons\emoticons.dmi;icons\damage_nums.dmi;code\NPC.dm;code\damage_nums.dm;icons\williams.dmi;code\items.dm;icons\slime_sprites.dmi;code\turfs.dm;code\status_effects.dm
-FILE: code\player.dm
+WINDOW: icons\world.dmm;code\RPG Game.dm;code\player.dm;icons\npcs.dmi;code\NPC.dm;icons\player.dmi;icons\portal.dmi;code\portals.dm;code\emoticons.dm;icons\house.dmi;icons\golem.dmi;code\enemies.dm;icons\particles.dmi;code\projectile.dm;code\particle.dm
+FILE: code\enemies.dm
 */
 // END_INTERNALS
