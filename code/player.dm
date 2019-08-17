@@ -238,6 +238,9 @@ Player
 				src << "Too close to enemy!"
 				return
 
+
+			flick("shoot_bow", src)
+
 			Update_State(ATTACKING, 2)
 
 			src << bow_shot
