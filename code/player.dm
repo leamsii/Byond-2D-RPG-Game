@@ -15,11 +15,11 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 100
-		max_health = 100
+		health = 1000
+		max_health = 1000
 
-		power = 12
-		max_power = 12
+		power = 20
+		max_power = 20
 
 		defense = 3
 		max_defense = 3
@@ -40,6 +40,7 @@ Player
 		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
 		sound/effect_fire = new/sound('sound/player/effects_fire.wav')
 		sound/teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
+		sound/ability_sound = new/sound('sound/player/new_ability.ogg', volume=50)
 
 		// Effects
 		status_effect = null
@@ -61,6 +62,9 @@ Player
 			exp_bar = null
 			mana_bar = null
 			shadow_underlay
+
+
+		ARCHER = FALSE
 
 	bound_y = 0
 	bound_height = 30
@@ -205,13 +209,10 @@ Player
 
 	// Actions or commands
 	verb
-		Speak()
-			set hidden = 1
-			var/Emoticon/Typing/EMO = new(null, -20, 15)
-			overlays += EMO
-			var/msg = input("", "Type Something")
-			if(msg) world << "<font color = green> [client]: [msg]</font>"
-			overlays -= EMO
+		Speak(msg as text)
+			if(msg)
+				world << "<font color = green> [client]: [msg]</font>"
+
 
 		Attack()
 			set hidden = 1
@@ -227,17 +228,17 @@ Player
 				Update_State(ATTACKING, 4)
 
 				dir=get_dir(src,target)
-				flick("sword_attack", src)
-
-				target.Take_Damage(src)
+				spawn(-1)
+					flick("sword_attack", src)
+					target.Take_Damage(src)
 
 		Bow()
-			if(current_state[ATTACKING] || current_state[DEAD]) return
+			if(current_state[ATTACKING] || current_state[DEAD] || !ARCHER) return
 			for(var/Enemies/E in oview(1))
 				src << "Too close to enemy!"
 				return
 
-			Update_State(ATTACKING, 5)
+			Update_State(ATTACKING, 2)
 
 			src << bow_shot
 			new/Projectile/Arrow(usr)

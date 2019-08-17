@@ -24,6 +24,7 @@ Enemies
 			ARCHER = 1
 
 		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
+		list/target_list = list()
 
 		// Status
 		health = 40
@@ -94,6 +95,9 @@ Enemies
 				if(BOSS)
 					P << golem_roar
 
+			if(!target_list.Find(P))
+				target_list.Add(P)
+
 			flick("[icon_state]_hurt", src)
 			Play_Sound(P, name, "hit.wav")
 
@@ -118,24 +122,26 @@ Enemies
 			current_state[ATTACKING] = FALSE
 
 			density=0
+
+
+			if(BOSS)
+				for(var/Player/PP in target_list)
+					for(var/Health_Bar/H in PP.client.screen)
+						del H
+
 			flick(dying_animation, src)
 			Play_Sound(P, name, "death.wav")
 			Drop_Item()
 			P.Give_EXP(exp)
 
-			for(var/Player/PP in view())
-				PP.client.screen -= health_bar
-
-
 			for(var/i = 0; i < 10; i++)
 				new/Particle/Goo(src)
 
-			if(name == "flower") animate(src, alpha=0,time = dying_animation_delay)
 
 			// Remove it from map and delete
 			sleep(dying_animation_delay)
 			loc=locate(1, 1, -1)
-			spawn(100) del src
+			spawn(10) del src
 
 		Follow_Target()
 			if(!current_state[ATTACKING]) return
@@ -183,6 +189,8 @@ Enemies
 
 				if(!has_bar)
 					var/Health_Bar/H = new()
+					H.alpha = 0
+					animate(H, alpha = 255, time = 5)
 					H.icon_state = state
 					current_target:client:screen += H
 
@@ -204,6 +212,8 @@ Enemies
 						P.Apply_Effect(status_effect)
 
 				spawn(attack_delay) current_state[ATTACKED] = FALSE
+		else
+			return
 
 	Slime
 		icon = 'icons/slime_sprites.dmi'

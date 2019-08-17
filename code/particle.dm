@@ -29,7 +29,7 @@ Particle
 				angle_x = 0
 				angle_y = -5
 				vel_x = rand(-2, 2)
-				vel_y = rand(4, 6)
+				vel_y = rand(3, 5)
 
 			animate(src, alpha = 0, time = 10 - vel_y)
 			spawn(10 - vel_y) del src

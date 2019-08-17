@@ -72,3 +72,16 @@ Item
 				P.mana = P.max_mana
 				P.Update_Bar(list("mana"))
 				Text(usr, "+MP Potion ", "white")
+
+
+
+	Bow
+		icon = 'icons/Jesse.dmi'
+		icon_state = "bow"
+		layer = MOB_LAYER+1
+		Cross(Player/P)
+			if(istype(P,/Player))
+				P.ARCHER = TRUE
+				Text(P, "+New Bow ", rgb(255, 255,0))
+				P << P.ability_sound
+				del src

@@ -5,6 +5,7 @@ Portal
 	layer = MOB_LAYER+2
 
 	Crossed(Player/P)
-		sleep(1)
-		P << "INSTANT DEATH"
-		P.loc=null
+		if(istype(P,/Player))
+			sleep(1)
+			P << "INSTANT DEATH"
+			P.loc=null

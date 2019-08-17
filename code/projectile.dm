@@ -49,7 +49,9 @@ Projectile
 	Bump(mob/M)
 		if(owner == M) del src
 		if(istype(M,/Enemies) || istype(M,/Player))
+			owner:power = owner:power / 2
 			M:Take_Damage(owner)
+			owner:power = initial(owner:power)
 			del src
 		else if(!istype(M,/Item))
 			icon_state = stuck_iconstate
@@ -66,8 +68,8 @@ Projectile
 			..(M)
 			if(istype(M,/Player))
 				icon_state = "arrowr"
-				flying_iconstate = "arrowc_flying"
-				stuck_iconstate  = "arrowc_stuck"
+				flying_iconstate = "arrowr_flying"
+				stuck_iconstate  = "arrowr_stuck"
 			else
 				icon_state = "arrowb"
 				flying_iconstate = "arrowb_flying"

@@ -8,9 +8,9 @@ var
 	layer = 1000
 	proc
 		dump(mob/M)
+			last_position -= 0.6
 			animate(src, alpha=0, time=5)
 			spawn(5)
-				last_position -= 0.6
 				M.client.screen.Remove(src)
 
 proc/Text(mob/M,var/Text="", var/color="white")
