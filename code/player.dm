@@ -15,8 +15,8 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 1000
-		max_health = 1000
+		health = 500
+		max_health = 500
 
 		power = 20
 		max_power = 20
@@ -100,10 +100,13 @@ Player
 				switch(barname)
 					if("health")
 						health_bar.icon_state = Get_Bar_State(health, max_health, 10)
+
+					/*
 					if("mana")
 						mana_bar.icon_state = Get_Bar_State(mana, max_mana, 10)
 					if("exp")
 						exp_bar.icon_state = Get_Bar_State(exp, max_exp, 6)
+					*/
 
 		Give_EXP(amount)
 			exp += amount
@@ -188,11 +191,15 @@ Player
 
 			// Flinch
 			if(!status_effect)
-				for(var/i = 0; i < 1; i++)
-					sleep(0.5)
-					icon += rgb(255, 255, 255)
-					sleep(1)
-					icon = initial(icon)
+				spawn(-1)
+					for(var/i = 0; i < 3; i++)
+						sleep(0.5)
+						icon += rgb(255, 255, 255)
+						sleep(1)
+						icon = initial(icon)
+
+			for(var/HUD/circle_hud in client.screen)
+				flick("circle_hud_active", circle_hud)
 
 			// Knock back
 			var/tmp_dir = dir
@@ -287,9 +294,17 @@ obj
 HUD
 	parent_type = /obj
 	health_bar
-		icon = 'icons/player_health.dmi'
+		icon = 'icons/health_bar.dmi'
 		icon_state = "10"
-		screen_loc = "2, 2:8"
+		screen_loc = "2:23, 10:18"
+		New(client/c)
+			..()
+			c.screen += new/HUD/circle_hud()
+
+	circle_hud
+		icon = 'icons/williams.dmi'
+		icon_state = "circle_hud"
+		screen_loc = "1:5, 10"
 
 	mana_bar
 		icon = 'icons/player_mana.dmi'

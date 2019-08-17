@@ -336,4 +336,4 @@ Health_Bar
 	parent_type = /obj
 	icon = 'icons/boss_health_bar.dmi'
 	icon_state = "6"
-	screen_loc = "5, 11"
+	screen_loc = "7, 11"
