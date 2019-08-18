@@ -1,13 +1,17 @@
+var
+	const
+		MP_POTION_ID = 0
+		HP_POTION_ID = 1
+		GOLD_ID = 2
+
 Item
 	icon = 'icons/Jesse.dmi'
 	parent_type = /obj
 	var
-		drop_rate = 100
 		gold_amount = 0
 
-	New(Enemies/owner, drop_rate)
+	New(Enemies/owner)
 		..()
-		src.drop_rate = drop_rate
 
 		if(istype(src,/Item/Gold))
 			gold_amount = round(owner.exp / rand(2,  3)) // Control the amount of gold dropped from enemies
@@ -73,18 +77,30 @@ Item
 				P.Update_Bar(list("mana"))
 				Text(usr, "+MP Potion ", "white")
 
-
-
 	Bow
-		icon = 'icons/Jesse.dmi'
-		icon_state = "bow"
+		icon = 'icons/williams.dmi'
+		icon_state = "ability_bow"
 		layer = MOB_LAYER+1
 		Cross(Player/P)
 			if(P.ARCHER) return
 			if(istype(P,/Player))
-				animate(src, alpha = 0, time = 5)
+				flick("ability_get",src)
 				P.ARCHER = TRUE
-				Text(P, "+BOW  ", rgb(100, 255, 0))
+				Text(P, "+BOW (S) ", rgb(100, 255, 0))
 				P << P.ability_sound
-				spawn(5)
+				spawn(10)
+				del src
+
+	Teleport_Ab
+		icon = 'icons/williams.dmi'
+		icon_state = "ability_teleport"
+		layer = MOB_LAYER+1
+		Cross(Player/P)
+			if(P.TELB) return
+			if(istype(P,/Player))
+				flick("ability_get",src)
+				P.TELB = TRUE
+				Text(P, "+TELEPORT (D) ", rgb(100, 255, 0))
+				P << P.ability_sound
+				spawn(10)
 				del src

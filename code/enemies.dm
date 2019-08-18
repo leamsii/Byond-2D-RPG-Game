@@ -43,6 +43,7 @@ Enemies
 		// Loot
 		loot = null
 
+
 		//Visual
 		emoticon_x = 0
 		emoticon_y = 0
@@ -53,6 +54,7 @@ Enemies
 		enemy_type = MEELEE
 		attack_delay = 10
 		BOSS = FALSE
+		view_range = 6
 
 		sound/golem_roar = sound('sound/golem/roar.wav')
 
@@ -65,64 +67,81 @@ Enemies
 
 		Drop_Item()
 			// Drop a random Item from the loot list
-			for(var/O in loot)
-				if(prob(O:drop_rate))
-					O:step_x = step_x
-					O:step_y = step_y
-					O:loc=loc
+			var
+				Item/I
+				item_type = -1
+				drop_rate = 0
+
+			for(var/i = 1; i < length(loot); i++)
+				item_type = loot[i]
+				drop_rate = loot[i+1]
+
+				if(prob(drop_rate))
+					switch(item_type)
+						if(GOLD_ID)
+							I = new/Item/Gold(src)
+						if(HP_POTION_ID)
+							I = new/Item/HP_Potion()
+						if(MP_POTION_ID)
+							I = new/Item/MP_Potion()
+					if(I)
+						I.step_x = step_x
+						I.step_y = step_y
+						I.loc = loc
 
 		Wander() // Wanders around aimlessly
+			set background=1
 			if(!current_state[WANDERING]) return
-			walk_rand(src, 0, speed)
-			spawn(rand(1, 10))
-			walk(src, null)
+
+			for(var/Player/P in view(10))
+				walk_rand(src, 0, speed)
+				spawn(rand(1, 10))
+				walk(src, null)
+				break
 
 			spawn(20) Wander()
 
 		Take_Damage(Player/P)
 			if(current_state[DYING] || !istype(P,/Player)) return
 
+			// First time being hit
 			if(!current_state[ATTACKING])
 				new/Emoticon/Alert(src, emoticon_x, emoticon_y) // Alert emoticon
 				current_state[ATTACKING] = TRUE
 				current_state[WANDERING] = FALSE
 				current_target = P
 
+				// Add targetlist for player
 				if(!P.target_list.Find(src))
 					P.target_list.Add(src)
 
-				Follow_Target()
 				if(BOSS)
 					P << golem_roar
 
+				Follow_Target()
+
+			// Add to target list
 			if(!target_list.Find(P))
 				target_list.Add(P)
 
 			flick("[icon_state]_hurt", src)
 			Play_Sound(P, name, "hit.wav")
-
 			step_away(src, P, 10, speed * 2) // Knock Back
-
 			var/damage = rand(P.power-5, P.power+2)
 			health -= damage
-			if(BOSS)
-				Update_Health()
-
+			Update_Health()
 			Show_Damage(src, damage, 10, 24)
 
 			if(health <= 0)
 				Death(P)
 
 		Death(Player/P) // Handles the death of enemies
-			overlays = null
 			walk(src, null)
 
 			current_state[DYING] = TRUE
 			current_state[WANDERING] = FALSE
 			current_state[ATTACKING] = FALSE
-
 			density=0
-
 
 			if(BOSS)
 				for(var/Player/PP in target_list)
@@ -134,8 +153,11 @@ Enemies
 			Drop_Item()
 			P.Give_EXP(exp)
 
-			for(var/i = 0; i < 10; i++)
-				new/Particle/Goo(src)
+
+			// Generate particles
+			spawn(-1)
+				for(var/i = 0; i < 10; i++)
+					new/Particle/Goo(src)
 
 
 			// Remove it from map and delete
@@ -145,17 +167,17 @@ Enemies
 
 		Follow_Target()
 			if(!current_state[ATTACKING]) return
-			if(current_target && get_dist(src, current_target) <= 6)
+			if(current_target && get_dist(src, current_target) <= view_range)
 				Keep_Distance()
 			else
-				if(!BOSS)
+				if(!BOSS) // Bosses won't lose the player
 					new/Emoticon/Question(src, emoticon_x, emoticon_y)
 					current_state[WANDERING] = TRUE
 					current_state[ATTACKING] = FALSE
 					current_target = null
 					Wander()
 
-			spawn(5) Follow_Target()
+			spawn(15) Follow_Target()
 
 		Keep_Distance()
 			if(enemy_type == ARCHER)
@@ -175,6 +197,7 @@ Enemies
 
 
 		Update_Health()
+			if(!BOSS) return
 			var/max = max(max_health,0.000001) // The larger value, or denominator
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
@@ -227,12 +250,11 @@ Enemies
 		bound_height = 20
 		emoticon_x = -20
 		emoticon_y = 15
+		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10)
 
 		New()
 
 			..()
-			loot = list(new/Item/Gold(src, 60), new/Item/HP_Potion(src, 10), new/Item/MP_Potion(src, 10))
-
 			level = rand(1, 2)
 			dying_animation = icon_state + "_die"
 
@@ -257,12 +279,8 @@ Enemies
 		Forest_Slime
 			icon = 'icons/williams.dmi'
 			icon_state = "forest_slime"
-			//name = "forest_slime"
 			dying_animation_delay = 3
-			New()
-				..()
-				dying_animation = "forest_slime_dying"
-
+			dying_animation = "forest_slime_dying"
 
 	Flower
 		icon = 'icons/flower_enemy.dmi'
@@ -282,9 +300,6 @@ Enemies
 		bound_y = 10
 		bound_height = 12
 
-		New()
-			..()
-			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 
 	Monkey
 		icon = 'icons/monkey.dmi'
@@ -309,11 +324,12 @@ Enemies
 		bound_width = 40
 		level = 20
 		speed = 1
+		view_range = 20
 		BOSS = TRUE
+		loot = list(GOLD_ID, 100, HP_POTION_ID, 100, MP_POTION_ID, 100)
 		New()
 			..()
 			health_bar = new/Health_Bar()
-			loot = list(new/Item/Gold(src, 100), new/Item/HP_Potion(src, 100), new/Item/MP_Potion(src, 100))
 
 // Handle Sounds
 proc

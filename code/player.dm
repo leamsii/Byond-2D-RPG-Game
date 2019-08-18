@@ -18,7 +18,7 @@ Player
 		health = 500
 		max_health = 500
 
-		power = 120
+		power = 20
 		max_power = 20
 
 		defense = 3
@@ -61,10 +61,13 @@ Player
 			health_bar = null
 			exp_bar = null
 			mana_bar = null
-			shadow_underlay
 
 
 		ARCHER = FALSE
+		TELB = FALSE
+
+		teleportout_icon = icon('icons/Jesse.dmi', "teleport_out")
+		teleportin_icon = icon('icons/Jesse.dmi', "teleport_in")
 
 	bound_y = 0
 	bound_height = 30
@@ -203,7 +206,7 @@ Player
 
 			// Knock back
 			var/tmp_dir = dir
-			for(var/i = 0; i < 10; i++)
+			for(var/i = 0; i < 5; i++)
 				sleep(0.1)
 				step_away(src, M, 5, speed)
 				dir = tmp_dir
@@ -235,9 +238,8 @@ Player
 				Update_State(ATTACKING, 4)
 
 				dir=get_dir(src,target)
-				spawn(-1)
-					flick("sword_attack", src)
-					target.Take_Damage(src)
+				flick("sword_attack", src)
+				target.Take_Damage(src)
 
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD] || !ARCHER) return
@@ -254,7 +256,7 @@ Player
 			new/Projectile/Arrow(usr)
 
 		Teleport()
-			if(current_state[TELEPORTING] || current_state[DEAD] || mana < 10) return
+			if(current_state[TELEPORTING] || current_state[DEAD] || mana < 10 || !TELB) return
 
 			var/turf/nextloc = null
 			if(dir == SOUTH)
@@ -268,28 +270,22 @@ Player
 
 			if(isturf(nextloc))
 				if(nextloc.density==0)
-					// Save the shadow
-					underlays -= shadow_underlay
-
 					Update_State(TELEPORTING, 5)
 
-					mana -= 10
-					Update_Bar(list("mana"))
+					//mana -= 10
+					//Update_Bar(list("mana"))
 					src << teleport_sound
 
-					flick(new/icon('icons/Jesse.dmi', "teleport_out"), src)
+					flick(teleportout_icon, src)
 					sleep(1.4)
 					loc=nextloc
-					flick(new/icon('icons/Jesse.dmi', "teleport_in"), src)
-
-					underlays += shadow_underlay
+					flick(teleportin_icon, src)
 
 obj
 	shadow
 		icon = 'icons/player.dmi'
 		icon_state = "shadow"
 		pixel_y = -3
-
 
 HUD
 	parent_type = /obj

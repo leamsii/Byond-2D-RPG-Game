@@ -1,6 +1,7 @@
 "a" = (/NPC/Grandpa,/turf/grass{icon_state = "base"},/area)
 "b" = (/Enemies/Golem,/turf/grass{icon_state = "base"},/area)
 "c" = (/Item/Bow,/turf/grass{icon_state = "base"},/area)
+"d" = (/Item/Teleport_Ab,/turf/grass{icon_state = "base"},/area)
 "v" = (/Portal,/turf/grass{icon_state = "base"},/area)
 "J" = (/Enemies/Slime/Forest_Slime,/turf/grass{icon_state = "base"},/area)
 "K" = (/Enemies/Slime/SlimeFire,/turf/grass{icon_state = "base"},/area)
@@ -24,7 +25,7 @@ SOOOOOOOOOSSSSSOOOOOOOSOOOOOOOOOOSO
 SOOvOaOOOOOOOSSOOOOOOSSSSSSSOOOOSSO
 SOOOOOOOOOOOOOSTVOOOOOSSSSSSOOOOSSO
 STVOOcJOOOOKOOSSSSOOOOOOSSSSOOOOSSO
-SOOOOOOTVOOOJOOOOOOOOOOOOOOOOOOOSSO
+SOOdOOOTVOOOJOOOOOOOOOOOOOOOOOOOSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSSO
 SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
 SOOOOOOOObOOOOOOOOOOOJOOOOOOOOOOOSO
