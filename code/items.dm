@@ -82,8 +82,8 @@ Item
 		icon_state = "ability_bow"
 		layer = MOB_LAYER+1
 		Cross(Player/P)
-			if(P.ARCHER) return
 			if(istype(P,/Player))
+				if(P.ARCHER) return
 				flick("ability_get",src)
 				P.ARCHER = TRUE
 				Text(P, "+BOW (S) ", rgb(100, 255, 0))
@@ -96,8 +96,8 @@ Item
 		icon_state = "ability_teleport"
 		layer = MOB_LAYER+1
 		Cross(Player/P)
-			if(P.TELB) return
 			if(istype(P,/Player))
+				if(P.TELB) return
 				flick("ability_get",src)
 				P.TELB = TRUE
 				Text(P, "+TELEPORT (D) ", rgb(100, 255, 0))

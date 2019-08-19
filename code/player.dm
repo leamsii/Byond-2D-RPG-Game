@@ -6,41 +6,32 @@ Player
 	Move() // Block movement if dead
 		if(!current_state[DEAD])
 			return ..()
-	New()
-		..()
-		// HUD Bars
-		//shadow_underlay = new/obj/shadow
-		//underlays += shadow_underlay
 
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
 		health = 500
 		max_health = 500
-
 		power = 20
 		max_power = 20
-
 		defense = 3
 		max_defense = 3
-
 		speed = 2
 		max_speed = 2
-
 		level = 1
 		exp = 0
 		max_exp = 100
-
 		mana = 50
 		max_mana = 50
 
 		// Sounds
-		sound/level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
-		sound/hit_sound = new/sound('sound/player/hit.ogg', volume=30)
-		sound/bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
-		sound/effect_fire = new/sound('sound/player/effects_fire.wav')
-		sound/teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
-		sound/ability_sound = new/sound('sound/player/new_ability.wav', volume=50)
+		sound
+			level_up_sound = new/sound('sound/player/level_up.ogg', volume=30)
+			hit_sound = new/sound('sound/player/hit.ogg', volume=30)
+			bow_shot = new/sound('sound/player/bow_shot.wav', volume=20)
+			effect_fire = new/sound('sound/player/effects_fire.wav')
+			teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
+			ability_sound = new/sound('sound/player/new_ability.wav', volume=50)
 
 		// Effects
 		status_effect = null
@@ -53,14 +44,16 @@ Player
 			ATTACKED = 4
 			LOW_HEALTH = 5
 
-		list/current_state = list(FALSE, FALSE, FALSE, FALSE, FALSE) // 3 States
-		list/target_list = list()
+		list
+
+			current_state[5]
+			target_list = list()
 
 		//Bars
 		HUD/
-			health_bar = null
-			exp_bar = null
-			mana_bar = null
+			health_bar
+			exp_bar
+			mana_bar
 
 
 		ARCHER = FALSE
@@ -192,15 +185,6 @@ Player
 
 			var/damage = rand(M.power-3, M.power+3)
 
-			// Flinch
-			if(!status_effect)
-				spawn(-1)
-					for(var/i = 0; i < 3; i++)
-						sleep(0.5)
-						icon += rgb(255, 255, 255)
-						sleep(1)
-						icon = initial(icon)
-
 			for(var/HUD/circle_hud in client.screen)
 				flick("circle_hud_active", circle_hud)
 
@@ -228,18 +212,14 @@ Player
 			set hidden = 1
 			if(current_state[ATTACKING] || current_state[DEAD] || current_state[ATTACKED]) return
 
-			var/Enemies/target=null // Define a target
-			for(var/Enemies/E in oview(1))
-				if(get_dist(src,E) <= 2)
-					target = E
+			for(var/Enemies/Target in oview(1))
+				if(get_dist(src, Target) <= 2)
+					Update_State(ATTACKING, 4)
+
+					dir=get_dir(src,Target)
+					flick("sword_attack", src)
+					Target.Take_Damage(src)
 					break
-
-			if(target)
-				Update_State(ATTACKING, 4)
-
-				dir=get_dir(src,target)
-				flick("sword_attack", src)
-				target.Take_Damage(src)
 
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD] || !ARCHER) return

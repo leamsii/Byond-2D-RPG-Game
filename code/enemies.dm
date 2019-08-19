@@ -2,6 +2,8 @@ Enemies
 	New()
 		..()
 		Set_Stats()
+		if(BOSS)
+			health_bar = new/Health_Bar()
 
 		current_state[WANDERING] = TRUE
 		Wander()
@@ -9,8 +11,8 @@ Enemies
 	// Define the stats for the Enemies
 	parent_type = /mob
 	var
-		//States
 		const
+			// States
 			WANDERING = 1
 			ATTACKING = 2
 			FOLLOWING = 3
@@ -23,8 +25,17 @@ Enemies
 			MEELEE = 0
 			ARCHER = 1
 
-		list/current_state = list(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
-		list/target_list = list()
+			//Animation
+			DYING_ANIMATION = 1
+
+		list
+			target_list = list()
+			animation_delays = list(0)
+
+
+		current_state[7]
+		loot = null
+		health_bar = null
 
 		// Status
 		health = 40
@@ -34,21 +45,9 @@ Enemies
 		speed = 1
 		exp = 20
 		level = 1
-		obj/health_bar = null
 
-		// Animations
-		dying_animation = null
-		dying_animation_delay = 0
-
-		// Loot
-		loot = null
-
-
-		//Visual
 		emoticon_x = 0
 		emoticon_y = 0
-
-		// Other
 		status_effect = null
 		current_target = null
 		enemy_type = MEELEE
@@ -143,15 +142,17 @@ Enemies
 			current_state[ATTACKING] = FALSE
 			density=0
 
-			if(BOSS)
+			if(BOSS) // If this enemy was a boss, remove the boss health bar from screen
 				for(var/Player/PP in target_list)
 					for(var/Health_Bar/H in PP.client.screen)
 						del H
 
-			flick(dying_animation, src)
+			// Drop an item, give exp play dying sound and show hurt animation
+			flick(icon_state + "_die", src)
 			Play_Sound(P, name, "death.wav")
 			Drop_Item()
 			P.Give_EXP(exp)
+
 
 
 			// Generate particles
@@ -161,9 +162,8 @@ Enemies
 
 
 			// Remove it from map and delete
-			sleep(dying_animation_delay)
-			loc=locate(1, 1, -1)
-			spawn(10) del src
+			sleep(animation_delays[DYING_ANIMATION])
+			del src
 
 		Follow_Target()
 			if(!current_state[ATTACKING]) return
@@ -202,7 +202,7 @@ Enemies
 			var/min = min(max(health),max) // The smaller value, or numerator
 			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
 
-			health_bar.icon_state = state
+			health_bar:icon_state = state
 
 			if(current_target)
 				var/has_bar = FALSE
@@ -222,10 +222,6 @@ Enemies
 		if(current_state[ATTACKING] && istype(P,/Player))
 			if(!current_state[ATTACKED] && !P.current_state[P.DEAD] )
 				current_state[ATTACKED] = TRUE
-
-				// Handle for flower
-				if(istype(src,/Enemies/Flower))
-					flick("attack", src)
 
 				sleep(1)
 				P.Take_Damage(src)
@@ -256,61 +252,32 @@ Enemies
 
 			..()
 			level = rand(1, 2)
-			dying_animation = icon_state + "_die"
 
 		SlimeFire
 			icon = 'icons/williams.dmi'
 			icon_state = "slime_fire"
-			dying_animation_delay = 1
-			level = 3
 			status_effect = "burn"
+			level = 3
+
 		SlimePoison
 			icon_state = "slime_poison"
-			dying_animation_delay = 16
 			status_effect = "poison"
+			New()
+				..()
+				animation_delays[DYING_ANIMATION] = 16
+
 		SlimeAcid
 			icon_state = "slime_acid"
-			dying_animation_delay = 8
-
-		DummySlime2
-			icon = 'icons/williams.dmi'
-			icon_state = "slime_idle"
+			New()
+				..()
+				animation_delays[DYING_ANIMATION] = 8
 
 		Forest_Slime
 			icon = 'icons/williams.dmi'
 			icon_state = "forest_slime"
-			dying_animation_delay = 3
-			dying_animation = "forest_slime_dying"
-
-	Flower
-		icon = 'icons/flower_enemy.dmi'
-		icon_state = "flower"
-		name = "flower"
-
-		emoticon_x = -10
-		emoticon_y = 55
-		dying_animation_delay = 19
-		level = 8
-		dying_animation = "flower_dead"
-		layer=MOB_LAYER+1
-
-		// Bounds
-		bound_width = 32
-		bound_x = 12
-		bound_y = 10
-		bound_height = 12
-
-
-	Monkey
-		icon = 'icons/monkey.dmi'
-		icon_state = "monkey"
-		name = "monkey"
-
-		level = 5
-		speed = 2
-		emoticon_x = -15
-		emoticon_y = 20
-		enemy_type = ARCHER
+			New()
+				..()
+				animation_delays[DYING_ANIMATION] = 3
 
 	Golem
 		icon = 'icons/golem.dmi'
@@ -327,25 +294,13 @@ Enemies
 		view_range = 20
 		BOSS = TRUE
 		loot = list(GOLD_ID, 100, HP_POTION_ID, 100, MP_POTION_ID, 100)
-		New()
-			..()
-			health_bar = new/Health_Bar()
+
 
 // Handle Sounds
 proc
 	Play_Sound(target, enemy_name, sound_name, v=30)
 		target << sound("sound/[enemy_name]/[sound_name]", volume=v, repeat=0)
 
-
-Dummy
-	icon = 'icons/dummy.dmi'
-	icon_state = "dummy"
-	parent_type = /obj
-
-Whirl
-	parent_type = /obj
-	icon = 'icons/large_effects.dmi'
-	icon_state = "whirlwind"
 
 
 Health_Bar
