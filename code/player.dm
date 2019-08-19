@@ -221,18 +221,24 @@ Player
 					Target.Take_Damage(src)
 					break
 
+		PhaseWalk()
+			if(current_state[DEAD]) return
+			for(var/i = 0; i < 20; i++)
+				new/Particle/Smoke(src)
+
+			alpha = 50
+			density = 0
+			sleep(50)
+			alpha = 255
+			density = 1
+
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD] || !ARCHER) return
-			for(var/Enemies/E in oview(1))
-				src << "Too close to enemy!"
-				return
-
 
 			flick("shoot_bow", src)
-
 			Update_State(ATTACKING, 2)
-
 			src << bow_shot
+
 			new/Projectile/Arrow(usr)
 
 		Teleport()

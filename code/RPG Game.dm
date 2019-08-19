@@ -3,7 +3,7 @@
  */
 
 world
-	fps = 50		// 40 frames per second
+	fps = 50		// 50 frames per second
 	icon_size = 24	// 32x32 icon size by default
 	view = "43x28"
 

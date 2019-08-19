@@ -102,5 +102,5 @@ Item
 				P.TELB = TRUE
 				Text(P, "+TELEPORT (D) ", rgb(100, 255, 0))
 				P << P.ability_sound
-				spawn(10)
+				spawn(8)
 				del src

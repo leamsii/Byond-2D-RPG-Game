@@ -3,8 +3,6 @@ macro "macro"
 		name = "Center+REP"
 		command = ".center"
 	elem 
-		name = "Space"
-	elem 
 		name = "Northeast+REP"
 		command = ".northeast"
 	elem 
@@ -28,6 +26,9 @@ macro "macro"
 	elem 
 		name = "South+REP"
 		command = ".south"
+	elem 
+		name = "1"
+		command = "PhaseWalk"
 	elem 
 		name = "A"
 		command = "Attack"
@@ -57,7 +58,6 @@ window "default"
 		size = 1255x669
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "IT RPG"
