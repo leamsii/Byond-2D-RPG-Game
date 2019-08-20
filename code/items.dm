@@ -1,5 +1,6 @@
 var
 	const
+		// IDS don't refrence a list
 		MP_POTION_ID = 0
 		HP_POTION_ID = 1
 		GOLD_ID = 2

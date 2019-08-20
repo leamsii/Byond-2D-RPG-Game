@@ -255,8 +255,15 @@ Enemies
 		bound_height = 20
 		emoticon_x = -20
 		emoticon_y = 15
-		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10, INV_AB, 5, TEL_AB, 6, BOW_AB, 10)
+		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10, INV_AB, 0, TEL_AB, 0, BOW_AB, 0)
 		level = 1
+		New()
+			..()
+			var
+				_chance = 10
+				index = pick(8, 10, 12)
+
+			loot[index] = _chance
 
 		SlimeFire
 			icon = 'icons/williams.dmi'
