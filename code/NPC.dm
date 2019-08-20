@@ -21,6 +21,6 @@ NPC
 			set src in oview(1)
 			if(!spoked.Find(usr.client))
 				new/Emoticon/Angry(src, -20, 17)
-				usr << "<font color = black><b>Old Man: Don't take this here portal, you die.</b></font>"
+				usr << "<font color = black><b>Old Man: Kill these slimes to advance to the next level.</b></font>"
 
 				spoked.Add(usr.client)

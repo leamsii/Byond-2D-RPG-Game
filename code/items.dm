@@ -3,6 +3,9 @@ var
 		MP_POTION_ID = 0
 		HP_POTION_ID = 1
 		GOLD_ID = 2
+		INV_AB = 3
+		TEL_AB = 4
+		BOW_AB = 5
 
 Item
 	icon = 'icons/Jesse.dmi'
@@ -60,6 +63,8 @@ Item
 				P.health = P.max_health
 				P.Update_Bar(list("health"))
 				Text(usr, "+Health Potion ", "white")
+
+				P << P.healing_sound
 	MP_Potion
 		icon_state = "MP_pot"
 		layer=MOB_LAYER+1
@@ -77,30 +82,42 @@ Item
 				P.Update_Bar(list("mana"))
 				Text(usr, "+MP Potion ", "white")
 
-	Bow
-		icon = 'icons/williams.dmi'
-		icon_state = "ability_bow"
-		layer = MOB_LAYER+1
-		Cross(Player/P)
-			if(istype(P,/Player))
-				if(P.ARCHER) return
-				flick("ability_get",src)
-				P.ARCHER = TRUE
-				Text(P, "+BOW (S) ", rgb(100, 255, 0))
-				P << P.ability_sound
-				spawn(10)
-				del src
+				P << P.healing_sound
 
-	Teleport_Ab
+	Ability
 		icon = 'icons/williams.dmi'
-		icon_state = "ability_teleport"
 		layer = MOB_LAYER+1
-		Cross(Player/P)
-			if(istype(P,/Player))
-				if(P.TELB) return
-				flick("ability_get",src)
-				P.TELB = TRUE
-				Text(P, "+TELEPORT (D) ", rgb(100, 255, 0))
-				P << P.ability_sound
-				spawn(8)
-				del src
+		Bow
+			icon_state = "ability_bow"
+			Cross(Player/P)
+				if(istype(P,/Player))
+					if(P.ARCHER) return
+					flick("ability_get",src)
+					P.ARCHER = TRUE
+					Text(P, "+BOW (S) ", rgb(100, 255, 0))
+					P << P.ability_sound
+					spawn(10)
+					del src
+
+		Teleport
+			icon_state = "ability_teleport"
+			Cross(Player/P)
+				if(istype(P,/Player))
+					if(P.TELB) return
+					flick("ability_get",src)
+					P.TELB = TRUE
+					Text(P, "+TELEPORT (D) ", rgb(100, 255, 0))
+					P << P.ability_sound
+					spawn(8)
+					del src
+		Invisible
+			icon_state = "ability_inv"
+			Cross(Player/P)
+				if(istype(P,/Player))
+					if(P.INV) return
+					flick("ability_get",src)
+					P.INV = TRUE
+					Text(P, "+Invisibility (SPACE) ", rgb(100, 255, 0))
+					P << P.ability_sound
+					spawn(8)
+					del src

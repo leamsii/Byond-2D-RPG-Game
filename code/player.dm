@@ -10,10 +10,10 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 500
-		max_health = 500
-		power = 20
-		max_power = 20
+		health = 50
+		max_health = 50
+		power = 12
+		max_power = 12
 		defense = 3
 		max_defense = 3
 		speed = 2
@@ -32,6 +32,8 @@ Player
 			effect_fire = new/sound('sound/player/effects_fire.wav')
 			teleport_sound = new/sound('sound/player/teleport.ogg', volume=50)
 			ability_sound = new/sound('sound/player/new_ability.wav', volume=50)
+			healing_sound = new/sound('sound/player/heals.wav', volume=50)
+			death_sound = new/sound('sound/player/death.wav', volume=100)
 
 		// Effects
 		status_effect = null
@@ -43,10 +45,11 @@ Player
 			TELEPORTING = 3
 			ATTACKED = 4
 			LOW_HEALTH = 5
+			INVISIBLE = 6
 
 		list
 
-			current_state[5]
+			current_state[6]
 			target_list = list()
 
 		//Bars
@@ -55,9 +58,11 @@ Player
 			exp_bar
 			mana_bar
 
+		// Skills
 
 		ARCHER = FALSE
 		TELB = FALSE
+		INV = FALSE
 
 		teleportout_icon = icon('icons/Jesse.dmi', "teleport_out")
 		teleportin_icon = icon('icons/Jesse.dmi', "teleport_in")
@@ -146,6 +151,7 @@ Player
 				Update_State(DEAD, 50)
 
 				Text(src, "YOU DIED ", "red")
+				src << death_sound
 
 				// Remove BOSS health bars
 				for(var/Health_Bar/H in client.screen)
@@ -213,7 +219,7 @@ Player
 			if(current_state[ATTACKING] || current_state[DEAD] || current_state[ATTACKED]) return
 
 			for(var/Enemies/Target in oview(1))
-				if(get_dist(src, Target) <= 2)
+				if(get_dist(src, Target) <= 1)
 					Update_State(ATTACKING, 4)
 
 					dir=get_dir(src,Target)
@@ -222,13 +228,19 @@ Player
 					break
 
 		PhaseWalk()
-			if(current_state[DEAD]) return
+			if(current_state[DEAD] || current_state[INVISIBLE] || !INV) return
+			Update_State(INVISIBLE, 40)
 			for(var/i = 0; i < 20; i++)
 				new/Particle/Smoke(src)
 
 			alpha = 50
 			density = 0
-			sleep(50)
+			sleep(40)
+
+			for(var/Enemies/M in oview(0)) // If the player comes visible ontop of enemy
+				Take_Damage(M)
+				break
+
 			alpha = 255
 			density = 1
 

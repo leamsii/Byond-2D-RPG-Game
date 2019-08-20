@@ -60,11 +60,11 @@ Enemies
 	// Define the Enemies bahaviors
 	proc
 		Set_Stats()
-			power = max_power = rand(3, 10) + (level * 3)
+			power = max_power = rand(3, 10) + (level * 2)
 			health = max_health = rand(20, 40) + (level * 20)
 			exp = round((power + health) / 2)
 
-		Drop_Item()
+		Drop_Item(Player/P)
 			// Drop a random Item from the loot list
 			var
 				Item/I
@@ -83,19 +83,28 @@ Enemies
 							I = new/Item/HP_Potion()
 						if(MP_POTION_ID)
 							I = new/Item/MP_Potion()
+						if(TEL_AB)
+							I = new/Item/Ability/Teleport()
+						if(BOW_AB)
+							I = new/Item/Ability/Bow()
+						if(INV_AB)
+							I = new/Item/Ability/Invisible()
 					if(I)
-						I.step_x = step_x
+						I.step_x = step_x + rand(-4, 4)
 						I.step_y = step_y
 						I.loc = loc
+						if(istype(I,/Item/Ability))
+							break
 
 		Wander() // Wanders around aimlessly
-			set background=1
 			if(!current_state[WANDERING]) return
 
-			for(var/Player/P in view(10))
+			for(var/Player/P in view(8))
 				walk_rand(src, 0, speed)
 				spawn(rand(1, 10))
 				walk(src, null)
+				if(BOSS)
+					Take_Damage(P)
 				break
 
 			spawn(20) Wander()
@@ -150,7 +159,7 @@ Enemies
 			// Drop an item, give exp play dying sound and show hurt animation
 			flick(icon_state + "_die", src)
 			Play_Sound(P, name, "death.wav")
-			Drop_Item()
+			Drop_Item(P)
 			P.Give_EXP(exp)
 
 
@@ -246,12 +255,8 @@ Enemies
 		bound_height = 20
 		emoticon_x = -20
 		emoticon_y = 15
-		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10)
-
-		New()
-
-			..()
-			level = rand(1, 2)
+		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10, INV_AB, 5, TEL_AB, 6, BOW_AB, 10)
+		level = 1
 
 		SlimeFire
 			icon = 'icons/williams.dmi'
@@ -298,7 +303,7 @@ Enemies
 
 // Handle Sounds
 proc
-	Play_Sound(target, enemy_name, sound_name, v=30)
+	Play_Sound(target, enemy_name, sound_name, v=50)
 		target << sound("sound/[enemy_name]/[sound_name]", volume=v, repeat=0)
 
 

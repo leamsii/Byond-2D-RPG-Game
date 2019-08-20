@@ -1,151 +1,39 @@
-"a" = (/turf/grass,/turf/b,/area)
-"b" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/b,/area)
-"c" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_4"},/turf/b,/area)
-"d" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_0"},/turf/b,/area)
-"e" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_5"},/turf/b,/area)
-"f" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_6"},/turf/b,/area)
-"g" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/b,/area)
-"h" = (/turf/grass,/turf/grass{icon_state = "grass_5"},/turf/b,/area)
-"i" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_8"},/turf/b,/area)
-"j" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_7"},/turf/b,/area)
-"k" = (/turf/grass,/turf/grass{icon_state = "grass_7"},/turf/b,/area)
-"l" = (/obj/tree,/turf/grass{icon_state = "base"},/area)
-"m" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass1"},/area)
-"n" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass2"},/area)
-"o" = (/turf/grass,/area)
-"p" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_left"},/area)
-"q" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_right"},/area)
-"r" = (/Enemies/Monkey,/turf/grass{icon_state = "base"},/area)
-"s" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomleft"},/area)
-"t" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "trail_bottomright"},/area)
-"u" = (/turf/grass{icon_state = "base"},/turf/rock,/area)
-"v" = (/obj/sign,/turf/grass{icon_state = "base"},/area)
-"w" = (/obj/m_house,/turf/grass{icon_state = "base"},/area)
-"x" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "grass3"},/area)
-"y" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom2"},/area)
-"z" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom1"},/area)
-"A" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_2"},/turf/fence{icon_state = "fence_left"},/turf/b,/area)
-"B" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence,/turf/b,/area)
-"C" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_mid2"},/turf/b,/area)
-"D" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_end"},/turf/b,/area)
-"E" = (/turf/grass{icon_state = "base"},/turf/grass{icon_state = "grass_3"},/turf/fence{icon_state = "fence_left"},/turf/b,/area)
-"F" = (/turf/grass{icon_state = "base"},/turf/flowers,/area)
-"G" = (/turf/grass{icon_state = "base"},/turf/flowers{icon_state = "mushroom3"},/area)
-"H" = (/Enemies/Slime/SlimeAcid,/turf/grass{icon_state = "base"},/area)
-"I" = (/NPC/Farmer,/turf/grass{icon_state = "base"},/area)
+"a" = (/NPC/Grandpa,/turf/grass{icon_state = "base"},/area)
+"b" = (/Enemies/Golem,/turf/grass{icon_state = "base"},/area)
+"c" = (/Item/Bow,/turf/grass{icon_state = "base"},/area)
+"d" = (/Item/Teleport_Ab,/turf/grass{icon_state = "base"},/area)
+"v" = (/Portal,/turf/grass{icon_state = "base"},/area)
 "J" = (/Enemies/Slime/Forest_Slime,/turf/grass{icon_state = "base"},/area)
 "K" = (/Enemies/Slime/SlimeFire,/turf/grass{icon_state = "base"},/area)
-"L" = (/Enemies/Slime/SlimePoison,/turf/grass{icon_state = "base"},/area)
-"M" = (/Enemies/Flower,/turf/grass{icon_state = "base"},/area)
-"N" = (/Enemies/Slime/DummySlime,/turf/grass{icon_state = "base"},/area)
 "O" = (/turf/grass{icon_state = "base"},/area)
-"P" = (/Enemies/Slime/DummySlime2,/turf/grass{icon_state = "base"},/area)
-"Q" = (/turf,/area)
-"R" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimeAcid,/turf/flowers,/area)
-"S" = (/turf/grass{icon_state = "base"},/Enemies/Slime/SlimePoison,/turf/flowers,/area)
+"S" = (/turf/grass{icon_state = "base"},/turf/tall_grass,/area)
+"T" = (/turf/grass{icon_state = "base"},/turf/tree,/area)
+"V" = (/turf/grass{icon_state = "base"},/turf/b,/area)
 
 (1,1,1) = {"
-oooooooooooooooooooooooooooooooooooooooooooooooooo
-oooooooooooooooooooooooooooooooooooooooooooooooooo
-ooooooooabbbbbbaoOOOOOOOOOOoabbbbbbbbbbbbbbbbaoooo
-oooooooacOOOOOOdoPOOOOOOOOOoelGlOOuuuOOOlOOOldoooo
-oooooooeOlvwOlOdoOOOOOOOOOOoeGGGOOOuOOOOOOlOOdoooo
-oooooooemnOpqOudoOOOOOOOOOOoelGlOOOOOOOOOOOOldoooo
-oooooooemmOstOOOOOOOONOOOOOoeGGOOOOOOHOpqOOOOdoooo
-oooooooenOOOOOOOOOONOOOOOOOoeOOOOOOOOOOstOOOldoooo
-oooooooaflOOOOldoOOOOOOOOOOoeOOOOHOOOOOOOOHOOdoooo
-ooooooooafOOOIOdoOOOOOOOOOOoeOOOOOOOlylOOFOFOdoooo
-oooooooooeOJOOOdooooooooooooeOOOOOOOOOOOOFFOOdoooo
-oooooooooeOOHJOABCCCCCCDEBDbcvOOOOOOOOOOOOFOOdoooo
-oooooooooeOJOOFFOOOOOFnxnOOFOOOpqOOOOOHOOOOOOdoooo
-oooooooooelOOOOOOFFOOORFOOOOFOOstOOOOuOOOOOOOdoooo
-oooooooooeOOOFyzlROlFOlOlOFlHOOOOOOOuuzuOOOOOdoooo
-ooooooooohpqijjjjjjjjjjjjjjjjjjjjjjjjjjjflOOldoooo
-ooooooooohstdoooooooooooooooooooooooooooeOOOOdoooo
-ooooooooohpqdoooooooooooooooooooooooooooeOOOOdoooo
-ooooooooohstdoooooooooooooooooooooooooooeOOOOdoooo
-ooooooooohpqdoooooooooooooooooooooooooooeOOOOdoooo
-ooooooabbcstdoooooooooooooooooooooooooooepqpqdoooo
-oooooohOOOOOgbbECBDECBDbbbbECBDECBDbbbbbcststgaooo
-oooooohOOOOOvOOOOOOOOOOuOOOOOOGGGGGGGGOOvOpqOugaoo
-oooooohOOOOOOOOOOOOOOOifOOOOOOOGGGGGGGOOOOstOOudoo
-oabbbbcOOOOOOOOOOOOOOOdelifOOOOOlGGGlOOOOOOOOuOdoo
-ohlOOlzOOOOOOOOOOOOOOOdeOdeOOOOOOOOOOOOOOOOOOOudoo
-ohOOOOOOOMOOOOOOMOOOOOdexdeOOOMOOOOOOOOMOOOOOuOdoo
-ohOOlOOOOOOOOOOOOOOOOOdeldeOOOOOOOOOOOOOOOOOOOudoo
-ohlOOOOOOOOOOOOOOOOOOOdeOdeOOOrOOOOOOOOOOOrOOOOdoo
-ohOOOOOOOOOOrOOOlOOOOOdexdeOOOOOOOOlOKOOOOOOOOOdoo
-ohmmOrOOOOOOOrOOOOOOOOdeOdeOOOOOOOOOOOOmOOOOOOOdoo
-ohmmOOOOLOOOOOOOOOOrOOdeldeOOOOOrOOOOOOOOOOrOOOdoo
-ohmmOOOOOOOOOOOOOOOOOOdeOdeOOKOOOOOOFOFOOpqOOKOdoo
-ohmmOOOOOOFFFFFOOOLOOOdexdeOOOOOOmOOlFOlOstOOOOdoo
-ohmmOrOOOOlifFFOOOOOOOdeOdeOOOOyOOOOFOFFOOOOOOOdoo
-ohOOOOOOOzioaflFOOOOOOdeldeOOOOOOOOOOOOOOOOOOOOdoo
-ohOOLOOOOiaooafOOOOOOOdeOdeOOOOKOpqOOOOOOKOOOOOdoo
-ohOOOOOOOgaooacOOOOOOOgcOdeOOOOOOstOOOOOOOOOOOOdoo
-ohOOOOOOOxgaaclOOOOOOOpqOgcOlOOOOOOOOOOOOOOOOOOdoo
-ohOOOOOLOOlgcOOOOOLOOOstOuOOOOOOOOOOiflOOOOOlOOdoo
-ohOOOlifFFOFOOOOOOOOijjjjjjfOOOOOOlioafOOOOOOOOdoo
-ohOOOioaflFOOOOOOOOOdooooooeOOOOOOiaooafOOOOOOOdoo
-ohOOiaooafOOOOOOOOOOdooooooeOOOOOOgaooacOOOOOOKdoo
-ohLOgaooacOOOLOOOOOldooooooeOOOKOOOgaaclOKOGOOOdoo
-ohOOOgaaclOOOOOOOOOOdooooooeOFOOFOOlgcOOOOOOOOGdoo
-ohFFOlgcOOOOOOOOOlOldooooooeuuOFOFOOOOOOOOOGOGGdoo
-ohFFFOOOOOOOOmOOOOOOdooooooeuFFOOOKOOOOOOOMOGGGdoo
-ohlFFSOOOOOmmmmOlOOldooooooeuuOOOOOOOOOOOOOGGGGdoo
-oakkkkkkkkkkkkkkkkkkaooooooakkkkkkkkkkkkkkkkkkkaoo
-oooooooooooooooooooooooooooooooooooooooooooooooooo
-"}
-
-(1,1,2) = {"
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-oooooooooooQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSO
+SSSOOOOOOOOOOOOOOOSOOOOOOOOOOOOOOSO
+SSSOOOOOOOOOOOOOOOSSOOOOOOOOOOOOOSO
+SOOSSSSSOOOOOOOOOOSSOOOOOOOOOOOOOSO
+SOOOOOOOOOOOKOOOOOSSOOOOOOOOOOOOOSO
+SOOOOOOOOOOOOOOOOSSOOOJOOOOOOOOOOSO
+SOOOOOOOKOOOOOOOSSOOOOOOOOOOJOOOOSO
+SOOOOOOOOOOOOOOOOOOOOOOOObOOOOOOOSO
+SOOOSSSSSSSSSSOOOOOOOOOOOOOOOOOOOSO
+SOOOOOOOOOSSSSSOOOOOOOSOOOOOOOOOOSO
+SOOvOaOOOOOOOSSOOOOOOSSSSSSSOOOOSSO
+SOOOOOOOOOOOOOSTVOOOOOSSSSSSOOOOSSO
+STVOOcJOOOOKOOSSSSOOOOOOSSSSOOOOSSO
+SOOdOOOTVOOOJOOOOOOOOOOOOOOOOOOOSSO
+SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSSSO
+SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
+SOOOOOOOObOOOOOOOOOOOJOOOOOOOOOOOSO
+SOOOOOOOOOKOOOOOOOOOOOOOOOOOOOOOOSO
+SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOSO
+SOOOOOOOJOOOOTVOOOOOOOOOOOOOOOOOOSO
+SSSOOOOOOOOSSSSOOOOOOOOOOOKOOSOOOSO
+SOOSOOOOOOOOSSSOOOOOSSOOOOOOOSOSOSO
+SSOSOOOOTVOOSSOOOOOSSSSOOOOOOSSSSSO
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSO
 "}

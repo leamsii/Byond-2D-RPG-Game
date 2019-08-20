@@ -16,23 +16,23 @@ obj
 	step_size = 3
 
 client.New()
-	mob = new/Player
+	mob = new/Player()
 	view = "17x11"
 	perspective = EDGE_PERSPECTIVE
-	//src << sound('sound/player/elina.ogg')
+	src << sound('sound/player/forest_track.wav',volume=50, repeat=1)
 
 	for(var/Player/P in world)
 		P << "[src] has joined the game!"
 
+	mob.loc=locate(3,6,1)
 
-Player/Login()
-	..()
-	health_bar = new/HUD/health_bar(client)
-	//mana_bar = new/HUD/mana_bar()
-	//exp_bar = new/HUD/exp_bar()
-	client.screen += health_bar
-	client.screen += mana_bar
-	client.screen += exp_bar
 
-	loc=locate(3, 8, 1)
-	dir=SOUTH
+Player
+	Login()
+		..()
+		health_bar = new/HUD/health_bar(client)
+		//mana_bar = new/HUD/mana_bar()
+		//exp_bar = new/HUD/exp_bar()
+		client.screen += health_bar
+		client.screen += mana_bar
+		client.screen += exp_bar
