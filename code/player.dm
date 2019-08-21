@@ -51,6 +51,7 @@ Player
 
 			current_state[6]
 			target_list = list()
+			item_list = list()
 
 		//Bars
 		HUD/
@@ -220,7 +221,7 @@ Player
 
 			for(var/Enemies/Target in oview(1))
 				if(get_dist(src, Target) <= 1)
-					Update_State(ATTACKING, 4)
+					Update_State(ATTACKING, 1)
 
 					dir=get_dir(src,Target)
 					flick("sword_attack", src)
@@ -309,3 +310,51 @@ HUD
 		icon = 'icons/player_exp.dmi'
 		icon_state = "1"
 		screen_loc = "2:3, 1:17"
+
+
+Player/proc/
+	Add_Item(Item)
+		item_list.Add(Item)
+		for(var/HUD/Key_Slots/K in client.screen)
+			K.overlays += Item
+			K.owner = Item
+			Item:ACTIVE = TRUE
+
+	Remove_Item(Item)
+		item_list.Remove(Item)
+		for(var/HUD/Key_Slots/K in client.screen)
+			if(K.owner == Item)
+				K.owner = null
+				K.overlays -= Item
+
+Player/verb/E()
+	for(var/Item/I in item_list)
+		if(I.ACTIVE)
+			I.Use()
+			Remove_Item(I)
+
+
+
+
+HUD
+	icon = 'icons/Jesse.dmi'
+	Key_Slots
+		var
+			owner = null
+
+		New(client/c)
+			..()
+			c.screen += src
+
+		key_slot
+			icon_state = "key_slot"
+			screen_loc = "15, 2"
+			New()
+				..()
+				var/HUD/Key_Slots/key_e/E = new()
+				E.pixel_y = -17
+				overlays += E
+
+		key_e
+			icon_state = "key_e"
+			screen_loc = "10, 1:10"

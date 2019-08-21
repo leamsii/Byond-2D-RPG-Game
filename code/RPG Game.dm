@@ -31,6 +31,7 @@ Player
 	Login()
 		..()
 		health_bar = new/HUD/health_bar(client)
+		new/HUD/Key_Slots/key_slot(client)
 		//mana_bar = new/HUD/mana_bar()
 		//exp_bar = new/HUD/exp_bar()
 		client.screen += health_bar

@@ -260,7 +260,7 @@ Enemies
 		New()
 			..()
 			var
-				_chance = 10
+				_chance = 20
 				index = pick(8, 10, 12)
 
 			loot[index] = _chance

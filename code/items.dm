@@ -13,6 +13,7 @@ Item
 	parent_type = /obj
 	var
 		gold_amount = 0
+		ACTIVE = FALSE
 
 	New(Enemies/owner)
 		..()
@@ -28,6 +29,8 @@ Item
 				icon_state = "med"
 			else
 				icon_state = "small"
+
+	proc/Use()
 
 	Gold
 		icon = 'icons/Items.dmi'
@@ -61,11 +64,17 @@ Item
 		Cross(Player/P)
 			if(istype(P,/Player))
 				loc = P
-				P.health = P.max_health
-				P.Update_Bar(list("health"))
 				Text(usr, "+Health Potion ", "white")
+				P.Add_Item(src)
 
-				P << P.healing_sound
+
+		Use()
+			usr:health = usr:max_health
+			usr:Update_Bar(list("health"))
+			usr << usr:healing_sound
+			usr:Remove_Item(src)
+			del src
+
 	MP_Potion
 		icon_state = "MP_pot"
 		layer=MOB_LAYER+1
