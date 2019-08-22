@@ -208,6 +208,14 @@ Player
 
 			Death_Check()
 
+		Remove_Invisibility()
+			for(var/Enemies/M in oview(0)) // If the player comes visible ontop of enemy
+				Take_Damage(M)
+				break
+
+			alpha = 255
+			density = 1
+
 	// Actions or commands
 	verb
 		Speak(msg as text)
@@ -221,7 +229,8 @@ Player
 
 			for(var/Enemies/Target in oview(1))
 				if(get_dist(src, Target) <= 1)
-					Update_State(ATTACKING, 1)
+					Remove_Invisibility()
+					Update_State(ATTACKING, 4)
 
 					dir=get_dir(src,Target)
 					flick("sword_attack", src)
@@ -237,13 +246,7 @@ Player
 			alpha = 50
 			density = 0
 			sleep(40)
-
-			for(var/Enemies/M in oview(0)) // If the player comes visible ontop of enemy
-				Take_Damage(M)
-				break
-
-			alpha = 255
-			density = 1
+			Remove_Invisibility()
 
 		Bow()
 			if(current_state[ATTACKING] || current_state[DEAD] || !ARCHER) return
@@ -316,7 +319,11 @@ Player/proc/
 	Add_Item(Item)
 		item_list.Add(Item)
 		for(var/HUD/Key_Slots/K in client.screen)
-			K.overlays += Item
+			var/obj/O = new()
+			O.icon = icon(Item:icon, Item:icon_state + "_static")
+			O.pixel_y += 3
+			K.overlays += O
+			K._icon = O
 			K.owner = Item
 			Item:ACTIVE = TRUE
 
@@ -325,7 +332,8 @@ Player/proc/
 		for(var/HUD/Key_Slots/K in client.screen)
 			if(K.owner == Item)
 				K.owner = null
-				K.overlays -= Item
+				K.overlays -= K._icon
+
 
 Player/verb/E()
 	for(var/Item/I in item_list)
@@ -333,7 +341,14 @@ Player/verb/E()
 			I.Use()
 			Remove_Item(I)
 
+obj
+	Healh_Effect
+		icon = 'icons/large_effects.dmi'
+		icon_state = "healwave2"
 
+	Healh_Effect2
+		icon = 'icons/large_effects.dmi'
+		icon_state = "healwave"
 
 
 HUD
@@ -341,6 +356,7 @@ HUD
 	Key_Slots
 		var
 			owner = null
+			_icon = null
 
 		New(client/c)
 			..()
