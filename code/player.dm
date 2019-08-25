@@ -333,6 +333,15 @@ Player/proc/
 			if(K.owner == Item)
 				K.owner = null
 				K.overlays -= K._icon
+			else if(!K.owner)
+				var/obj/O = new()
+				O.icon = icon(Item:icon, Item:icon_state + "_static")
+				O.pixel_y += 3
+				K.overlays += O
+				K._icon = O
+				K.owner = Item
+				Item:ACTIVE = TRUE
+				break
 
 
 Player/verb/E()
