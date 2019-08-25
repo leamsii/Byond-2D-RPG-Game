@@ -10,8 +10,8 @@ Player
 	// Variables
 	var
 		// The maxes variables will be used to control the recovery of status effects
-		health = 50
-		max_health = 50
+		health = 100
+		max_health = 100
 		power = 12
 		max_power = 12
 		defense = 3
@@ -48,7 +48,6 @@ Player
 			INVISIBLE = 6
 
 		list
-
 			current_state[6]
 			target_list = list()
 			item_list = list()
@@ -58,6 +57,7 @@ Player
 			health_bar
 			exp_bar
 			mana_bar
+			slot1
 
 		// Skills
 
@@ -283,12 +283,6 @@ Player
 					loc=nextloc
 					flick(teleportin_icon, src)
 
-obj
-	shadow
-		icon = 'icons/player.dmi'
-		icon_state = "shadow"
-		pixel_y = -3
-
 HUD
 	parent_type = /obj
 	health_bar
@@ -316,39 +310,65 @@ HUD
 
 
 Player/proc/
+	Get_Item_Count(Item)
+		var/item_count = 0
+		for(var/I in item_list)
+			if(Item:type == I:type)
+				item_count += 1
+		return item_count
+
 	Add_Item(Item)
 		item_list.Add(Item)
-		for(var/HUD/Key_Slots/K in client.screen)
-			var/obj/O = new()
-			O.icon = icon(Item:icon, Item:icon_state + "_static")
-			O.pixel_y += 3
-			K.overlays += O
-			K._icon = O
-			K.owner = Item
-			Item:ACTIVE = TRUE
+
+		Update_Amount(Get_Item_Count(Item))
+
+		if(!slot1:owner)
+			Add_Owner(Item)
+
+
+	Add_Owner(Item)
+		var/obj/O = new()
+		O.icon = icon(Item:icon, Item:icon_state + "_static")
+		O.pixel_y += 3
+		slot1.overlays += O
+		slot1:_icon = O
+		slot1:owner = Item
+		Item:ACTIVE = TRUE
 
 	Remove_Item(Item)
+		var/item_count = Get_Item_Count(Item) - 1
+		Update_Amount(item_count)
 		item_list.Remove(Item)
-		for(var/HUD/Key_Slots/K in client.screen)
-			if(K.owner == Item)
-				K.owner = null
-				K.overlays -= K._icon
-			else if(!K.owner)
-				var/obj/O = new()
-				O.icon = icon(Item:icon, Item:icon_state + "_static")
-				O.pixel_y += 3
-				K.overlays += O
-				K._icon = O
-				K.owner = Item
-				Item:ACTIVE = TRUE
-				break
 
+		if(slot1:owner == Item)
+			if(item_count == 0) // If this was the last of its type
+				slot1:owner = null
+				slot1:overlays -= slot1:_icon
+			else // If there are more than 1 of the same item in the list
+				for(var/I in item_list)
+					if(Item:type == I:type)
+						slot1:owner = I
+						I:ACTIVE = TRUE
+
+	Update_Amount(item_count)
+		// Remove old text from screen
+		for(var/HUD/Item_Text/T in client.screen)
+			del T
+
+		if(item_count != 0)
+			var/HUD/Item_Text/X = new(client)
+			X.icon_state = "x"
+			X.screen_loc = "16, 3"
+
+			item_count = num2text(item_count)
+			for(var/i = 1; i <= length(item_count); i++)
+				var/HUD/Item_Text/T = new(client)
+				T.icon_state = item_count[i]
+				T.screen_loc = "16:[5 + (i * 6)], 3"
 
 Player/verb/E()
-	for(var/Item/I in item_list)
-		if(I.ACTIVE)
-			I.Use()
-			Remove_Item(I)
+	if(slot1:owner)
+		slot1:owner:Use()
 
 obj
 	Healh_Effect
@@ -371,15 +391,24 @@ HUD
 			..()
 			c.screen += src
 
-		key_slot
+		Slot1
 			icon_state = "key_slot"
 			screen_loc = "15, 2"
-			New()
-				..()
-				var/HUD/Key_Slots/key_e/E = new()
-				E.pixel_y = -17
-				overlays += E
+			New(client/c)
+				..(c)
+				c:mob:slot1 = src
+				var/HUD/Key_Slots/E_Key/Key = new()
+				Key.pixel_y = -17
+				overlays += Key
 
-		key_e
+		E_Key
 			icon_state = "key_e"
 			screen_loc = "10, 1:10"
+
+
+HUD
+	Item_Text
+		icon = 'icons/numbers.dmi'
+		New(client/c)
+			..()
+			c.screen += src

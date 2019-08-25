@@ -30,11 +30,8 @@ Item
 			else
 				icon_state = "small"
 
-	proc/Use()
-
 	Gold
 		icon = 'icons/Items.dmi'
-		layer=MOB_LAYER-1
 		icon_state = "sack"
 		var
 			sound/gold_sound = new/sound('sound/player/gold_pick.ogg', volume=30)
@@ -53,7 +50,7 @@ Item
 
 	HP_Potion
 		icon_state = "HP_pot"
-		layer=MOB_LAYER+1
+		density = 1
 
 		// Bound values
 		bound_x = 15
@@ -61,14 +58,15 @@ Item
 		bound_y = 7
 		bound_height = 3
 
-		Cross(Player/P)
-			if(istype(P,/Player))
-				loc = P
-				Text(usr, "+Health Potion ", "white")
-				P.Add_Item(src)
+		verb/Action()
+			set hidden = 1
+			set src in oview(1)
+			loc = usr
+			Text(usr, "+Health Potion ", "white")
+			usr:Add_Item(src)
 
 
-		Use()
+		proc/Use()
 			usr:health = usr:max_health
 			usr:Update_Bar(list("health"))
 			usr << usr:healing_sound
@@ -77,7 +75,7 @@ Item
 
 	MP_Potion
 		icon_state = "MP_pot"
-		layer=MOB_LAYER+1
+		density = 1
 
 		// Bound values
 		bound_x = 15
@@ -85,14 +83,12 @@ Item
 		bound_y = 7
 		bound_height = 3
 
-		Cross(Player/P)
-			if(istype(P,/Player))
-				loc = P
-				P.mana = P.max_mana
-				P.Update_Bar(list("mana"))
-				Text(usr, "+MP Potion ", "white")
-
-				P << P.healing_sound
+		verb/Action()
+			set hidden = 1
+			set src in oview(1)
+			loc = usr
+			Text(usr, "+MP Potion ", "white")
+			usr:Add_Item(src)
 
 	Ability
 		icon = 'icons/williams.dmi'
