@@ -280,7 +280,6 @@ Player
 					src << teleport_sound
 
 					flick(teleportout_icon, src)
-					sleep(1.4)
 					loc=nextloc
 					flick(teleportin_icon, src)
 
