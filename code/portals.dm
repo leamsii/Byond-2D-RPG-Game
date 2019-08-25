@@ -3,6 +3,11 @@ Portal
 	icon = 'icons/portal.dmi'
 	icon_state = "portal"
 	layer = MOB_LAYER+2
+	alpha = 0
+
+	New()
+		..()
+		animate(src, alpha = 255, time = 10)
 
 	Crossed(Player/P)
 		if(istype(P,/Player))

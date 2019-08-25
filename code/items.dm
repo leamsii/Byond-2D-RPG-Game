@@ -67,10 +67,12 @@ Item
 
 
 		proc/Use()
-			usr:health = usr:max_health
-			usr:Update_Bar(list("health"))
-			usr << usr:healing_sound
-			usr:Remove_Item(src)
+			var/Player/P = usr
+			if(P.current_state[P.DEAD]) return
+			P.health = P.max_health
+			P.Update_Bar(list("health"))
+			P << usr:healing_sound
+			P.Remove_Item(src)
 			del src
 
 	MP_Potion
@@ -89,6 +91,15 @@ Item
 			loc = usr
 			Text(usr, "+MP Potion ", "white")
 			usr:Add_Item(src)
+
+		proc/Use()
+			var/Player/P = usr
+			if(P.current_state[P.DEAD]) return
+			P.mana = P.max_mana
+			P.Update_Bar(list("mana"))
+			P << usr:healing_sound
+			P.Remove_Item(src)
+			del src
 
 	Ability
 		icon = 'icons/williams.dmi'

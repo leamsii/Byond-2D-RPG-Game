@@ -4,6 +4,8 @@ Enemies
 		Set_Stats()
 		if(BOSS)
 			health_bar = new/Health_Bar()
+		else
+			health_bar = new/Mini_Bar(src, 9, 30)
 
 		current_state[WANDERING] = TRUE
 		Wander()
@@ -103,14 +105,14 @@ Enemies
 				walk_rand(src, 0, speed)
 				spawn(rand(1, 10))
 				walk(src, null)
-				if(BOSS)
+				if(BOSS && !P.current_state[P.DEAD])
 					Take_Damage(P)
 				break
 
 			spawn(20) Wander()
 
 		Take_Damage(Player/P)
-			if(current_state[DYING] || !istype(P,/Player)) return
+			if(current_state[DYING]) return
 
 			// First time being hit
 			if(!current_state[ATTACKING])
@@ -125,6 +127,8 @@ Enemies
 
 				if(BOSS)
 					P << golem_roar
+				else
+					overlays += health_bar
 
 				Follow_Target()
 
@@ -155,6 +159,7 @@ Enemies
 				for(var/Player/PP in target_list)
 					for(var/Health_Bar/H in PP.client.screen)
 						del H
+				new/Portal(loc)
 
 			// Drop an item, give exp play dying sound and show hurt animation
 			flick(icon_state + "_die", src)
@@ -184,6 +189,7 @@ Enemies
 					current_state[WANDERING] = TRUE
 					current_state[ATTACKING] = FALSE
 					current_target = null
+					overlays -= health_bar
 					Wander()
 
 			spawn(15) Follow_Target()
@@ -206,25 +212,33 @@ Enemies
 
 
 		Update_Health()
-			if(!BOSS) return
-			var/max = max(max_health,0.000001) // The larger value, or denominator
-			var/min = min(max(health),max) // The smaller value, or numerator
-			var/state = "[round((8-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
 
-			health_bar:icon_state = state
+			var/state = Get_Bar_State(health, max_health, BOSS ? 30 : 15)
 
-			if(current_target)
-				var/has_bar = FALSE
-				for(var/Health_Bar/O in current_target:client:screen)
-					O.icon_state = state
-					has_bar = TRUE
+			if(BOSS)
+				if(current_target)
+					var/has_bar = FALSE
+					for(var/Health_Bar/O in current_target:client:screen)
+						O.icon_state = state
+						has_bar = TRUE
 
-				if(!has_bar)
-					var/Health_Bar/H = new()
-					H.alpha = 0
-					animate(H, alpha = 255, time = 5)
-					H.icon_state = state
-					current_target:client:screen += H
+					if(!has_bar)
+						var/Health_Bar/H = new()
+						H.alpha = 0
+						animate(H, alpha = 255, time = 5)
+						H.icon_state = state
+						current_target:client:screen += H
+			else
+				overlays -=health_bar
+				health_bar:icon_state = state
+				overlays += health_bar
+
+		Get_Bar_State(val, max_val, num)
+			var/max = max(max_val,0.000001) // The larger value, or denominator
+			var/min = min(max(val),max) // The smaller value, or numerator
+			var/state = "[round((num-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+
+			return state
 
 	Bump(Player/P)
 		if(enemy_type == ARCHER) return
@@ -269,7 +283,7 @@ Enemies
 			icon = 'icons/williams.dmi'
 			icon_state = "slime_fire"
 			status_effect = "burn"
-			level = 3
+			level = 2
 
 		SlimePoison
 			icon_state = "slime_poison"
@@ -318,5 +332,15 @@ proc
 Health_Bar
 	parent_type = /obj
 	icon = 'icons/boss_health_bar.dmi'
-	icon_state = "6"
+	icon_state = "29"
 	screen_loc = "7, 11"
+
+
+Mini_Bar
+	parent_type = /obj
+	layer = MOB_LAYER+1
+	icon = 'icons/enemy_health.dmi'
+	icon_state = "14"
+	New(mob/M, pixel_x, pixel_y)
+		src.pixel_x = pixel_x
+		src.pixel_y = pixel_y

@@ -169,6 +169,7 @@ Player
 						M.current_target = null
 						M.current_state[M.WANDERING] = TRUE
 						M.current_state[M.ATTACKING] = FALSE
+						M.overlays -= M.health_bar
 						M.Wander()
 
 				target_list = list()
@@ -228,7 +229,7 @@ Player
 			if(current_state[ATTACKING] || current_state[DEAD] || current_state[ATTACKED]) return
 
 			for(var/Enemies/Target in oview(1))
-				if(get_dist(src, Target) <= 1)
+				if(get_dist(src, Target) <= 2)
 					Remove_Invisibility()
 					Update_State(ATTACKING, 4)
 
@@ -320,10 +321,12 @@ Player/proc/
 	Add_Item(Item)
 		item_list.Add(Item)
 
-		Update_Amount(Get_Item_Count(Item))
-
 		if(!slot1:owner)
+			Update_Amount(Get_Item_Count(Item))
 			Add_Owner(Item)
+
+		else if(slot1:owner:type == Item:type)
+			Update_Amount(Get_Item_Count(Item))
 
 
 	Add_Owner(Item)
@@ -344,6 +347,13 @@ Player/proc/
 			if(item_count == 0) // If this was the last of its type
 				slot1:owner = null
 				slot1:overlays -= slot1:_icon
+
+				// Replace it with the next item on the list
+				for(var/I in item_list)
+					Update_Amount(Get_Item_Count(I))
+					Add_Owner(I)
+					break
+
 			else // If there are more than 1 of the same item in the list
 				for(var/I in item_list)
 					if(Item:type == I:type)
