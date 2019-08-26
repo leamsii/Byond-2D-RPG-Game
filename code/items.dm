@@ -50,7 +50,6 @@ Item
 
 	HP_Potion
 		icon_state = "HP_pot"
-		density = 1
 
 		// Bound values
 		bound_x = 15
@@ -77,8 +76,6 @@ Item
 
 	MP_Potion
 		icon_state = "MP_pot"
-		density = 1
-
 		// Bound values
 		bound_x = 15
 		bound_width = 3
@@ -106,7 +103,10 @@ Item
 		layer = MOB_LAYER+1
 		Bow
 			icon_state = "ability_bow"
-			Cross(Player/P)
+			verb/Action()
+				set hidden = 1
+				set src in oview(1)
+				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.ARCHER) return
 					flick("ability_get",src)
@@ -118,7 +118,10 @@ Item
 
 		Teleport
 			icon_state = "ability_teleport"
-			Cross(Player/P)
+			verb/Action()
+				set hidden = 1
+				set src in oview(1)
+				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.TELB) return
 					flick("ability_get",src)
@@ -129,7 +132,10 @@ Item
 					del src
 		Invisible
 			icon_state = "ability_inv"
-			Cross(Player/P)
+			verb/Action()
+				set hidden = 1
+				set src in oview(1)
+				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.INV) return
 					flick("ability_get",src)

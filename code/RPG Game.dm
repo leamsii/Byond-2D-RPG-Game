@@ -31,8 +31,8 @@ Player
 		..()
 		health_bar = new/HUD/health_bar(client)
 		new/HUD/Key_Slots/Slot1(client)
-		//mana_bar = new/HUD/mana_bar()
-		//exp_bar = new/HUD/exp_bar()
+		mana_bar = new/HUD/mana_bar()
+		exp_bar = new/HUD/exp_bar()
 		client.screen += health_bar
 		client.screen += mana_bar
 		client.screen += exp_bar

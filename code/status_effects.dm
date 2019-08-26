@@ -32,8 +32,8 @@ Effect
 
 	Poison
 		icon_state = "poison2"
-		pixel_x = 1
-		pixel_y = -10
+		pixel_x = 11
+		pixel_y = -5
 		_color = rgb(100, 0, 125)
 
 	Burning

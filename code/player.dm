@@ -90,7 +90,7 @@ Player
 		Get_Bar_State(val, max_val, num)
 			var/max = max(max_val,0.000001) // The larger value, or denominator
 			var/min = min(max(val),max) // The smaller value, or numerator
-			var/state = "[round((num-1)*min/max,1)+1]" // Get the percentage and scale it by number of states
+			var/state = "[round((num-1)*min/max, 1) + 1]" // Get the percentage and scale it by number of states
 
 			return state
 
@@ -103,12 +103,10 @@ Player
 					if("health")
 						health_bar.icon_state = Get_Bar_State(health, max_health, 10)
 
-					/*
 					if("mana")
-						mana_bar.icon_state = Get_Bar_State(mana, max_mana, 10)
+						mana_bar.icon_state = Get_Bar_State(mana, max_mana, 21)
 					if("exp")
-						exp_bar.icon_state = Get_Bar_State(exp, max_exp, 6)
-					*/
+						exp_bar.icon_state = Get_Bar_State(exp, max_exp, 21)
 
 		Give_EXP(amount)
 			exp += amount
@@ -275,8 +273,8 @@ Player
 				if(nextloc.density==0)
 					Update_State(TELEPORTING, 5)
 
-					//mana -= 10
-					//Update_Bar(list("mana"))
+					mana -= 10
+					Update_Bar(list("mana"))
 					src << teleport_sound
 
 					flick(teleportout_icon, src)
@@ -299,14 +297,14 @@ HUD
 		screen_loc = "1:5, 10"
 
 	mana_bar
-		icon = 'icons/player_mana.dmi'
-		icon_state = "10"
-		screen_loc = "2, 2"
+		icon = 'icons/mana_bar.dmi'
+		icon_state = "21"
+		screen_loc = "3:1, 10:15"
 
 	exp_bar
-		icon = 'icons/player_exp.dmi'
+		icon = 'icons/exp_bar.dmi'
 		icon_state = "1"
-		screen_loc = "2:3, 1:17"
+		screen_loc = "3:1, 10:12"
 
 
 Player/proc/

@@ -46,6 +46,12 @@ Particle
 				else
 					icon_state = "fire_goo1"
 
+			if(istype(M,/Enemies/Slime/SlimePoison))
+				if(prob(30))
+					icon_state = "poison_goo"
+				else
+					icon_state = "poison_goo2"
+
 			if(istype(M,/Enemies/Golem))
 				if(prob(30))
 					icon_state = "golem1"

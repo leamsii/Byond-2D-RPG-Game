@@ -8,9 +8,3 @@ Portal
 	New()
 		..()
 		animate(src, alpha = 255, time = 10)
-
-	Crossed(Player/P)
-		if(istype(P,/Player))
-			sleep(1)
-			P << "INSTANT DEATH"
-			P.loc=null

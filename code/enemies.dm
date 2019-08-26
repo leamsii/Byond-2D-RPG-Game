@@ -274,7 +274,7 @@ Enemies
 		New()
 			..()
 			var
-				_chance = 20
+				_chance = 25
 				index = pick(8, 10, 12)
 
 			loot[index] = _chance
@@ -286,11 +286,12 @@ Enemies
 			level = 2
 
 		SlimePoison
+			icon = 'icons/williams.dmi'
 			icon_state = "slime_poison"
 			status_effect = "poison"
 			New()
 				..()
-				animation_delays[DYING_ANIMATION] = 16
+				animation_delays[DYING_ANIMATION] = 1
 
 		SlimeAcid
 			icon_state = "slime_acid"
