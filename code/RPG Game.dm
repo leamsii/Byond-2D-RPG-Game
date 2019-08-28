@@ -10,7 +10,7 @@ world
 
 // Make objects move 8 pixels per tick when walking
 mob
-	step_size = 2
+	step_size = 3
 obj
 	step_size = 3
 

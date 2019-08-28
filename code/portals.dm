@@ -8,3 +8,7 @@ Portal
 	New()
 		..()
 		animate(src, alpha = 255, time = 10)
+
+	Cross(Player/P)
+		if(istype(P,/Player))
+			P.loc=locate(10,12,2)
