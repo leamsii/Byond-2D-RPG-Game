@@ -30,6 +30,11 @@ Item
 			else
 				icon_state = "small"
 
+	verb
+		Action()
+			set hidden = 1
+			set src in oview(0)
+
 	Gold
 		icon = 'icons/Items.dmi'
 		icon_state = "sack"
@@ -57,7 +62,7 @@ Item
 		bound_y = 7
 		bound_height = 3
 
-		verb/Action()
+		Action()
 			set hidden = 1
 			set src in oview(1)
 			loc = usr
@@ -82,7 +87,7 @@ Item
 		bound_y = 7
 		bound_height = 3
 
-		verb/Action()
+		Action()
 			set hidden = 1
 			set src in oview(1)
 			loc = usr
@@ -103,9 +108,7 @@ Item
 		layer = MOB_LAYER+1
 		Bow
 			icon_state = "ability_bow"
-			verb/Action()
-				set hidden = 1
-				set src in oview(1)
+			Action()
 				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.ARCHER) return
@@ -118,9 +121,7 @@ Item
 
 		Teleport
 			icon_state = "ability_teleport"
-			verb/Action()
-				set hidden = 1
-				set src in oview(1)
+			Action()
 				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.TELB) return
@@ -132,9 +133,7 @@ Item
 					del src
 		Invisible
 			icon_state = "ability_inv"
-			verb/Action()
-				set hidden = 1
-				set src in oview(1)
+			Action()
 				var/Player/P = usr
 				if(istype(P,/Player))
 					if(P.INV) return
