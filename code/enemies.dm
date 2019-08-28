@@ -316,7 +316,7 @@ Enemies
 		bound_height = 35
 		bound_x = 10
 		bound_width = 40
-		level = 20
+		level = 10
 		speed = 1
 		view_range = 20
 		BOSS = TRUE

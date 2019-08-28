@@ -101,7 +101,7 @@ Player
 			for(var/barname in args)
 				switch(barname)
 					if("health")
-						health_bar.icon_state = Get_Bar_State(health, max_health, 10)
+						health_bar.icon_state = Get_Bar_State(health, max_health, 22)
 
 					if("mana")
 						mana_bar.icon_state = Get_Bar_State(mana, max_mana, 21)
@@ -285,7 +285,7 @@ HUD
 	parent_type = /obj
 	health_bar
 		icon = 'icons/health_bar.dmi'
-		icon_state = "10"
+		icon_state = "22"
 		screen_loc = "2:23, 10:18"
 		New(client/c)
 			..()
