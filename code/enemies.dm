@@ -269,26 +269,20 @@ Enemies
 		bound_height = 20
 		emoticon_x = -20
 		emoticon_y = 15
-		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10, INV_AB, 0, TEL_AB, 0, BOW_AB, 0)
+		loot = list(GOLD_ID, 50, HP_POTION_ID, 20, MP_POTION_ID, 10)
 		level = 1
-		New()
-			..()
-			var
-				_chance = 25
-				index = pick(8, 10, 12)
-
-			loot[index] = _chance
 
 		SlimeFire
 			icon = 'icons/williams.dmi'
 			icon_state = "slime_fire"
 			status_effect = "burn"
-			level = 2
+			level = 3
 
 		SlimePoison
 			icon = 'icons/williams.dmi'
 			icon_state = "slime_poison"
 			status_effect = "poison"
+			level = 4
 			New()
 				..()
 				animation_delays[DYING_ANIMATION] = 1
