@@ -101,6 +101,7 @@ Player
 			for(var/barname in args)
 				switch(barname)
 					if("health")
+						Create_Text(src, "[health]/[max_health]", 3, 10)
 						health_bar.icon_state = Get_Bar_State(health, max_health, 22)
 
 					if("mana")

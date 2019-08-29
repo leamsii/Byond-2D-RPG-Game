@@ -26,6 +26,7 @@
 #include "code\projectile.dm"
 #include "code\RPG Game.dm"
 #include "code\status_effects.dm"
+#include "code\text_lib.dm"
 #include "code\turfs.dm"
 #include "icons\world.dmm"
 #include "libs\map_text.dm"

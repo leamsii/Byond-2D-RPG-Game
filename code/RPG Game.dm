@@ -36,3 +36,5 @@ Player
 		client.screen += health_bar
 		client.screen += mana_bar
 		client.screen += exp_bar
+
+		Create_Text(src, "100/100", 3, 10)
