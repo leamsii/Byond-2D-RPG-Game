@@ -258,6 +258,8 @@ Player
 			new/Projectile/Arrow(usr)
 
 		Teleport()
+			new/obj/Chain/Head(src)
+			return
 			if(current_state[TELEPORTING] || current_state[DEAD] || mana < 10 || !TELB) return
 
 			var/turf/nextloc = null
@@ -420,3 +422,37 @@ HUD
 		New(client/c)
 			..()
 			c.screen += src
+
+
+obj/
+	Chain
+		icon = 'icons/Jesse.dmi'
+		var
+			increment = 0
+			current_delay =  0
+			max_delay = 0
+			speed = 4
+		Head
+			icon_state = "hook"
+			New(mob/M)
+				// Calculate chain delay
+
+				increment = (speed / 3)
+				max_delay = increment
+				step_x = M.step_x
+				step_y = M.step_y
+				loc = M.loc
+				walk(src, SOUTH, 0, speed)
+
+			Move()
+				if (current_delay  >= max_delay)
+					new/obj/Chain/Tail(src)
+					current_delay = 0
+				current_delay += increment
+				..()
+		Tail
+			icon_state = "chain4"
+			New(obj/O)
+				step_x = O.step_x
+				step_y = O.step_y
+				loc = O.loc
