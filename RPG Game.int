@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1567174151
+LAST_COMPILE_TIME: 1569504929
 DIR: code icons libs sound\player 
 AUTO_FILE_DIR: OFF
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 512.1479
-WINDOW: icons\world.dmm;code\items.dm;code\portals.dm;code\particle.dm;icons\numbers.dmi;code\RPG Game.dm;code\enemies.dm;code\player.dm;icons\williams.dmi;icons\Jesse.dmi
+WINDOW: icons\world.dmm;code\items.dm;code\portals.dm;code\particle.dm;icons\numbers.dmi;code\RPG Game.dm;code\enemies.dm;code\player.dm;icons\williams.dmi;icons\Jesse.dmi;icons\npcs.dmi;icons\large_effects.dmi;icons\extra_large.dmi;code\projectile.dm
 FILE: code\player.dm
 */
 // END_INTERNALS
